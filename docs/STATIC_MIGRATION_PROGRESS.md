@@ -62,4 +62,12 @@ Không có lệnh chưa chạy nào được ghi là PASS.
 | Remove backend/runtime | Completed | Đã bỏ Prisma/PostgreSQL, API/admin/auth, Docker, server middleware, migrations, staging backend và dependency tương ứng; static build chỉ còn sáu route tĩnh. |
 | Static tests/CI/Pages | Completed | CI và Pages workflow không còn service backend; Playwright trên `/truth-or-dare/` đạt 5 pass + 1 skip có chủ đích, không API/404/console error và không overflow ở năm viewport. |
 | Local verification | Completed | Frozen install, content audit, lint, typecheck, 19 unit tests, local build, Pages build, 5 static E2E pass + 1 skip, dependency audit và HTTP smoke cho mọi route/asset đều đạt. |
-| GitHub push/deploy | Pending | Chưa commit hoặc push. |
+| GitHub push/deploy | Completed | Commit `c10c9b86991adb48470dd68d8c0b2a50f874fdd4` đã push lên `main`; CI run `30487177248` và Pages run `30487177039` attempt 2 đều `success`; Pages dùng GitHub Actions workflow. |
+
+## Production verification
+
+- URL: `https://dotamduc.github.io/truth-or-dare/`.
+- HTTP smoke: `/`, `/play/`, `/guide/`, `/safety/`, `/privacy/`, `/site.webmanifest` và `/icon.svg` đều trả `200`.
+- Playwright production: 5 pass + 1 skip có chủ đích trên desktop/mobile; gameplay, resume, hidden prompt, validation, xóa game, asset/link, console và network/API guard đều đạt.
+- CI: `https://github.com/dotamduc/truth-or-dare/actions/runs/30487177248`.
+- Deploy: `https://github.com/dotamduc/truth-or-dare/actions/runs/30487177039`.
