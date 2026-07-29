@@ -1,80 +1,64 @@
 import type { Metadata, Viewport } from "next";
+import { Geist } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
+const geist = Geist({ subsets: ["latin", "latin-ext"], variable: "--font-geist", display: "swap" });
+const publicUrl = "https://dotamduc.github.io/truth-or-dare/";
+const basePath = process.env.GITHUB_PAGES === "true" ? "/truth-or-dare" : "";
+
 export const metadata: Metadata = {
-  title: "Thật Hay Thách - Truth or Dare Vietnam | Game Nhóm Vui Nhộn & An Toàn",
-  description:
-    "Website game Thật Hay Thách (Truth or Dare) bằng tiếng Việt dành cho nhóm bạn từ 2-10 người. Kho câu hỏi phong phú, phân loại thông minh, an toàn và hấp dẫn.",
-  keywords: [
-    "Truth or Dare",
-    "Thật Hay Thách",
-    "Game tiệc tùng",
-    "Game nhóm bạn",
-    "Trò chơi tụ tập",
-    "Câu hỏi thật hay thách tiếng Việt",
-  ],
-  authors: [{ name: "Truth or Dare Vietnam Team" }],
+  metadataBase: new URL(publicUrl),
+  title: { default: "Thật Hay Thách", template: "%s | Thật Hay Thách" },
+  description: "Game Truth or Dare tiếng Việt dành cho bạn bè, gia đình và các buổi tụ họp.",
+  alternates: { canonical: publicUrl },
+  manifest: `${basePath}/site.webmanifest`,
+  icons: { icon: `${basePath}/icon.svg` },
   openGraph: {
-    title: "Thật Hay Thách - Game Nhóm Tiếng Việt",
-    description:
-      "Game Thật Hay Thách online tiếng Việt cực vui, an toàn và mượt mà trên mobile!",
+    title: "Thật Hay Thách",
+    description: "140 câu hỏi tiếng Việt chạy hoàn toàn trong trình duyệt.",
     type: "website",
     locale: "vi_VN",
+    url: publicUrl,
     siteName: "Thật Hay Thách",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-  themeColor: "#090d16",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f2ed" },
+    { media: "(prefers-color-scheme: dark)", color: "#111210" },
+  ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="vi" className="dark">
-      <body className="antialiased selection:bg-brand-accent selection:text-white min-h-screen flex flex-col">
-        <header className="w-full border-b border-white/10 glass-panel sticky top-0 z-50">
-          <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="/" className="flex items-center gap-2 font-bold text-xl tracking-wider">
-              <span className="text-truth-500">THẬT</span>
-              <span className="text-white/40">HAY</span>
-              <span className="text-dare-500">THÁCH</span>
-            </a>
-            <nav className="flex items-center gap-4 text-sm font-medium">
-              <a href="/play" className="px-4 py-2 rounded-lg bg-gradient-to-r from-truth-600 to-dare-600 hover:opacity-90 transition font-semibold text-white shadow-lg">
-                Chơi Ngay
-              </a>
-              <a href="/guide" className="hidden sm:inline-block text-slate-300 hover:text-white transition">
-                Hướng Dẫn
-              </a>
-              <a href="/safety" className="hidden sm:inline-block text-slate-300 hover:text-white transition">
-                An Toàn
-              </a>
+    <html lang="vi" className={geist.variable}>
+      <body className="min-h-[100dvh] antialiased">
+        <header className="site-header">
+          <div className="shell header-inner">
+            <Link href="/" prefetch={false} className="wordmark" aria-label="Thật Hay Thách, trang chủ">
+              THẬT <span>HAY</span> THÁCH
+            </Link>
+            <nav aria-label="Điều hướng chính" className="main-nav">
+              <Link href="/guide" prefetch={false}>Luật chơi</Link>
+              <Link href="/safety" prefetch={false}>An toàn</Link>
+              <Link href="/play" prefetch={false} className="nav-cta">Chơi ngay</Link>
             </nav>
           </div>
         </header>
-
-        <main className="flex-1 flex flex-col">{children}</main>
-
-        <footer className="w-full border-t border-white/10 glass-panel py-6 mt-12 text-center text-sm text-slate-400">
-          <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>© {new Date().getFullYear()} Thật Hay Thách (Truth or Dare Vietnam). Mọi quyền được bảo lưu.</p>
-            <div className="flex gap-4">
-              <a href="/safety" className="hover:text-white transition">Quy Tắc An Toàn</a>
-              <a href="/privacy" className="hover:text-white transition">Quyền Riêng Tư</a>
-              <a href="/guide" className="hover:text-white transition">Luật Chơi</a>
-            </div>
+        <main>{children}</main>
+        <footer className="site-footer">
+          <div className="shell footer-inner">
+            <p>Thật Hay Thách. Chơi tại chỗ, dữ liệu ở lại trình duyệt.</p>
+            <nav aria-label="Điều hướng cuối trang">
+              <Link href="/privacy" prefetch={false}>Quyền riêng tư</Link>
+              <Link href="/safety" prefetch={false}>An toàn</Link>
+              <a href="https://github.com/dotamduc/truth-or-dare">Mã nguồn</a>
+            </nav>
           </div>
         </footer>
       </body>

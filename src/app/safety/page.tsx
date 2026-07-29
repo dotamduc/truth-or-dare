@@ -1,50 +1,19 @@
-import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { title: "An toàn" };
 
 export default function SafetyPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10 w-full flex-1">
-      <div className="glass-panel p-6 sm:p-10 rounded-3xl border border-white/10 shadow-2xl">
-        <h1 className="text-3xl font-extrabold text-white mb-6 border-b border-white/10 pb-4 flex items-center gap-3">
-          <span>🛡️</span> Quy Tắc An Toàn & Chính Sách Nội Dung
-        </h1>
-
-        <div className="space-y-6 text-slate-300 text-sm leading-relaxed">
-          <section className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30">
-            <h2 className="text-base font-bold text-emerald-400 mb-1">
-               An Toàn & Sự Thoải Mái Là Ưu Tiên Hàng Đầu
-            </h2>
-            <p className="text-xs text-slate-300">
-              Trò chơi được xây dựng với mục tiêu mang lại niềm vui lành mạnh. Hệ thống chủ động loại bỏ mọi nội dung độc hại, bạo lực, vi phạm pháp luật hay cưỡng ép.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-white mb-2">1. Những nội dung BỊ CẤM HOÀN TOÀN</h2>
-            <ul className="list-disc list-inside space-y-1.5 pl-2 text-rose-300">
-              <li>Hành vi tự gây hại hoặc khuyến khích tự gây hại.</li>
-              <li>Hành vi bạo lực, nguy hiểm có nguy cơ gây thương tích.</li>
-              <li>Nội dung tình dục tường minh hoặc cưỡng ép đụng chạm thân thể.</li>
-              <li>Sử dụng chất kích thích, uồng rượu quá độ hay hành vi bất hợp pháp.</li>
-              <li>Yêu cầu tiết lộ thông tin tài chính, mật khẩu hay dữ liệu cá nhân nhạy cảm.</li>
-              <li>Xúc phạm, làm nhục, quấy rối người khác hay phân biệt đối xử.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-white mb-2">2. Quyền từ chối của người chơi</h2>
-            <p>
-              Mọi người chơi luôn có <strong>Quyền Từ Chối</strong> thực hiện bất kỳ câu hỏi hoặc thử thách nào nếu cảm thấy không thoải mái hay không phù hợp với bản thân. Cả nhóm tuyệt đối không được ép buộc hay giễu cợt người từ chối.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-white mb-2">3. Tính năng Báo Cáo Nội Dung</h2>
-            <p>
-              Nếu phát hiện bất kỳ câu hỏi nào bị lỗi, có yếu tố nhạy cảm không phù hợp hoặc vi phạm an toàn, người chơi có thể nhấn biểu tượng lá cờ 🚩 trên thẻ câu hỏi để gửi báo cáo trực tiếp tới Ban Quản Trị để gỡ bỏ.
-            </p>
-          </section>
-        </div>
+    <article className="page-shell article-page">
+      <h1 className="page-title">Chơi vui, không vượt ranh giới.</h1>
+      <p className="page-lede">Sự thoải mái của từng người quan trọng hơn điểm số hoặc nhịp của trò chơi.</p>
+      <div className="panel">
+        <section><h2>Luôn có quyền dừng</h2><p>Đổi câu hoặc bỏ lượt không cần giải thích. Nếu một hành động gây khó chịu, hãy dừng ngay.</p></section>
+        <section><h2>Quyền bổ sung mặc định tắt</h2><p>Đạo cụ, điện thoại, Internet, vận động, tiếp xúc cơ thể, nội dung riêng tư và nhạy cảm chỉ xuất hiện khi được chủ động bật.</p></section>
+        <section><h2>Tiếp xúc cần đồng thuận</h2><p>Mỗi người liên quan phải đồng ý trước. Đồng thuận có thể được rút lại bất cứ lúc nào.</p></section>
+        <section><h2>Ẩn câu trên thiết bị</h2><p>Nút “Ẩn câu này trên thiết bị” loại câu khỏi những lượt sau trong trình duyệt hiện tại. Không có báo cáo giả gửi tới máy chủ.</p></section>
+        <section><h2>Nội dung bị loại trừ</h2><ul><li>Tự gây hại, gây đau, nín thở hoặc vận động nguy hiểm.</li><li>Rượu bia, chất kích thích, cởi đồ hoặc nội dung tình dục.</li><li>Mật khẩu, tin nhắn riêng, địa chỉ, tài chính hoặc dữ liệu định danh.</li><li>Quấy rối người lạ, gọi số khẩn cấp, phá đồ hoặc đăng nội dung gây hiểu nhầm.</li></ul></section>
       </div>
-    </div>
+    </article>
   );
 }

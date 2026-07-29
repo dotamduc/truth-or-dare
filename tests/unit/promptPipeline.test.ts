@@ -1,47 +1,47 @@
-import { describe, it, expect } from "vitest";
-import { normalizeVietnamesePrompt, removeVietnameseAccents } from "@/features/prompts/services/normalize";
-import { checkDuplicatePrompt, calculateJaccardSimilarity } from "@/features/prompts/services/deduplicate";
-import { PromptInputSchema } from "@/features/prompts/schemas/promptSchema";
+import { describe, expect, it } from "vitest";
+import dareRows from "@/data/prompts.dare.vi.json";
+import truthRows from "@/data/prompts.truth.vi.json";
+import { StaticPromptDatabaseSchema } from "@/features/prompts/schemas/promptSchema";
+import { checkDuplicatePrompt } from "@/features/prompts/services/deduplicate";
+import { createPromptFingerprint, normalizeVietnamesePrompt, removeGeneratedIndexSuffix } from "@/features/prompts/services/normalize";
 
-describe("Vietnamese Prompt Normalization & Deduplication Pipeline", () => {
-  it("should correctly normalize whitespace and punctuation without stripping accents", () => {
-    const raw = "   Bài  hát nào   gần đây  bạn nghe  nhiều nhất ?   ";
-    const normalized = normalizeVietnamesePrompt(raw);
-    expect(normalized).toBe("bài hát nào gần đây bạn nghe nhiều nhất?");
+describe("static prompt database", () => {
+  const truth = StaticPromptDatabaseSchema.parse(truthRows);
+  const dare = StaticPromptDatabaseSchema.parse(dareRows);
+
+  it("contains exactly 70 Truth and 70 Dare", () => {
+    expect(truth).toHaveLength(70);
+    expect(dare).toHaveLength(70);
   });
 
-  it("should create correct fingerprint by removing accents", () => {
-    const text = "Kể một bí mật vui của bạn";
-    const fp = removeVietnameseAccents(text);
-    expect(fp).toBe("kemotbimatvuicuaban");
+  it("matches the required difficulty distribution", () => {
+    const count = (rows: typeof truth, difficulty: string) => rows.filter((prompt) => prompt.difficulty === difficulty).length;
+    expect([count(truth, "EASY"), count(truth, "MEDIUM"), count(truth, "BOLD"), count(truth, "HARD")]).toEqual([18, 18, 17, 17]);
+    expect([count(dare, "EASY"), count(dare, "MEDIUM"), count(dare, "BOLD"), count(dare, "HARD")]).toEqual([17, 17, 18, 18]);
   });
 
-  it("should detect exact duplicate prompts", () => {
-    const existing = ["Nói một lời khen chân thành với người bên trái bạn."];
-    const candidate = "   Nói một lời khen chân thành với người bên trái bạn.  ";
-    const result = checkDuplicatePrompt(candidate, existing);
-    expect(result.isExactDuplicate).toBe(true);
-    expect(result.similarityScore).toBe(1.0);
+  it("has unique IDs, NFC text and no generated suffix", () => {
+    const rows = [...truth, ...dare];
+    expect(new Set(rows.map((prompt) => prompt.id)).size).toBe(140);
+    expect(rows.every((prompt) => prompt.text === prompt.text.normalize("NFC"))).toBe(true);
+    expect(rows.every((prompt) => !/\s*\(#\d+\)\s*$/u.test(prompt.text))).toBe(true);
   });
 
-  it("should detect near-duplicate prompts", () => {
-    const existing = ["Kể một câu chuyện hài hước trong 30 giây."];
-    const candidate = "Hãy kể một câu chuyện hài hước trong 30 giây.";
-    const result = checkDuplicatePrompt(candidate, existing, 0.7);
-    expect(result.isNearDuplicate).toBe(true);
-    expect(result.similarityScore).toBeGreaterThan(0.7);
+  it("has no exact duplicate after normalization", () => {
+    const fingerprints = [...truth, ...dare].map((prompt) => createPromptFingerprint(prompt.text));
+    expect(new Set(fingerprints).size).toBe(fingerprints.length);
+  });
+});
+
+describe("duplicate detector", () => {
+  it("detects exact and near duplicates", () => {
+    expect(checkDuplicatePrompt("  Kể một câu chuyện vui. ", ["Kể một câu chuyện vui."]).isExactDuplicate).toBe(true);
+    const near = checkDuplicatePrompt("Hãy kể một câu chuyện hài hước trong 30 giây.", ["Kể một câu chuyện hài hước trong 30 giây."], 0.7);
+    expect(near.isNearDuplicate).toBe(true);
   });
 
-  it("should validate valid prompt input with Zod", () => {
-    const input = {
-      type: "TRUTH",
-      text: "Món ăn ưa thích nhất của bạn là gì?",
-      difficulty: "EASY",
-      minimumAge: "AGE_13_PLUS",
-      categories: ["funny", "icebreaker"],
-      audiences: ["FRIENDS", "FAMILY"],
-    };
-    const parsed = PromptInputSchema.safeParse(input);
-    expect(parsed.success).toBe(true);
+  it("normalizes Vietnamese Unicode and generated suffixes", () => {
+    expect(normalizeVietnamesePrompt("  Ca\u0302u ho\u0309i na\u0300y? ")).toBe("câu hỏi này?");
+    expect(removeGeneratedIndexSuffix("Câu hỏi này? (#12)")).toBe("Câu hỏi này?");
   });
 });

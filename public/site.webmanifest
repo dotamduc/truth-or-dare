@@ -1,0 +1,12 @@
+{
+  "name": "Thật Hay Thách",
+  "short_name": "Thật Hay Thách",
+  "description": "Game Truth or Dare tiếng Việt chạy hoàn toàn trong trình duyệt.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#111210",
+  "theme_color": "#d74f32",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

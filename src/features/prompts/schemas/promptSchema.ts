@@ -1,41 +1,59 @@
 import { z } from "zod";
 
-export const PromptTypeEnum = z.enum(["TRUTH", "DARE"]);
-export const DifficultyEnum = z.enum(["EASY", "MEDIUM", "BOLD", "HARD"]);
-export const MinimumAgeEnum = z.enum(["AGE_13_PLUS", "AGE_16_PLUS", "AGE_18_PLUS"]);
-export const PromptStatusEnum = z.enum([
-  "DRAFT",
-  "IN_REVIEW",
-  "PUBLISHED",
-  "REJECTED",
-  "ARCHIVED",
+export const PromptTypeSchema = z.enum(["TRUTH", "DARE"]);
+export const DifficultySchema = z.enum(["EASY", "MEDIUM", "BOLD", "HARD"]);
+export const MinimumAgeSchema = z.union([z.literal(13), z.literal(16), z.literal(18)]);
+export const CategorySchema = z.enum([
+  "everyday",
+  "preferences",
+  "memories",
+  "friendship",
+  "family",
+  "school",
+  "work",
+  "travel",
+  "entertainment",
+  "creativity",
+  "goals",
+  "perspective",
+  "self-awareness",
+  "humor",
+  "hypothetical",
+  "performance",
+  "memory",
+  "coordination",
+  "wordplay",
+  "movement",
+  "teamwork",
+  "drawing",
+  "music",
+  "acting",
 ]);
+export const AudienceSchema = z.enum(["friends", "family", "coworkers", "couples"]);
 
-export const PromptInputSchema = z.object({
-  id: z.string().optional(),
-  type: PromptTypeEnum,
-  text: z.string().min(5, "Nội dung câu hỏi phải có ít nhất 5 ký tự").max(300, "Nội dung không được quá 300 ký tự"),
-  language: z.string().default("vi"),
-  difficulty: DifficultyEnum.default("EASY"),
-  minimumAge: MinimumAgeEnum.default("AGE_13_PLUS"),
-  status: PromptStatusEnum.default("PUBLISHED"),
+export const StaticPromptSchema = z.object({
+  id: z.string().regex(/^(truth|dare)-(easy|medium|bold|hard)-\d{3}$/),
+  type: PromptTypeSchema,
+  text: z.string().trim().min(5).max(300),
+  difficulty: DifficultySchema,
+  minimumAge: MinimumAgeSchema,
+  categories: z.array(CategorySchema).min(1).max(3),
+  audiences: z.array(AudienceSchema).min(1).max(4),
+  requiresProps: z.boolean(),
+  requiresPhone: z.boolean(),
+  requiresInternet: z.boolean(),
+  requiresMovement: z.boolean(),
+  requiresPhysicalContact: z.boolean(),
+  requiresAnotherPlayer: z.boolean(),
+  isPrivate: z.boolean(),
+  isSensitive: z.boolean(),
+}).strict();
 
-  requiresProps: z.boolean().default(false),
-  requiresPhone: z.boolean().default(false),
-  requiresInternet: z.boolean().default(false),
-  requiresMovement: z.boolean().default(false),
-  requiresPhysicalContact: z.boolean().default(false),
-  requiresAnotherPlayer: z.boolean().default(false),
-  isPrivate: z.boolean().default(false),
-  isSensitive: z.boolean().default(false),
-  isTimeBound: z.boolean().default(false),
-  estimatedSeconds: z.number().nullable().optional(),
+export const StaticPromptDatabaseSchema = z.array(StaticPromptSchema);
 
-  categories: z.array(z.string()).default([]),
-  audiences: z.array(z.string()).default([]),
-
-  source: z.string().nullable().optional(),
-  qualityScore: z.number().min(0).max(5).default(1.0),
-});
-
-export type PromptInput = z.infer<typeof PromptInputSchema>;
+export type PromptType = z.infer<typeof PromptTypeSchema>;
+export type Difficulty = z.infer<typeof DifficultySchema>;
+export type MinimumAge = z.infer<typeof MinimumAgeSchema>;
+export type Category = z.infer<typeof CategorySchema>;
+export type Audience = z.infer<typeof AudienceSchema>;
+export type StaticPrompt = z.infer<typeof StaticPromptSchema>;

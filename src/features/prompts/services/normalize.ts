@@ -5,11 +5,27 @@ export function normalizeVietnamesePrompt(text: string): string {
   if (!text) return "";
 
   return text
+    .normalize("NFC")
     .trim()
     .replace(/\s+/g, " ") // Replace multiple spaces with a single space
     .replace(/[\u200B-\u200D\uFEFF]/g, "") // Remove zero-width characters
     .replace(/\s+([.,!?])/g, "$1") // Fix space before punctuation
     .toLowerCase();
+}
+
+/** Removes the legacy generated index suffix without changing the display text otherwise. */
+export function removeGeneratedIndexSuffix(text: string): string {
+  return text.replace(/\s*\(#\d+\)\s*$/u, "").trim();
+}
+
+/**
+ * Produces a comparison fingerprint that is stable across Unicode composition,
+ * Vietnamese accents, punctuation, whitespace and legacy generator suffixes.
+ */
+export function createPromptFingerprint(text: string): string {
+  return removeVietnameseAccents(
+    normalizeVietnamesePrompt(removeGeneratedIndexSuffix(text))
+  );
 }
 
 /**
@@ -26,6 +42,18 @@ export function removeVietnameseAccents(str: string): string {
     .replace(/Đ/g, "D")
     .toLowerCase()
     .replace(/[^a-z0-9]/g, "");
+}
+
+export function getTokenSet(text: string): Set<string> {
+  const normalized = normalizeVietnamesePrompt(removeGeneratedIndexSuffix(text))
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  return new Set(normalized ? normalized.split(" ") : []);
 }
 
 /**

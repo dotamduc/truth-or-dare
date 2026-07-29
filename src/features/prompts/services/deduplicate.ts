@@ -38,7 +38,7 @@ export function checkDuplicatePrompt(
 
   let highestScore = 0;
   let matchedText: string | undefined = undefined;
-  let exact = false;
+  const exact = false;
 
   for (const existing of existingTexts) {
     const normalizedExisting = normalizeVietnamesePrompt(existing);

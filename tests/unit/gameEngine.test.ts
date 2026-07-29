@@ -1,165 +1,99 @@
-import { describe, it, expect } from "vitest";
-import {
-  validatePlayerNames,
-  shuffleArray,
-  getNextPlayerIndex,
-  calculateTurnPoints,
-} from "@/features/game/domain/gameEngine";
-import {
-  isAgeAllowed,
-  filterEligiblePrompts,
-  selectPromptWithFallback,
-  PromptItem,
-} from "@/features/game/domain/promptSelector";
+import { describe, expect, it } from "vitest";
+import { prompts } from "@/data/prompts";
+import { calculateTurnPoints, choosePrompt, createGameState, finishTurn, getNextPlayerIndex, replaceCurrentPrompt, validatePlayerNames } from "@/features/game/domain/gameEngine";
+import { filterEligiblePrompts, selectPromptWithFallback } from "@/features/game/domain/promptSelector";
+import type { GameFilters, StaticPrompt } from "@/features/game/domain/types";
 
-describe("Game Engine Domain Logic", () => {
-  describe("Player Validation", () => {
-    it("should reject less than 2 players", () => {
-      const res = validatePlayerNames(["An"]);
-      expect(res.valid).toBe(false);
-      expect(res.error).toContain("tối thiểu 2 người");
-    });
+const filters: GameFilters = {
+  minimumAge: 16,
+  allowedDifficulties: ["EASY", "MEDIUM", "BOLD", "HARD"],
+  audiences: ["friends"],
+  categories: [],
+  allowProps: true,
+  allowPhone: true,
+  allowInternet: true,
+  allowMovement: true,
+  allowPhysicalContact: true,
+  allowPrivate: true,
+  allowSensitive: true,
+};
 
-    it("should reject more than 10 players", () => {
-      const names = Array.from({ length: 11 }, (_, i) => `Player ${i + 1}`);
-      const res = validatePlayerNames(names);
-      expect(res.valid).toBe(false);
-      expect(res.error).toContain("Tối đa chỉ hỗ trợ 10 người");
-    });
-
-    it("should reject duplicate player names after normalization", () => {
-      const res = validatePlayerNames(["  An  ", "Bình", "an"]);
-      expect(res.valid).toBe(false);
-      expect(res.error).toContain("bị trùng lặp");
-    });
-
-    it("should accept valid list of 2 to 10 players", () => {
-      const res = validatePlayerNames(["  An  ", "Bình", "Chi"]);
-      expect(res.valid).toBe(true);
-      expect(res.normalizedNames).toEqual(["An", "Bình", "Chi"]);
-    });
+describe("player validation and selection", () => {
+  it("accepts 2-10 unique trimmed names", () => {
+    expect(validatePlayerNames([" An ", "Bình"])).toMatchObject({ valid: true, normalizedNames: ["An", "Bình"] });
+    expect(validatePlayerNames(["An"])).toMatchObject({ valid: false });
+    expect(validatePlayerNames(Array.from({ length: 11 }, (_, index) => `Người ${index}`))).toMatchObject({ valid: false });
   });
 
-  describe("Player Selection Modes", () => {
-    it("should advance sequentially in ROUND_ROBIN mode", () => {
-      expect(getNextPlayerIndex(0, 3, "ROUND_ROBIN", [1, 0, 0])).toBe(1);
-      expect(getNextPlayerIndex(1, 3, "ROUND_ROBIN", [1, 1, 0])).toBe(2);
-      expect(getNextPlayerIndex(2, 3, "ROUND_ROBIN", [1, 1, 1])).toBe(0);
-    });
-
-    it("should avoid selecting current player in BALANCED_RANDOM when total > 1", () => {
-      for (let i = 0; i < 20; i++) {
-        const next = getNextPlayerIndex(1, 4, "BALANCED_RANDOM", [1, 1, 1, 1]);
-        expect(next).not.toBe(1);
-      }
-    });
+  it("rejects blank and duplicate names after normalization", () => {
+    expect(validatePlayerNames(["An", " "]).error).toContain("để trống");
+    expect(validatePlayerNames([" An ", "an"]).error).toContain("trùng");
   });
 
-  describe("Scoring", () => {
-    it("should award +1 for Truth completed and +2 for Dare completed", () => {
-      expect(calculateTurnPoints("COMPLETED", "TRUTH")).toBe(1);
-      expect(calculateTurnPoints("COMPLETED", "DARE")).toBe(2);
-      expect(calculateTurnPoints("SKIPPED", "TRUTH")).toBe(0);
-      expect(calculateTurnPoints("REFUSED", "DARE")).toBe(0);
-    });
+  it("supports round robin and balanced random", () => {
+    expect(getNextPlayerIndex(2, 3, "ROUND_ROBIN", [1, 1, 1])).toBe(0);
+    expect(getNextPlayerIndex(0, 3, "BALANCED_RANDOM", [2, 0, 1], () => 0)).toBe(1);
+    expect(getNextPlayerIndex(1, 3, "BALANCED_RANDOM", [0, 1, 0], () => 0.99)).toBe(2);
+  });
+});
+
+describe("prompt filtering", () => {
+  it("enforces age, difficulty, category and audience filters", () => {
+    const result = filterEligiblePrompts(prompts, { ...filters, minimumAge: 13, allowedDifficulties: ["EASY"], categories: ["music"], audiences: ["family"], playerCount: 2 }, new Set(), new Set(), "DARE");
+    expect(result.length).toBeGreaterThan(0);
+    expect(result.every((prompt) => prompt.minimumAge <= 13 && prompt.difficulty === "EASY" && prompt.categories.includes("music") && prompt.audiences.includes("family"))).toBe(true);
   });
 
-  describe("Prompt Selection & Safety Filtering", () => {
-    const mockPrompts: PromptItem[] = [
-      {
-        id: "p1",
-        type: "TRUTH",
-        text: "Câu hỏi 13+ dễ",
-        difficulty: "EASY",
-        minimumAge: "AGE_13_PLUS",
-        requiresProps: false,
-        requiresPhone: false,
-        requiresInternet: false,
-        requiresMovement: false,
-        requiresPhysicalContact: false,
-        requiresAnotherPlayer: false,
-        isPrivate: false,
-        isSensitive: false,
-        qualityScore: 1.0,
-        timesServed: 0,
-      },
-      {
-        id: "p2",
-        type: "TRUTH",
-        text: "Câu hỏi 18+ táo bạo",
-        difficulty: "BOLD",
-        minimumAge: "AGE_18_PLUS",
-        requiresProps: false,
-        requiresPhone: false,
-        requiresInternet: false,
-        requiresMovement: false,
-        requiresPhysicalContact: false,
-        requiresAnotherPlayer: false,
-        isPrivate: false,
-        isSensitive: false,
-        qualityScore: 1.0,
-        timesServed: 0,
-      },
-      {
-        id: "p3",
-        type: "DARE",
-        text: "Thử thách vận động có đụng chạm",
-        difficulty: "MEDIUM",
-        minimumAge: "AGE_13_PLUS",
-        requiresProps: false,
-        requiresPhone: false,
-        requiresInternet: false,
-        requiresMovement: true,
-        requiresPhysicalContact: true,
-        requiresAnotherPlayer: true,
-        isPrivate: false,
-        isSensitive: false,
-        qualityScore: 1.0,
-        timesServed: 0,
-      },
+  it("denies every elevated safety capability until explicitly enabled", () => {
+    const restricted: GameFilters = { ...filters, allowProps: false, allowPhone: false, allowInternet: false, allowMovement: false, allowPhysicalContact: false, allowPrivate: false, allowSensitive: false };
+    const flagCases: Array<[keyof StaticPrompt, keyof GameFilters]> = [
+      ["requiresProps", "allowProps"], ["requiresPhone", "allowPhone"], ["requiresInternet", "allowInternet"],
+      ["requiresMovement", "allowMovement"], ["requiresPhysicalContact", "allowPhysicalContact"],
+      ["isPrivate", "allowPrivate"], ["isSensitive", "allowSensitive"],
     ];
+    for (const [promptFlag, permission] of flagCases) {
+      const sample = { ...prompts[0], id: `truth-easy-099`, [promptFlag]: true } as StaticPrompt;
+      expect(filterEligiblePrompts([sample], { ...restricted, playerCount: 2 }, new Set(), new Set(), "TRUTH")).toHaveLength(0);
+      expect(filterEligiblePrompts([sample], { ...restricted, [permission]: true, playerCount: 2 }, new Set(), new Set(), "TRUTH")).toHaveLength(1);
+    }
+  });
 
-    it("should enforce age restrictions strictly", () => {
-      expect(isAgeAllowed("AGE_13_PLUS", "AGE_13_PLUS")).toBe(true);
-      expect(isAgeAllowed("AGE_16_PLUS", "AGE_13_PLUS")).toBe(false);
-      expect(isAgeAllowed("AGE_18_PLUS", "AGE_16_PLUS")).toBe(false);
-    });
+  it("keeps safety filters while resetting an exhausted used pool", () => {
+    const safeTruths = prompts.filter((prompt) => prompt.type === "TRUTH" && prompt.difficulty === "EASY" && !prompt.isPrivate && !prompt.isSensitive);
+    const result = selectPromptWithFallback(safeTruths, { ...filters, allowedDifficulties: ["EASY"], playerCount: 2 }, new Set(safeTruths.map((prompt) => prompt.id)), new Set(), "TRUTH", new Set(), () => 0);
+    expect(result.poolReset).toBe(true);
+    expect(result.prompt?.minimumAge).toBeLessThanOrEqual(16);
+  });
 
-    it("should filter out 18+ prompts when session is 13+", () => {
-      const eligible = filterEligiblePrompts(
-        mockPrompts,
-        { minimumAge: "AGE_13_PLUS", allowedDifficulties: ["EASY", "BOLD"] },
-        new Set(),
-        "TRUTH"
-      );
-      expect(eligible.length).toBe(1);
-      expect(eligible[0].id).toBe("p1");
-    });
+  it("excludes hidden prompts", () => {
+    const first = prompts.find((prompt) => prompt.type === "TRUTH" && prompt.difficulty === "EASY")!;
+    const eligible = filterEligiblePrompts(prompts, { ...filters, allowedDifficulties: ["EASY"], playerCount: 2 }, new Set(), new Set([first.id]), "TRUTH");
+    expect(eligible.some((prompt) => prompt.id === first.id)).toBe(false);
+  });
+});
 
-    it("should filter out physical contact dares if disallowed", () => {
-      const eligible = filterEligiblePrompts(
-        mockPrompts,
-        {
-          minimumAge: "AGE_13_PLUS",
-          allowedDifficulties: ["EASY", "MEDIUM"],
-          allowPhysicalContact: false,
-        },
-        new Set(),
-        "DARE"
-      );
-      expect(eligible.length).toBe(0);
-    });
+describe("client game state", () => {
+  it("scores complete turns and advances the round", () => {
+    expect(calculateTurnPoints("COMPLETED", "TRUTH")).toBe(1);
+    expect(calculateTurnPoints("COMPLETED", "DARE")).toBe(2);
+    expect(calculateTurnPoints("SKIPPED", "DARE")).toBe(0);
+    let state = createGameState(["An", "Bình"], 1, "ROUND_ROBIN", filters, new Date("2026-01-01T00:00:00.000Z"));
+    state = choosePrompt(state, "TRUTH", new Set(), () => 0).state;
+    state = finishTurn(state, "COMPLETED", () => 0, new Date("2026-01-01T00:01:00.000Z"));
+    expect(state.players[0]).toMatchObject({ score: 1, totalTurns: 1, completedTruths: 1 });
+    expect(state.currentPlayerIndex).toBe(1);
+    state = choosePrompt(state, "DARE", new Set(), () => 0).state;
+    state = finishTurn(state, "SKIPPED", () => 0, new Date("2026-01-01T00:02:00.000Z"));
+    expect(state.gameStatus).toBe("COMPLETED");
+    expect(state.players[1].skipped).toBe(1);
+  });
 
-    it("should handle pool exhaustion with safe fallback without violating age rules", () => {
-      const usedIds = new Set(["p1"]);
-      const res = selectPromptWithFallback(
-        mockPrompts,
-        { minimumAge: "AGE_13_PLUS", allowedDifficulties: ["EASY"] },
-        usedIds,
-        "TRUTH"
-      );
-      expect(res.poolExhausted).toBe(true);
-      expect(res.prompt?.id).toBe("p1"); // Re-selected p1 safely
-    });
+  it("replace never returns the current prompt", () => {
+    let state = createGameState(["An", "Bình"], 2, "ROUND_ROBIN", filters);
+    state = choosePrompt(state, "TRUTH", new Set(), () => 0).state;
+    const currentId = state.currentPrompt?.id;
+    const replacement = replaceCurrentPrompt(state, new Set(), () => 0);
+    expect(replacement.prompt).not.toBeNull();
+    expect(replacement.prompt?.id).not.toBe(currentId);
   });
 });
