@@ -1,0 +1,174 @@
+// This is your Prisma schema file for SQLite local dev / Production DB
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Prompt {
+  id                      String          @id @default(cuid())
+  type                    String          // TRUTH | DARE
+  text                    String
+  normalizedText          String
+  language                String          @default("vi")
+  difficulty              String          @default("EASY")
+  minimumAge              String          @default("AGE_13_PLUS")
+  status                  String          @default("DRAFT")
+
+  requiresProps           Boolean         @default(false)
+  requiresPhone           Boolean         @default(false)
+  requiresInternet        Boolean         @default(false)
+  requiresMovement        Boolean         @default(false)
+  requiresPhysicalContact Boolean         @default(false)
+  requiresAnotherPlayer   Boolean         @default(false)
+  isPrivate               Boolean         @default(false)
+  isSensitive             Boolean         @default(false)
+  isTimeBound             Boolean         @default(false)
+  estimatedSeconds        Int?
+
+  source                  String?
+  sourceReference         String?
+  notes                   String?
+
+  qualityScore            Float           @default(1.0)
+  timesServed             Int             @default(0)
+  timesSkipped            Int             @default(0)
+  timesReported           Int             @default(0)
+
+  createdAt               DateTime        @default(now())
+  updatedAt               DateTime        @updatedAt
+  publishedAt             DateTime?
+  archivedAt              DateTime?
+
+  categories              PromptCategory[]
+  audiences               PromptAudience[]
+  reports                 PromptReport[]
+  turns                   GameTurn[]
+
+  @@unique([language, normalizedText])
+  @@index([type, status, language])
+  @@index([minimumAge, difficulty])
+  @@index([qualityScore])
+}
+
+model Category {
+  id        String           @id @default(cuid())
+  slug      String           @unique
+  name      String
+  createdAt DateTime         @default(now())
+  prompts   PromptCategory[]
+}
+
+model PromptCategory {
+  promptId   String
+  categoryId String
+  prompt     Prompt   @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([promptId, categoryId])
+}
+
+model Audience {
+  id        String           @id @default(cuid())
+  slug      String           @unique
+  name      String
+  createdAt DateTime         @default(now())
+  prompts   PromptAudience[]
+}
+
+model PromptAudience {
+  promptId   String
+  audienceId String
+  prompt     Prompt   @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  audience   Audience @relation(fields: [audienceId], references: [id], onDelete: Cascade)
+
+  @@id([promptId, audienceId])
+}
+
+model GameSession {
+  id                  String        @id @default(cuid())
+  publicId            String        @unique
+  sessionToken        String        @default(cuid())
+  status              String        @default("SETUP") // SETUP | ACTIVE | PAUSED | COMPLETED | ABANDONED
+  selectionMode       String        @default("ROUND_ROBIN") // ROUND_ROBIN | BALANCED_RANDOM
+  scoringEnabled      Boolean       @default(true)
+  maxPlayers          Int           @default(10)
+  targetRounds        Int?
+  minimumAge          String        @default("AGE_13_PLUS")
+  allowedDifficulties String        // JSON string array e.g. ["EASY", "MEDIUM"]
+  settings            String        // JSON string for extra settings (allowProps, allowPhysicalContact)
+  currentPlayerIndex  Int           @default(0)
+  currentRound        Int           @default(1)
+  createdAt           DateTime      @default(now())
+  startedAt           DateTime?
+  endedAt             DateTime?
+
+  players             Player[]
+  turns               GameTurn[]
+
+  @@index([status, createdAt])
+}
+
+model Player {
+  id              String      @id @default(cuid())
+  sessionId       String
+  displayName     String
+  normalizedName  String
+  position        Int
+  score           Int         @default(0)
+  totalTurns      Int         @default(0)
+  completedTruths Int         @default(0)
+  completedDares  Int         @default(0)
+  skipped         Int         @default(0)
+  session         GameSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  turns           GameTurn[]
+
+  @@unique([sessionId, normalizedName])
+  @@unique([sessionId, position])
+}
+
+model GameTurn {
+  id            String      @id @default(cuid())
+  sessionId     String
+  playerId      String
+  promptId      String?
+  requestedType String      // TRUTH | DARE
+  outcome       String      @default("PRESENTED") // PRESENTED | COMPLETED | SKIPPED | REPLACED | REFUSED | EXPIRED
+  points        Int         @default(0)
+  createdAt     DateTime    @default(now())
+  completedAt   DateTime?
+
+  session       GameSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  player        Player      @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  prompt        Prompt?     @relation(fields: [promptId], references: [id], onDelete: SetNull)
+
+  @@index([sessionId, createdAt])
+  @@index([promptId])
+}
+
+model PromptReport {
+  id         String       @id @default(cuid())
+  promptId   String
+  sessionId  String?
+  reason     String       // INAPPROPRIATE | DANGEROUS | OFFENSIVE | AGE_MISMATCH | DUPLICATE | UNCLEAR | TYPO | OTHER
+  comment    String?
+  status     String       @default("OPEN") // OPEN | REVIEWING | RESOLVED | DISMISSED
+  createdAt  DateTime     @default(now())
+  resolvedAt DateTime?
+  prompt     Prompt       @relation(fields: [promptId], references: [id], onDelete: Cascade)
+
+  @@index([status, createdAt])
+  @@index([promptId])
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  role      String   @default("ADMIN")
+  createdAt DateTime @default(now())
+}

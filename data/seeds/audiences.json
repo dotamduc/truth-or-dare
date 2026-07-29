@@ -1,0 +1,7 @@
+[
+  { "slug": "FRIENDS", "name": "Bạn bè" },
+  { "slug": "FAMILY", "name": "Gia đình" },
+  { "slug": "COWORKERS", "name": "Đồng nghiệp" },
+  { "slug": "COUPLE", "name": "Cặp đôi" },
+  { "slug": "ANY", "name": "Mọi đối tượng" }
+]

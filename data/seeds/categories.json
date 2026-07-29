@@ -1,0 +1,20 @@
+[
+  { "slug": "icebreaker", "name": "Làm quen" },
+  { "slug": "funny", "name": "Hài hước" },
+  { "slug": "friendship", "name": "Tình bạn" },
+  { "slug": "memories", "name": "Kỷ niệm" },
+  { "slug": "personality", "name": "Tính cách" },
+  { "slug": "dreams", "name": "Ước mơ" },
+  { "slug": "school", "name": "Trường học" },
+  { "slug": "work", "name": "Công việc" },
+  { "slug": "family", "name": "Gia đình" },
+  { "slug": "relationship", "name": "Tình cảm" },
+  { "slug": "couple", "name": "Cặp đôi" },
+  { "slug": "creative", "name": "Sáng tạo" },
+  { "slug": "performance", "name": "Biểu diễn" },
+  { "slug": "physical_light", "name": "Vận động nhẹ" },
+  { "slug": "social", "name": "Tương tác nhóm" },
+  { "slug": "challenge", "name": "Thử thách kỹ năng" },
+  { "slug": "party", "name": "Tiệc tùng" },
+  { "slug": "deep", "name": "Sâu sắc" }
+]
