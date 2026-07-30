@@ -2,6 +2,7 @@ import { expect, test, type Page } from "@playwright/test";
 
 const GAME_KEY = "truth-or-dare:game:v2";
 const HIDDEN_KEY = "truth-or-dare:hidden-prompts:v2";
+const THEME_KEY = "truth-or-dare-theme";
 
 async function beginTwoPlayerGame(page: Page) {
   await page.goto("./play/");
@@ -37,8 +38,14 @@ test("landing and gameplay work without APIs or missing assets", async ({ page }
 
   await page.goto("./");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Một thiết bị");
-  await expect(page.getByText("337", { exact: true })).toBeVisible();
-  await expect(page.getByText("258", { exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Truth or Dare chơi như thế nào?" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Phá băng cực nhanh" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Chọn Thật" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Chọn Thách" })).toBeVisible();
+  await expect(page.getByText("337 câu Thật", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("258 câu Thách", { exact: true })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: "Chơi ngay" })).toHaveAttribute("href", /\/play\/?$/u);
+  await expect(page.getByRole("link", { name: "Xem luật chơi" })).toHaveAttribute("href", /\/guide\/?$/u);
   await expectNoHorizontalOverflow(page);
   await page.getByRole("link", { name: "Bắt đầu chơi" }).click();
   await expect(page.getByRole("heading", { name: "Thiết lập ván chơi" })).toBeVisible();
@@ -78,6 +85,35 @@ test("landing and gameplay work without APIs or missing assets", async ({ page }
   expect(consoleErrors).toEqual([]);
 });
 
+test("theme follows the system when no preference is saved", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.goto("./");
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await expect(page.getByRole("button", { name: "Chuyển sang giao diện sáng" })).toBeVisible();
+  await expect.poll(() => page.evaluate((key) => window.localStorage.getItem(key), THEME_KEY)).toBeNull();
+});
+
+test("theme toggle persists across reload and navigation", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "light" });
+  await page.goto("./");
+
+  const html = page.locator("html");
+  const themeToggle = page.getByRole("button", { name: "Chuyển sang giao diện tối" });
+  await expect(html).toHaveAttribute("data-theme", "light");
+  await expect(themeToggle).toBeVisible();
+
+  await themeToggle.click();
+  await expect(html).toHaveAttribute("data-theme", "dark");
+  await expect(page.getByRole("button", { name: "Chuyển sang giao diện sáng" })).toBeVisible();
+  await expect.poll(() => page.evaluate((key) => window.localStorage.getItem(key), THEME_KEY)).toBe("dark");
+
+  await page.reload();
+  await expect(html).toHaveAttribute("data-theme", "dark");
+  await page.getByRole("link", { name: "Xem luật chơi" }).click();
+  await expect(page.getByRole("heading", { name: "Luật chơi" })).toBeVisible();
+  await expect(html).toHaveAttribute("data-theme", "dark");
+});
+
 test("setup rejects duplicate normalized player names and can delete a saved game", async ({ page }) => {
   await page.goto("./play/");
   await page.getByLabel("Tên người chơi 1").fill(" An ");
@@ -114,9 +150,10 @@ test("setup can shuffle the player order before starting", async ({ page }) => {
 test("responsive layouts avoid horizontal overflow", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-chromium", "One browser pass covers the viewport matrix.");
   const viewports = [
-    { width: 360, height: 800 },
-    { width: 390, height: 844 },
+    { width: 320, height: 720 },
+    { width: 375, height: 812 },
     { width: 768, height: 1024 },
+    { width: 1024, height: 768 },
     { width: 1366, height: 768 },
     { width: 1920, height: 1080 },
   ];

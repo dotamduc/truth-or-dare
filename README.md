@@ -1,108 +1,108 @@
-# Thật Hay Thách
+<div align="center">
 
-Game Truth or Dare tiếng Việt cho 2 đến 10 người chơi trên cùng một thiết bị. Ứng dụng là website tĩnh: không tài khoản, không API, không cơ sở dữ liệu và không gửi trạng thái ván chơi ra khỏi trình duyệt.
+# 🎉 THẬT HAY THÁCH 🎉
 
-Website: <https://dotamduc.github.io/truth-or-dare/>
+### 🤫 Chọn Thật · 😈 Nhận Thách · ✨ Bắt nhịp cuộc vui
 
-## Tính năng
+Một trò chơi đơn giản để mọi người **cười nhiều hơn**, **hiểu nhau hơn** và cùng tạo ra những khoảnh khắc khó quên.
 
-- 595 mục từ `question.txt`: 337 câu Thật và 258 câu Thách đã qua content audit.
-- Bốn mức độ cân bằng: EASY, MEDIUM, BOLD và HARD.
-- Chọn tuổi tối thiểu, độ khó, chủ đề, nhóm người chơi và quyền an toàn.
-- Chơi lần lượt hoặc ngẫu nhiên cân bằng.
-- Hoàn thành, bỏ lượt, đổi câu, tính điểm, bảng kết quả và chơi lại.
-- Tiếp tục sau khi refresh bằng `localStorage`.
-- Ẩn câu không phù hợp chỉ trên trình duyệt hiện tại.
-- Giao diện responsive, hỗ trợ bàn phím, focus rõ và reduced motion.
+[![Chơi ngay](https://img.shields.io/badge/🎲_CHƠI_NGAY-FF5277?style=for-the-badge&labelColor=2B2033)](https://dotamduc.github.io/truth-or-dare/)
 
-## Công nghệ và kiến trúc
+</div>
 
-- Next.js 16 App Router với `output: "export"`.
-- React 19 và TypeScript strict.
-- Pure client-side game engine.
-- Hai tệp JSON tĩnh trong `src/data/`.
-- Zod để kiểm tra schema dữ liệu và state đọc từ `localStorage`.
-- Vitest cho unit test và Playwright cho static E2E.
-- GitHub Actions và GitHub Pages, không có backend runtime.
+---
 
-Toàn bộ nội dung câu hỏi nằm trong JavaScript công khai của website. Trạng thái ván chơi chỉ nằm trên thiết bị đang dùng, không đồng bộ giữa trình duyệt hoặc thiết bị.
+## 🥳 Cuộc vui bắt đầu từ một lựa chọn
 
-## Phát triển local
+Bạn sẽ chọn **Thật** để chia sẻ một điều bất ngờ, hay chọn **Thách** để khuấy động cả căn phòng?
 
-Yêu cầu Node.js 20.19 trở lên và pnpm 11.9.
+**Thật Hay Thách** phù hợp cho những buổi tụ họp cùng bạn bè, gia đình, hội thân thiết hoặc bất kỳ nhóm nào muốn có thêm tiếng cười. Chỉ cần tập hợp mọi người, bắt đầu một ván chơi và để từng lượt mang đến một câu chuyện mới.
 
-```bash
-pnpm install --frozen-lockfile
-pnpm dev
-```
+> 💬 Một câu hỏi đúng lúc có thể mở đầu cho cả một đêm đầy tiếng cười.
 
-Không cần `.env`, PostgreSQL, Prisma, Docker hay secret.
+---
 
-## Kiểm tra chất lượng
+## 💖 Vì sao bạn sẽ thích trò chơi này?
 
-```bash
-pnpm content:audit
-pnpm lint
-pnpm typecheck
-pnpm test
-pnpm audit --prod
-```
+<table>
+<tr>
+<td align="center" width="25%">
+<h3>🧊<br>Phá băng cực nhanh</h3>
+<p>Giúp mọi người bắt chuyện tự nhiên và nhanh chóng hòa vào cuộc vui.</p>
+</td>
+<td align="center" width="25%">
+<h3>🤫<br>Chọn Thật</h3>
+<p>Trả lời thành thật và để cả nhóm hiểu bạn thêm một chút.</p>
+</td>
+<td align="center" width="25%">
+<h3>😈<br>Chọn Thách</h3>
+<p>Nhận một thử thách vui nhộn và biến lượt chơi thành khoảnh khắc đáng nhớ.</p>
+</td>
+<td align="center" width="25%">
+<h3>💛<br>Tôn trọng giới hạn</h3>
+<p>Ai cũng có quyền đổi câu hoặc bỏ qua điều khiến mình không thoải mái.</p>
+</td>
+</tr>
+</table>
 
-Content audit khóa độc lập SHA-256 nội dung, số lượng 595/337/258 và phân bố difficulty của đợt nhập hiện tại; đồng thời kiểm tra manifest, schema, ID, Unicode NFC, placeholder, duplicate và safety flag. Duplicate có sẵn trong file nguồn được giữ nguyên và báo ở mức warning. Kết quả được ghi vào `reports/prompt-audit.md` và `reports/prompt-audit.json`.
+---
 
-## Build tĩnh và E2E
+## 🎲 Chơi như thế nào?
 
-Build local không có base path:
+### 1️⃣ Tập hợp nhóm bạn
 
-```bash
-pnpm build
-pnpm start
-```
+Rủ bạn bè, gia đình hoặc hội thân thiết cùng tham gia. Càng đông, cuộc vui càng bất ngờ!
 
-Build và kiểm thử đúng cấu trúc GitHub Pages:
+### 2️⃣ Chọn người chơi
 
-```bash
-pnpm build:pages
-pnpm exec playwright install chromium
-pnpm test:e2e:pages
-```
+Nhập tên mọi người và để trò chơi lần lượt gọi từng người — không ai bị bỏ quên.
 
-`build:pages` tạo `out/` với base path `/truth-or-dare`. Script preview đặt một bản sao tạm vào `.pages-preview/truth-or-dare/` để mô phỏng chính xác URL production; cả hai thư mục đều bị Git bỏ qua.
+### 3️⃣ Thật hay Thách?
 
-Chạy toàn bộ quality gate:
+Đến lượt mình, hãy chọn:
 
-```bash
-pnpm verify
-```
+- **🤫 THẬT** — Trả lời thành thật một câu hỏi.
+- **😈 THÁCH** — Hoàn thành một thử thách bất ngờ.
 
-## Nhập lại bộ câu hỏi
+### 4️⃣ Cười và chơi tiếp
 
-Để tạo lại toàn bộ database từ đúng bản nguồn `question.txt` đã khóa bằng SHA-256:
+Hoàn thành lượt chơi, ghi điểm và chuyển máy cho người tiếp theo. Những tình huống vui nhất thường xuất hiện khi chẳng ai đoán trước được điều gì!
 
-```bash
-pnpm content:import -- /duong-dan/toi/question.txt
-pnpm content:audit
-```
+---
 
-Lệnh nhập tạo hai tệp JSON và `src/data/prompts.import-manifest.json`, đồng thời giữ nguyên mọi mục trong nguồn, kể cả các mục trùng lặp. Importer từ chối file bị thiếu hoặc thay đổi nội dung so với nguồn đã duyệt.
+## 🌶️ Chọn không khí phù hợp
 
-## Thêm hoặc sửa câu hỏi
+Bạn có thể biến mỗi ván chơi thành một trải nghiệm khác nhau:
 
-1. Không vá trực tiếp hai tệp JSON đã sinh. Hãy sửa nguồn được duyệt hoặc logic metadata trong `scripts/import-question-file.ts`, rồi chạy lại importer.
-2. Nếu chủ động thay bộ nguồn, cập nhật contract SHA-256, số lượng và phân bố trong importer, audit và unit test trong cùng một review nội dung.
-3. Giữ ID theo mẫu `truth-easy-001` hoặc `dare-hard-018`; không thêm hậu tố giả để né duplicate.
-4. Điền đúng category, audience, minimum age và toàn bộ safety flag.
-5. Chạy `pnpm verify` trước khi commit.
+- 🌼 **Nhẹ nhàng** — Làm quen, trò chuyện và cười vui.
+- 🎉 **Vui nhộn** — Những câu hỏi và thử thách khuấy động cả nhóm.
+- 🌶️ **Táo bạo** — Dành cho hội thân thiết muốn tăng thêm bất ngờ.
+- 🔥 **Khó nhằn** — Khi mọi người đã sẵn sàng chơi hết mình.
 
-Quy tắc chi tiết nằm trong [Content guidelines](docs/CONTENT_GUIDELINES.md). Cơ chế lưu state nằm trong [Local storage](docs/LOCAL_STORAGE.md).
+Hãy chọn độ tuổi, chủ đề và giới hạn khiến **tất cả người chơi đều cảm thấy thoải mái**.
 
-## GitHub Pages
+---
 
-Workflow `.github/workflows/pages.yml` kiểm tra nội dung, lint, typecheck, unit test, build với `GITHUB_PAGES=true`, upload `out/` và deploy qua GitHub Pages. Hướng dẫn vận hành nằm trong [Static deployment](docs/STATIC_DEPLOYMENT.md).
+## 🫶 Luật vàng của cuộc vui
 
-## Giới hạn
+- Không ép buộc bất kỳ ai trả lời hoặc thực hiện thử thách.
+- Không phán xét câu trả lời của người khác.
+- Không dùng thử thách để làm tổn thương, làm nhục hoặc gây nguy hiểm.
+- Luôn hỏi ý kiến trước những hành động liên quan đến người khác.
+- Khi một câu không phù hợp, hãy đổi câu và tiếp tục vui vẻ.
 
-- Không có backend, tài khoản, admin dashboard hoặc tính năng report về máy chủ.
-- Không đồng bộ ván chơi giữa thiết bị.
-- Xóa dữ liệu website trong trình duyệt sẽ xóa ván đã lưu và danh sách câu đã ẩn.
-- Nội dung câu hỏi là một phần của public bundle, không phải kho nội dung riêng tư.
+> **CHƠI LÀ VUI — KHÔNG PHÁN XÉT — LUÔN TÔN TRỌNG NHAU** 💛
+
+---
+
+<div align="center">
+
+## 🔥 Dám thử không?
+
+Nhấn nút bên dưới, tập hợp mọi người và bắt đầu lượt đầu tiên!
+
+[![Bắt đầu chơi](https://img.shields.io/badge/😈_BẮT_ĐẦU_CHƠI-7B5CFA?style=for-the-badge&labelColor=FF5277)](https://dotamduc.github.io/truth-or-dare/)
+
+### 🎉 YOUR TURN! 🎉
+
+</div>
