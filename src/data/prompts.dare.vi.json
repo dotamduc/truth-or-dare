@@ -1,72 +1,5891 @@
 [
-  {"id":"dare-easy-001","type":"DARE","text":"Nói một lời khen chân thành với người ngồi bên trái bạn.","difficulty":"EASY","minimumAge":13,"categories":["teamwork","friendship"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-002","type":"DARE","text":"Diễn tả một con vật bằng hành động không lời để cả nhóm đoán trong 30 giây.","difficulty":"EASY","minimumAge":13,"categories":["acting","humor"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-003","type":"DARE","text":"Thực hiện năm động tác squat chậm nếu vận động này phù hợp với bạn.","difficulty":"EASY","minimumAge":13,"categories":["movement","coordination"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-004","type":"DARE","text":"Đọc thuộc lòng một bài thơ hoặc đồng dao ngắn mà bạn nhớ từ thời tiểu học.","difficulty":"EASY","minimumAge":13,"categories":["memory","performance"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-005","type":"DARE","text":"Nói ba câu khen ngợi bản thân một cách đầy tự tin trước nhóm.","difficulty":"EASY","minimumAge":13,"categories":["performance","self-awareness"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-006","type":"DARE","text":"Tạo một giai điệu ngắn bằng tiếng vỗ tay và hát một câu chúc mừng cả nhóm.","difficulty":"EASY","minimumAge":13,"categories":["music","creativity"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-007","type":"DARE","text":"Bắt tay thật trang trọng với từng người đồng ý tham gia và chúc họ một điều tốt lành.","difficulty":"EASY","minimumAge":13,"categories":["teamwork","performance"],"audiences":["friends","family","coworkers"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":true,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-008","type":"DARE","text":"Bắt chước tiếng kêu của ba loài vật khác nhau thật rõ ràng.","difficulty":"EASY","minimumAge":13,"categories":["humor","performance"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-009","type":"DARE","text":"Cùng nhóm hát một đoạn ngắn để chúc mừng một điều vui vừa xảy ra.","difficulty":"EASY","minimumAge":13,"categories":["music","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-010","type":"DARE","text":"Nếu vận động phù hợp với bạn, thực hiện mười lần bật chân sang ngang chậm rãi.","difficulty":"EASY","minimumAge":13,"categories":["movement","coordination"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-011","type":"DARE","text":"Nói một câu bằng ngoại ngữ mà bạn biết với phong thái thật tự tin.","difficulty":"EASY","minimumAge":13,"categories":["performance","humor"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-012","type":"DARE","text":"Đứng bằng một chân trong 30 giây và dừng lại ngay nếu bạn mất thăng bằng.","difficulty":"EASY","minimumAge":13,"categories":["movement","coordination"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-013","type":"DARE","text":"Vỗ tay theo một nhịp vui và mời cả nhóm cùng lặp lại.","difficulty":"EASY","minimumAge":13,"categories":["music","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-014","type":"DARE","text":"Bắt chước âm thanh của một chiếc xe máy đang tăng tốc.","difficulty":"EASY","minimumAge":13,"categories":["humor","performance"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-015","type":"DARE","text":"Tạo biểu cảm khuôn mặt ngơ ngác nhất và giữ nguyên trong 15 giây để cả nhóm quan sát.","difficulty":"EASY","minimumAge":13,"categories":["humor","acting"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-016","type":"DARE","text":"Nói một lời cảm ơn chân thành với một người trong nhóm.","difficulty":"EASY","minimumAge":13,"categories":["teamwork","friendship"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-easy-017","type":"DARE","text":"Tạo dáng như người mẫu và bước năm bước tại chỗ.","difficulty":"EASY","minimumAge":13,"categories":["movement","performance"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-001","type":"DARE","text":"Hát điệp khúc của một bài hát sôi động do người bên phải chọn.","difficulty":"MEDIUM","minimumAge":13,"categories":["music","performance"],"audiences":["friends","family","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-002","type":"DARE","text":"Nói bằng giọng như người dẫn chương trình thời tiết trong hai lượt tiếp theo.","difficulty":"MEDIUM","minimumAge":13,"categories":["acting","humor"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-003","type":"DARE","text":"Nhảy theo nhịp vỗ tay do cả nhóm tạo ra trong 15 giây.","difficulty":"MEDIUM","minimumAge":13,"categories":["movement","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-004","type":"DARE","text":"Nói chuyện bằng giọng thầm thì nghiêm túc trong hai lượt tiếp theo.","difficulty":"MEDIUM","minimumAge":13,"categories":["acting","humor"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-005","type":"DARE","text":"Nếu cả hai cùng đồng ý, hãy chạm nhẹ trán với người bên trái trong 10 giây.","difficulty":"MEDIUM","minimumAge":13,"categories":["coordination","teamwork"],"audiences":["friends","family","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":true,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-006","type":"DARE","text":"Hát bài Chúc mừng sinh nhật theo phong cách nhạc opera.","difficulty":"MEDIUM","minimumAge":13,"categories":["music","acting"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-007","type":"DARE","text":"Kể một câu chuyện ngắn trong 30 giây mà không dùng từ 'và'.","difficulty":"MEDIUM","minimumAge":13,"categories":["wordplay","creativity"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-008","type":"DARE","text":"Dùng ba đồ vật an toàn quanh bạn để xếp thành một tòa tháp trong 45 giây.","difficulty":"MEDIUM","minimumAge":13,"categories":["coordination","creativity"],"audiences":["friends","family","coworkers","couples"],"requiresProps":true,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-009","type":"DARE","text":"Bắt chước điệu bộ hoặc giọng nói của một người nổi tiếng để nhóm đoán.","difficulty":"MEDIUM","minimumAge":13,"categories":["acting","humor"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-010","type":"DARE","text":"Cùng người đối diện tạo dáng như một bức tượng nghệ thuật trong 15 giây.","difficulty":"MEDIUM","minimumAge":13,"categories":["movement","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-011","type":"DARE","text":"Vẽ một con mèo bằng tay không thuận trong 30 giây.","difficulty":"MEDIUM","minimumAge":13,"categories":["drawing","coordination"],"audiences":["friends","family","coworkers","couples"],"requiresProps":true,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-012","type":"DARE","text":"Giữ thăng bằng một cuốn sách trên đầu và bước năm bước chậm tại chỗ.","difficulty":"MEDIUM","minimumAge":13,"categories":["coordination","movement"],"audiences":["friends","family","coworkers","couples"],"requiresProps":true,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-013","type":"DARE","text":"Diễn lại cảnh nhận một giải thưởng tưởng tượng trong 30 giây.","difficulty":"MEDIUM","minimumAge":13,"categories":["acting","performance"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-014","type":"DARE","text":"Nếu cả hai cùng đồng ý, hãy nhắm mắt và đoán ai đang nắm tay bạn trong 10 giây.","difficulty":"MEDIUM","minimumAge":13,"categories":["memory","teamwork"],"audiences":["friends","family","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":true,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-015","type":"DARE","text":"Giả vờ là một robot và giới thiệu bản thân trong 30 giây.","difficulty":"MEDIUM","minimumAge":13,"categories":["acting","humor"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-016","type":"DARE","text":"Đặt một câu đố ngắn để cả nhóm cùng đoán trong một phút.","difficulty":"MEDIUM","minimumAge":13,"categories":["wordplay","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-medium-017","type":"DARE","text":"Đọc câu 'Nắng lên, chim én lượn quanh sân' ba lần, mỗi lần nhanh hơn.","difficulty":"MEDIUM","minimumAge":13,"categories":["wordplay","performance"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-001","type":"DARE","text":"Quảng cáo một đồ vật trong phòng như sản phẩm cao cấp trong 30 giây.","difficulty":"BOLD","minimumAge":13,"categories":["acting","creativity"],"audiences":["friends","family","coworkers","couples"],"requiresProps":true,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-002","type":"DARE","text":"Diễn hai cảm xúc trái ngược liên tiếp mà không nói để cả nhóm đoán.","difficulty":"BOLD","minimumAge":13,"categories":["acting","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-003","type":"DARE","text":"Kể một câu chuyện có đủ năm từ ngẫu nhiên do cả nhóm đưa ra.","difficulty":"BOLD","minimumAge":13,"categories":["creativity","wordplay"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-004","type":"DARE","text":"Ngân nga một giai điệu quen thuộc để nhóm đoán tên bài hát trong 45 giây.","difficulty":"BOLD","minimumAge":13,"categories":["music","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-005","type":"DARE","text":"Tạo một khẩu hiệu vui dành riêng cho nhóm trong 30 giây.","difficulty":"BOLD","minimumAge":13,"categories":["creativity","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-006","type":"DARE","text":"Cùng một người khác làm động tác soi gương, thay phiên dẫn nhịp trong 30 giây.","difficulty":"BOLD","minimumAge":13,"categories":["coordination","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-007","type":"DARE","text":"Giới thiệu ba người trong nhóm như các nhân vật của một bộ phim phiêu lưu.","difficulty":"BOLD","minimumAge":13,"categories":["acting","creativity"],"audiences":["friends","family","coworkers"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-008","type":"DARE","text":"Nói một câu gồm ít nhất tám từ bắt đầu bằng cùng một chữ cái.","difficulty":"BOLD","minimumAge":13,"categories":["wordplay","creativity"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-009","type":"DARE","text":"Diễn tả một nghề nghiệp bằng động tác không lời để cả nhóm đoán.","difficulty":"BOLD","minimumAge":13,"categories":["acting","movement"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-010","type":"DARE","text":"Nhắm mắt và vẽ một khung cảnh đơn giản trong 45 giây.","difficulty":"BOLD","minimumAge":13,"categories":["drawing","coordination"],"audiences":["friends","family","coworkers","couples"],"requiresProps":true,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-011","type":"DARE","text":"Làm bản tin 30 giây về một đồ vật bình thường như một sự kiện quan trọng.","difficulty":"BOLD","minimumAge":13,"categories":["acting","humor"],"audiences":["friends","family","coworkers","couples"],"requiresProps":true,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-012","type":"DARE","text":"Ghi nhớ sáu từ do nhóm đọc rồi nhắc lại đúng thứ tự sau 30 giây.","difficulty":"BOLD","minimumAge":13,"categories":["memory","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-013","type":"DARE","text":"Hát cùng một câu ngắn theo ba phong cách âm nhạc khác nhau.","difficulty":"BOLD","minimumAge":13,"categories":["music","performance"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-014","type":"DARE","text":"Tạo một bài thơ bốn dòng có hai cặp vần trong một phút.","difficulty":"BOLD","minimumAge":13,"categories":["wordplay","creativity"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-015","type":"DARE","text":"Tường thuật một hành động của người khác như bình luận viên thể thao trong 30 giây.","difficulty":"BOLD","minimumAge":13,"categories":["acting","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-016","type":"DARE","text":"Lặp lại chính xác một nhịp gồm sáu tiếng vỗ tay do cả nhóm tạo ra.","difficulty":"BOLD","minimumAge":13,"categories":["music","memory"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-017","type":"DARE","text":"Sáng tạo một siêu anh hùng, nói câu khẩu hiệu và tạo dáng đặc trưng.","difficulty":"BOLD","minimumAge":13,"categories":["acting","creativity"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-bold-018","type":"DARE","text":"Kể ngược một câu chuyện quen thuộc từ kết thúc về mở đầu trong 45 giây.","difficulty":"BOLD","minimumAge":13,"categories":["memory","creativity"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-001","type":"DARE","text":"Kể chuyện ứng biến một phút có mở đầu, rắc rối, kết thúc và ba từ nhóm chọn.","difficulty":"HARD","minimumAge":13,"categories":["creativity","wordplay"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-002","type":"DARE","text":"Diễn bốn cảm xúc khác nhau không lời để nhóm gọi đúng từng cảm xúc.","difficulty":"HARD","minimumAge":13,"categories":["acting","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-003","type":"DARE","text":"Quan sát bảy đồ vật trong 20 giây, nhắm mắt rồi kể lại đúng thứ tự.","difficulty":"HARD","minimumAge":13,"categories":["memory","coordination"],"audiences":["friends","family","coworkers","couples"],"requiresProps":true,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-004","type":"DARE","text":"Đọc câu 'Trời trong, trăng trắng, tre trổ trăm chồi' năm lần nhanh dần.","difficulty":"HARD","minimumAge":13,"categories":["wordplay","performance"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-005","type":"DARE","text":"Điều khiển cả nhóm vỗ một nhịp và đổi tốc độ hai lần mà không bị lạc nhịp.","difficulty":"HARD","minimumAge":13,"categories":["music","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-006","type":"DARE","text":"Diễn tả cách dùng một chiếc điện thoại mà không nói hoặc chạm vào điện thoại.","difficulty":"HARD","minimumAge":13,"categories":["acting","coordination"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-007","type":"DARE","text":"Sáng tác một đoạn nhạc quảng cáo ngắn về đồ vật gần bạn trong một phút.","difficulty":"HARD","minimumAge":13,"categories":["music","creativity"],"audiences":["friends","family","coworkers","couples"],"requiresProps":true,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-008","type":"DARE","text":"Diễn một cuộc trò chuyện có ba nhân vật và đổi giọng rõ ràng cho từng người.","difficulty":"HARD","minimumAge":13,"categories":["acting","performance"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-009","type":"DARE","text":"Mô tả cốt truyện một bộ phim mà không nhắc tên nhân vật để nhóm đoán trong một phút.","difficulty":"HARD","minimumAge":13,"categories":["entertainment","wordplay"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-010","type":"DARE","text":"Vẽ sơ đồ căn phòng bằng tay không thuận từ trí nhớ trong một phút.","difficulty":"HARD","minimumAge":13,"categories":["drawing","memory"],"audiences":["friends","family","coworkers","couples"],"requiresProps":true,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-011","type":"DARE","text":"Tạo một bài thơ sáu dòng có vần về buổi gặp mặt của cả nhóm.","difficulty":"HARD","minimumAge":13,"categories":["wordplay","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-012","type":"DARE","text":"Diễn quảng cáo sản phẩm với ba từ bắt buộc do nhóm đưa ra ngay trước khi bắt đầu.","difficulty":"HARD","minimumAge":13,"categories":["acting","creativity"],"audiences":["friends","family","coworkers","couples"],"requiresProps":true,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-013","type":"DARE","text":"Ghi nhớ chuỗi tám động tác tay do nhóm tạo rồi lặp lại đúng thứ tự.","difficulty":"HARD","minimumAge":13,"categories":["memory","coordination"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-014","type":"DARE","text":"Kể một câu chuyện 45 giây trong đó mỗi câu bắt đầu bằng một chữ cái khác nhau.","difficulty":"HARD","minimumAge":13,"categories":["wordplay","creativity"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-015","type":"DARE","text":"Tạo toàn bộ hiệu ứng âm thanh cho một cảnh tưởng tượng để nhóm đoán bối cảnh.","difficulty":"HARD","minimumAge":13,"categories":["performance","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-016","type":"DARE","text":"Diễn một cuộc phỏng vấn và tự đổi vai người hỏi, người trả lời trong một phút.","difficulty":"HARD","minimumAge":13,"categories":["acting","performance"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":false,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-017","type":"DARE","text":"Sáng tạo bốn động tác nhảy đơn giản rồi hướng dẫn cả nhóm thực hiện theo.","difficulty":"HARD","minimumAge":13,"categories":["movement","teamwork"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":true,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false},
-  {"id":"dare-hard-018","type":"DARE","text":"Kể tên mười đồ vật thuộc một chủ đề do nhóm chọn trong 30 giây, không lặp lại.","difficulty":"HARD","minimumAge":13,"categories":["memory","wordplay"],"audiences":["friends","family","coworkers","couples"],"requiresProps":false,"requiresPhone":false,"requiresInternet":false,"requiresMovement":false,"requiresPhysicalContact":false,"requiresAnotherPlayer":true,"isPrivate":false,"isSensitive":false}
+  {
+    "id": "dare-easy-001",
+    "type": "DARE",
+    "text": "Chọn một người trong phòng và \"chê\" (roast) họ một cách yêu thương trong một phút.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-001",
+    "type": "DARE",
+    "text": "Để người khác đăng một chú thích Instagram thay cho bạn.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-002",
+    "type": "DARE",
+    "text": "Ngửi nách của một người chơi khác.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-002",
+    "type": "DARE",
+    "text": "Ngửi bàn chân trần của một người chơi khác.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-003",
+    "type": "DARE",
+    "text": "Cắn một miếng vỏ chuối.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-003",
+    "type": "DARE",
+    "text": "Bắt chước một người chơi khác cho đến khi ai đó đoán ra.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-004",
+    "type": "DARE",
+    "text": "Nói \"dưa chua\" (pickles) vào cuối mỗi câu cho đến khi trò chơi kết thúc.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay",
+      "entertainment"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-004",
+    "type": "DARE",
+    "text": "Bắt chước một ngôi sao TikTok cho đến khi người khác đoán ra bạn đang thể hiện ai.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-005",
+    "type": "DARE",
+    "text": "Hành động như một con gà cho đến lượt chơi tiếp theo của bạn.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-005",
+    "type": "DARE",
+    "text": "Nói giọng Anh cho đến lượt chơi tiếp theo của bạn.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-006",
+    "type": "DARE",
+    "text": "Gọi cho một người bạn, giả vờ đó là sinh nhật của họ và hát \"Chúc mừng sinh nhật\".",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-006",
+    "type": "DARE",
+    "text": "Kể tên một người nổi tiếng trông giống mỗi người trong phòng.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay",
+      "entertainment"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-007",
+    "type": "DARE",
+    "text": "Thể hiện những bước nhảy đẹp nhất của bạn.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-007",
+    "type": "DARE",
+    "text": "Ăn một gói sốt nóng.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-easy-008",
+    "type": "DARE",
+    "text": "Để người khác vẽ hình xăm lên lưng bạn bằng bút lông.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "drawing"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-008",
+    "type": "DARE",
+    "text": "Bịt mắt và chạm vào mặt những người chơi khác cho đến khi bạn đoán được ai là ai.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-easy-009",
+    "type": "DARE",
+    "text": "Cắn một củ hành tây sống.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-009",
+    "type": "DARE",
+    "text": "Ra ngoài và cố gắng \"gọi\" mưa thật to.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-010",
+    "type": "DARE",
+    "text": "Hát tình ca cho người bên phải trong một phút.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "music"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-010",
+    "type": "DARE",
+    "text": "Tập squat 20 cái.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-011",
+    "type": "DARE",
+    "text": "Để những người chơi khác làm lại kiểu tóc của bạn.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-011",
+    "type": "DARE",
+    "text": "Ăn một loại gia vị bạn chọn trực tiếp từ chai.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-easy-012",
+    "type": "DARE",
+    "text": "Đổ hết túi xách, ba lô hoặc túi quần của bạn ra và giới thiệu những thứ bên trong.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-012",
+    "type": "DARE",
+    "text": "Để người bên phải trang điểm lại cho bạn khi họ nhắm mắt.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-easy-013",
+    "type": "DARE",
+    "text": "Gọi điện thoại chơi khăm một thành viên trong gia đình bạn.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "family"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-013",
+    "type": "DARE",
+    "text": "Để người chơi khác tạo một chiếc mũ bằng giấy vệ sinh và bạn phải đội nó.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-014",
+    "type": "DARE",
+    "text": "Tập Plank trong một phút.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-014",
+    "type": "DARE",
+    "text": "Đi catwalk một cách sành điệu nhất.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-015",
+    "type": "DARE",
+    "text": "Ngậm năm viên đá trong miệng và để chúng tan chảy.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-015",
+    "type": "DARE",
+    "text": "Sủa như một con chó cho đến lượt chơi tiếp theo.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-016",
+    "type": "DARE",
+    "text": "Vẽ bộ phim yêu thích của bạn và để người khác đoán.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "drawing",
+      "entertainment"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-016",
+    "type": "DARE",
+    "text": "Lặp lại mọi thứ người bên phải nói cho đến lượt chơi tiếp theo.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-017",
+    "type": "DARE",
+    "text": "Mô tả cách bạn tạo kiểu tóc trước gương (không dùng gương).",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-017",
+    "type": "DARE",
+    "text": "Chơi guitar tưởng tượng trong một phút.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-018",
+    "type": "DARE",
+    "text": "Đổ một cốc nước lạnh lên đầu bên ngoài.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-018",
+    "type": "DARE",
+    "text": "Lên Instagram Live và đọc một đoạn sách giáo khoa một cách kịch tính.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "acting",
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-019",
+    "type": "DARE",
+    "text": "Trong 10 phút tới, tìm cách làm một người chơi khác giật mình.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-019",
+    "type": "DARE",
+    "text": "Liếm một thanh xà phòng.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-easy-020",
+    "type": "DARE",
+    "text": "Nói chuyện với một chiếc gối như thể đó là \"crush\" của bạn.",
+    "difficulty": "EASY",
+    "minimumAge": 16,
+    "categories": [
+      "wordplay",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-020",
+    "type": "DARE",
+    "text": "Đăng bức ảnh tự sướng cũ nhất trên điện thoại lên Snapchat hoặc Instagram Stories.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 18,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-easy-021",
+    "type": "DARE",
+    "text": "Thử điệu nhảy TikTok đầu tiên trên trang \"Dành cho bạn\" (FYP) của bạn.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-021",
+    "type": "DARE",
+    "text": "Bắt chước một người nổi tiếng do nhóm chọn mỗi khi bạn nói trong 10 phút tới.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "acting",
+      "wordplay",
+      "entertainment"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-022",
+    "type": "DARE",
+    "text": "Hát karaoke một bài hát do nhóm chọn.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "music"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-022",
+    "type": "DARE",
+    "text": "Đăng một bức ảnh (bất kỳ) lên mạng xã hội với lời đề tặng chân thành cho một người nổi tiếng do nhóm chọn.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "entertainment"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-023",
+    "type": "DARE",
+    "text": "Tìm \"crush\" đầu tiên của bạn trên mạng xã hội và nhắn tin riêng cho họ.",
+    "difficulty": "EASY",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-023",
+    "type": "DARE",
+    "text": "Bóc chuối bằng ngón chân.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-024",
+    "type": "DARE",
+    "text": "Để nhóm trộn năm chất lỏng bất kỳ trong tủ lạnh và bạn uống.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-024",
+    "type": "DARE",
+    "text": "Đeo tất của người chơi khác như găng tay trong năm phút.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-025",
+    "type": "DARE",
+    "text": "Trang điểm mà không nhìn gương và để nguyên như vậy.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-025",
+    "type": "DARE",
+    "text": "Mô tả phẩm chất hấp dẫn nhất của mỗi người trong phòng.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-026",
+    "type": "DARE",
+    "text": "Hát như ca sĩ opera thay vì nói trong năm phút.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-026",
+    "type": "DARE",
+    "text": "Để người bên phải vẽ lên mặt bạn bằng bút lông Sharpie.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "drawing"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-027",
+    "type": "DARE",
+    "text": "Nhảy xuống hồ bơi (hoặc phòng tắm) khi đang mặc quần áo!",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-027",
+    "type": "DARE",
+    "text": "Đứng trước nhà bạn và vẫy tay với mọi người đi qua trong một phút.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-028",
+    "type": "DARE",
+    "text": "Giả vờ ở dưới nước trong 10 phút tiếp theo.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-028",
+    "type": "DARE",
+    "text": "\"Hôn\" (make out) với một chiếc gối.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-easy-029",
+    "type": "DARE",
+    "text": "Đăng một bình luận tán tỉnh dưới bức ảnh Instagram đầu tiên bạn nhìn thấy.",
+    "difficulty": "EASY",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-029",
+    "type": "DARE",
+    "text": "Massage chân cho người bên phải (nếu họ đồng ý).",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "hypothetical"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-easy-030",
+    "type": "DARE",
+    "text": "Giả vờ là một vũ công ba-lê cho đến lượt chơi tiếp theo.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "movement",
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-030",
+    "type": "DARE",
+    "text": "Cố gắng nhét cả nắm tay vào miệng.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-easy-031",
+    "type": "DARE",
+    "text": "Tiết lộ báo cáo thời gian sử dụng màn hình của bạn.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-031",
+    "type": "DARE",
+    "text": "Ra ngoài và hú lên với mặt trăng.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-032",
+    "type": "DARE",
+    "text": "Để người khác viết dòng giới thiệu Hinge (ứng dụng hẹn hò) tiếp theo của bạn.",
+    "difficulty": "EASY",
+    "minimumAge": 16,
+    "categories": [
+      "entertainment",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-032",
+    "type": "DARE",
+    "text": "Nói với nhóm \"gu\" của bạn mà không dùng lời — chỉ dùng biểu tượng cảm xúc.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-033",
+    "type": "DARE",
+    "text": "Gọi một số ngẫu nhiên và cố gắng có một cuộc trò chuyện kéo dài một phút với người nhấc máy.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-033",
+    "type": "DARE",
+    "text": "Gửi tin nhắn \"xin chào người lạ\" cho ai đó bạn chưa nói chuyện trong hơn một năm.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-easy-034",
+    "type": "DARE",
+    "text": "Gửi cho bố hoặc mẹ bạn một tin nhắn chỉ có nội dung: \"Chúng ta cần nói chuyện.\"",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay",
+      "family"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-034",
+    "type": "DARE",
+    "text": "Nhắn tin riêng cho một người lạ \"Tôi có một đề xuất kinh doanh cho bạn\" và chia sẻ phản hồi của họ.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-easy-035",
+    "type": "DARE",
+    "text": "Giả vờ chia tay đầy kịch tính với một cái ghế.",
+    "difficulty": "EASY",
+    "minimumAge": 16,
+    "categories": [
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-035",
+    "type": "DARE",
+    "text": "Có một \"cuộc thi ngất xỉu kịch tính\" với một người chơi khác — người thuyết phục nhất sẽ thắng.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "acting",
+      "school"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-036",
+    "type": "DARE",
+    "text": "Để ai đó cù bạn trong 30 giây trong khi bạn cố không cười.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-036",
+    "type": "DARE",
+    "text": "Xếp hạng mọi người trong phòng theo ai sống sót lâu nhất trên đảo hoang.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "travel"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-037",
+    "type": "DARE",
+    "text": "Giả vờ bạn đang thử giọng cho \"America's Next Top Model\" và sải bước/tạo dáng.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "movement",
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-001",
+    "type": "DARE",
+    "text": "Đưa điện thoại của bạn cho người chơi khác để họ gửi một tin nhắn bất kỳ cho bất kỳ ai.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-002",
+    "type": "DARE",
+    "text": "Đăng bức ảnh thứ 10 trong thư viện ảnh của bạn lên Story (không được phép có chú thích!).",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-003",
+    "type": "DARE",
+    "text": "Nhảy một điệu gợi cảm theo một bài hát do nhóm chọn.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-004",
+    "type": "DARE",
+    "text": "Đọc to tin nhắn riêng tư nhất bạn đã gửi trong những ngày gần đây.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-005",
+    "type": "DARE",
+    "text": "Lướt danh bạ điện thoại của bạn và gọi cho ai đó bạn chưa nói chuyện trong một năm.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-006",
+    "type": "DARE",
+    "text": "Để những người chơi khác lục tung điện thoại của bạn trong một phút.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-007",
+    "type": "DARE",
+    "text": "Gửi biểu tượng cảm xúc mắt trái tim cho Story Instagram của \"crush\" bạn.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-008",
+    "type": "DARE",
+    "text": "Vào trang Instagram của \"crush\" bạn và thích một thứ gì đó từ vài tuần trước.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-009",
+    "type": "DARE",
+    "text": "Để mọi người xem qua lịch sử Snapchat của bạn.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-010",
+    "type": "DARE",
+    "text": "Nhắn tin cho \"crush\" của bạn \"đang nghĩ về bạn \" — không giải thích gì thêm.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-011",
+    "type": "DARE",
+    "text": "Để nhóm đưa cho bạn một thử thách nực cười để hoàn thành ngoài trời — bạn có 2 phút.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-012",
+    "type": "DARE",
+    "text": "Ăn cả một lát chanh mà không nhăn mặt. Nếu không làm được, hãy nhắn tin cho người yêu cũ \"xin chào người lạ.\"",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship",
+      "hypothetical"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-013",
+    "type": "DARE",
+    "text": "Đứng bên ngoài và hét lên nỗi sợ phi lý lớn nhất của bạn.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-014",
+    "type": "DARE",
+    "text": "Nhảy một điệu múa diễn giải về cách mối quan hệ cuối cùng của bạn kết thúc.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "movement",
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-015",
+    "type": "DARE",
+    "text": "Để mọi người chọn hai món đồ bạn sẽ mặc ra khỏi nhà.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-016",
+    "type": "DARE",
+    "text": "Múa diễn giải về câu chuyện đáng xấu hổ nhất thời thơ ấu của bạn.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "movement",
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-017",
+    "type": "DARE",
+    "text": "Kể lại bằng điệu bộ chi tiết về \"mối quan hệ mập mờ\" (situationship) cuối cùng của bạn.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-018",
+    "type": "DARE",
+    "text": "Tán tỉnh một cách hoàn toàn nghiêm túc với người bên cạnh trong ba lượt chơi tiếp theo.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-019",
+    "type": "DARE",
+    "text": "Để nhóm bịt mắt và cho bạn ăn một món để đoán.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-020",
+    "type": "DARE",
+    "text": "Hôn người bên phải (nếu họ đồng ý).",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship",
+      "hypothetical"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-021",
+    "type": "DARE",
+    "text": "Cố gắng quyến rũ một món đồ nội thất gần nhất.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-022",
+    "type": "DARE",
+    "text": "Diễn một tiết mục hài kịch tệ nhất về buổi hẹn hò ngượng ngùng nhất của bạn.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "acting",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-023",
+    "type": "DARE",
+    "text": "Dành năm phút để viết một bài hát về người bên trái, sau đó hát/biểu diễn nó.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-024",
+    "type": "DARE",
+    "text": "Giới thiệu bản thân như một thí sinh của The Bachelor/Bachelorette trong video 30 giây.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-025",
+    "type": "DARE",
+    "text": "\"Chê\" (roast) chính mình trong hai phút — hoàn toàn nghiêm túc, trung thực nhất.",
+    "difficulty": "HARD",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-038",
+    "type": "DARE",
+    "text": "Một mình làm đoàn tàu rồng rắn lên mây vòng quanh cả nhóm.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-037",
+    "type": "DARE",
+    "text": "Nói chuyện như Yoda cho đến lượt tiếp theo của bạn.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "acting",
+      "wordplay",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-039",
+    "type": "DARE",
+    "text": "Đấu mắt với người đối diện. Ai cười trước là thua.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-038",
+    "type": "DARE",
+    "text": "Gửi tin nhắn cho bố/mẹ bạn với nội dung \"Cảm ơn vì tất cả ❤️\" mà không có ngữ cảnh.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "family",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-040",
+    "type": "DARE",
+    "text": "Cố gắng mang tất bằng răng.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-039",
+    "type": "DARE",
+    "text": "Bịa ra một vũ đạo trên nền nhạc chuông điện thoại của ai đó.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "movement",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-041",
+    "type": "DARE",
+    "text": "Hít đất 5 cái (hoặc cố gắng cũng được).",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "movement",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-040",
+    "type": "DARE",
+    "text": "Nhại lại âm thanh KHỞI ĐỘNG của một modem 56k cũ.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "acting",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-042",
+    "type": "DARE",
+    "text": "Ôm một cái cây hoặc cột điện bên ngoài (nếu có thể).",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "friendship",
+      "hypothetical"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-041",
+    "type": "DARE",
+    "text": "Đeo một chiếc tai nghe tưởng tượng và bình luận cuộc chơi như một trận bóng đá.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-043",
+    "type": "DARE",
+    "text": "Giả vờ làm một con khủng long T-Rex đang cố uống nước từ ly.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "movement",
+      "acting",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-042",
+    "type": "DARE",
+    "text": "Đọc ngược bảng chữ cái nhanh nhất có thể.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay",
+      "friendship",
+      "hypothetical"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-044",
+    "type": "DARE",
+    "text": "Sang nhà hàng xóm xin một ly nước.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-043",
+    "type": "DARE",
+    "text": "Điệu moonwalk 3 mét.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "movement",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-045",
+    "type": "DARE",
+    "text": "Để một người nào đó tạo cho bạn một kiểu tóc lố bịch.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-044",
+    "type": "DARE",
+    "text": "Nói chuyện bằng ngôn ngữ teencode cho đến lượt tiếp theo của bạn.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-046",
+    "type": "DARE",
+    "text": "Ăn một miếng khoai tây chiên hoặc bánh quy mà không dùng tay.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-045",
+    "type": "DARE",
+    "text": "Tạo hiệu ứng âm thanh của một nhân vật game nổi tiếng (Mario, Sonic...).",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "entertainment",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-047",
+    "type": "DARE",
+    "text": "Đề nghị một kiểu \"đập tay\" siêu phức tạp với người bên trái bạn.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-046",
+    "type": "DARE",
+    "text": "Nhại lại một nhân vật truyền hình thực tế nổi tiếng.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "acting",
+      "entertainment",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-047",
+    "type": "DARE",
+    "text": "Để người bên phải bạn lấy điện thoại và gửi một emoji khổng lồ cho người đầu tiên trong danh bạ.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-001",
+    "type": "DARE",
+    "text": "Nhảy lò cò một vòng quanh phòng và hát ngược bảng chữ cái.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "movement",
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-048",
+    "type": "DARE",
+    "text": "Bắt chước tiếng kêu và dáng đi của một con cua trong 30 giây.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "movement",
+      "acting",
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-002",
+    "type": "DARE",
+    "text": "Gọi cho bố hoặc mẹ và hỏi một cách nghiêm túc xem họ có tin vào người ngoài hành tinh không.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "memories",
+      "family",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-049",
+    "type": "DARE",
+    "text": "Đấu mắt với người đối diện. Ai cười trước phải uống (hoặc ăn một thứ gì đó cay).",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-bold-003",
+    "type": "DARE",
+    "text": "Đưa điện thoại của bạn cho người bạn chọn. Họ có 30 giây để xem lịch sử YouTube hoặc TikTok của bạn.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-050",
+    "type": "DARE",
+    "text": "Khen ngợi một cách rất cụ thể từng người có mặt.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-004",
+    "type": "DARE",
+    "text": "Đeo hai chiếc tất vào tay và cố gắng mở một chai nước.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-051",
+    "type": "DARE",
+    "text": "Kể một câu chuyện hoàn chỉnh chỉ bằng cách sử dụng tên các bài hát nổi tiếng.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "wordplay",
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-005",
+    "type": "DARE",
+    "text": "Thực hiện một vũ đạo nhỏ theo chủ đề một trò chơi điện tử những năm 90.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "movement",
+      "memories",
+      "entertainment"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-052",
+    "type": "DARE",
+    "text": "Đổi quần hoặc áo của bạn với một người chơi khác.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-bold-006",
+    "type": "DARE",
+    "text": "Phát biểu trong một phút để giải thích tại sao mèo là loài vật bị đánh giá thấp nhất.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-053",
+    "type": "DARE",
+    "text": "Tiết lộ \"thú vui tội lỗi\" về âm nhạc lớn nhất của bạn và bật một đoạn nhạc hết cỡ.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-007",
+    "type": "DARE",
+    "text": "Gửi một tin nhắn thoại kịch tính vào nhóm chat, giải thích bạn xin lỗi vì đã đến muộn.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "acting",
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-054",
+    "type": "DARE",
+    "text": "Để người bên trái đặt cho bạn một biệt danh mới cho phần còn lại của buổi tiệc.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay",
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-008",
+    "type": "DARE",
+    "text": "Bịa ra một bước nhảy siêu phức tạp và dạy cho hai người khác trong 30 giây.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "movement",
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-055",
+    "type": "DARE",
+    "text": "Đứng bất động như ma-nơ-canh trong một phút.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "movement",
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "family",
+      "coworkers",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-009",
+    "type": "DARE",
+    "text": "Ăn một món ăn vặt trên bàn mà không dùng tay.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "memories",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-056",
+    "type": "DARE",
+    "text": "Nhờ bạn bè tạo cho bạn một kiểu tóc lố bịch.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "memories",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-bold-010",
+    "type": "DARE",
+    "text": "Làm một video hướng dẫn nhỏ giải thích cách trồng cây chuối, ngay cả khi bạn không biết làm.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "movement",
+      "memories",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-bold-011",
+    "type": "DARE",
+    "text": "Đọc to tin nhắn cuối cùng bạn đã gửi.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-012",
+    "type": "DARE",
+    "text": "Để ai đó chọn một bức ảnh xấu hổ trong điện thoại của bạn và cho cả nhóm xem.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-013",
+    "type": "DARE",
+    "text": "Gọi cho bố hoặc mẹ và nói rằng bạn yêu họ mà không có lý do.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "wordplay",
+      "family",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-014",
+    "type": "DARE",
+    "text": "Tỏ tình một cách thân thiện với người bạn chọn.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-015",
+    "type": "DARE",
+    "text": "Gửi một tin nhắn thoại cho \"crush\" hỏi xem họ có khỏe không.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-016",
+    "type": "DARE",
+    "text": "Tiết lộ lịch sử tìm kiếm YouTube hoặc Spotify 5 lần gần nhất của bạn.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-017",
+    "type": "DARE",
+    "text": "Để cả nhóm chọn một bộ lọc Instagram/Snapchat và chụp selfie.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-018",
+    "type": "DARE",
+    "text": "Ôm người bạn ít quen nhất ở đây trong 10 giây.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-bold-019",
+    "type": "DARE",
+    "text": "Kể một câu chuyện xấu hổ từ thời thơ ấu/thiếu niên của bạn.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-020",
+    "type": "DARE",
+    "text": "Trao đổi một phụ kiện với ai đó cho đến khi trò chơi kết thúc.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "entertainment"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-021",
+    "type": "DARE",
+    "text": "Diễn tả khuyết điểm lớn nhất của bạn để cả nhóm đoán.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-022",
+    "type": "DARE",
+    "text": "Bật một bài nhạc và nhảy một cách lố bịch nhất có thể trong 30 giây.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "music",
+      "movement",
+      "hypothetical"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-023",
+    "type": "DARE",
+    "text": "Nhại lại ai đó trong nhóm cho đến khi mọi người đoán ra.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-024",
+    "type": "DARE",
+    "text": "Đăng một trạng thái/story bí ẩn lên mạng xã hội.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-025",
+    "type": "DARE",
+    "text": "Tiết lộ món hàng trực tuyến cuối cùng bạn đã mua.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-026",
+    "type": "DARE",
+    "text": "Giả vờ đang được phỏng vấn về một chủ đề bạn hoàn toàn không biết gì.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "acting",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-027",
+    "type": "DARE",
+    "text": "Đưa điện thoại cho người ngồi bên phải để họ gửi một emoji cho người đầu tiên trong danh bạ.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-028",
+    "type": "DARE",
+    "text": "Mô tả buổi hẹn hò tệ nhất của bạn mà không cần nêu tên.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-029",
+    "type": "DARE",
+    "text": "Hát một bài hát tình yêu trong khi nhìn thẳng vào mắt ai đó.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "music"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-030",
+    "type": "DARE",
+    "text": "Quay 3 vòng tại chỗ và cố gắng đi thẳng sau đó.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-hard-026",
+    "type": "DARE",
+    "text": "Thực hiện một màn thoát y.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-027",
+    "type": "DARE",
+    "text": "Thì thầm một câu nói gợi tình vào tai người ngồi bên trái.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-028",
+    "type": "DARE",
+    "text": "Hôn người ngồi bên phải bạn.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-029",
+    "type": "DARE",
+    "text": "Tán tỉnh người ngồi bên trái bạn.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-030",
+    "type": "DARE",
+    "text": "Hít đất 10 cái và rên rỉ như một diễn viên phim X.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "movement",
+      "acting",
+      "entertainment"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-031",
+    "type": "DARE",
+    "text": "Mô tả cuộc chia tay tồi tệ nhất của bạn chỉ bằng tên các bài hát.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "music"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-032",
+    "type": "DARE",
+    "text": "Dành một lời khen rất sâu sắc cho mỗi người trong nhóm.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-033",
+    "type": "DARE",
+    "text": "Đổi quần áo với người ngồi bên trái.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-034",
+    "type": "DARE",
+    "text": "Gửi một tin nhắn thoại cho người yêu cũ chỉ nói \"Anh/em biết không? Tự nhiên em/anh nghĩ lại...\" rồi cúp máy.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "wordplay",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-035",
+    "type": "DARE",
+    "text": "Biểu diễn cách bạn hôn vào không khí trong 30 giây.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "acting",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-036",
+    "type": "DARE",
+    "text": "Kể một câu chuyện cười tục tĩu.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-037",
+    "type": "DARE",
+    "text": "Cho xem video người lớn cuối cùng bạn đã xem.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-038",
+    "type": "DARE",
+    "text": "Đưa ra một bài đánh giá nước hoa gợi cảm bằng cách ngửi cánh tay của người bên cạnh.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-039",
+    "type": "DARE",
+    "text": "Cởi 3 món đồ tùy chọn.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-040",
+    "type": "DARE",
+    "text": "Bịa ra một lý do vô lý để giải thích cho một lỗ thủng trên bao cao su.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-041",
+    "type": "DARE",
+    "text": "Giả vờ trả lời điện thoại trong một \"khoảnh khắc thân mật\".",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-042",
+    "type": "DARE",
+    "text": "Ăn một quả chuối một cách thật gợi cảm.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-044",
+    "type": "DARE",
+    "text": "Ăn một thứ gì đó theo cách gợi tình nhất có thể.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "hypothetical"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-045",
+    "type": "DARE",
+    "text": "Diễn tả một cảnh tự sướng một cách phóng đại.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-046",
+    "type": "DARE",
+    "text": "Ăn một thìa canh mù tạt (hoặc tương ớt) nguyên chất.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-047",
+    "type": "DARE",
+    "text": "Để ai đó làm tóc cho bạn theo ý họ muốn và giữ kiểu đó 1 tiếng.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-048",
+    "type": "DARE",
+    "text": "Bỏ một viên đá vào quần đến khi nó tan hết.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-049",
+    "type": "DARE",
+    "text": "Ăn một tép tỏi sống.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-050",
+    "type": "DARE",
+    "text": "Nhảy twerk theo nhạc buồn.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "music",
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-051",
+    "type": "DARE",
+    "text": "Đập một quả trứng lên đầu mình.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-052",
+    "type": "DARE",
+    "text": "Squat 50 cái trong vòng chưa đầy 2 phút.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-053",
+    "type": "DARE",
+    "text": "Đứng một chân nhắm mắt trong 1 phút.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-054",
+    "type": "DARE",
+    "text": "Nằm cầu và giữ 30 giây.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-055",
+    "type": "DARE",
+    "text": "Bò bằng bốn chân đến bếp và quay lại với một cốc nước.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "movement",
+      "family"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-056",
+    "type": "DARE",
+    "text": "Gọi cho ex và chỉ nói \"Anh/Em nhớ em/anh\" rồi cúp máy.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "wordplay",
+      "memories"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-057",
+    "type": "DARE",
+    "text": "Đưa điện thoại đã mở khóa cho người bên cạnh xem trong 1 phút.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-058",
+    "type": "DARE",
+    "text": "Hét to \"Tôi bị tiêu chảy!\" qua cửa sổ hoặc ban công.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-059",
+    "type": "DARE",
+    "text": "Gọi số cuối cùng trong lịch sử cuộc gọi và hát \"Chúc mừng sinh nhật\".",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "music"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-060",
+    "type": "DARE",
+    "text": "Gửi tin nhắn 18+ cho người thứ 3 trong danh bạ gần đây.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-061",
+    "type": "DARE",
+    "text": "Hỏi người lạ trên đường (nếu có thể) xem họ có thấy bạn hôi không.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship",
+      "hypothetical"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-062",
+    "type": "DARE",
+    "text": "Để nhóm chọn một emoji gửi cho crush của bạn.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-063",
+    "type": "DARE",
+    "text": "Cầu hôn người bên trái với nhẫn tạm bợ.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-064",
+    "type": "DARE",
+    "text": "Kể một câu chuyện cười dở rồi tự cười 30 giây.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-065",
+    "type": "DARE",
+    "text": "Để ai đó gửi snap cho tất cả contacts của bạn.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-066",
+    "type": "DARE",
+    "text": "Để nhóm gửi DM cho bất kỳ ai họ muốn từ Instagram của bạn.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-067",
+    "type": "DARE",
+    "text": "Ăn một thìa mù tạt (hoặc tương ớt) nguyên chất.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-068",
+    "type": "DARE",
+    "text": "Gọi cho mẹ và nói rằng bạn sẽ kết hôn ngày mai.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "wordplay",
+      "family",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-069",
+    "type": "DARE",
+    "text": "Chống đẩy 20 cái trong khi hát Céline Dion.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "music",
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-070",
+    "type": "DARE",
+    "text": "Giả vờ lên đỉnh ồn ào trong 15 giây.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-071",
+    "type": "DARE",
+    "text": "Liếm bàn chân của người bên trái (hoặc ít nhất là ngón cái chân).",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-072",
+    "type": "DARE",
+    "text": "Để ai đó đọc to ghi chú cuối cùng trong điện thoại bạn.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-073",
+    "type": "DARE",
+    "text": "Gọi cho nhà hàng và cố gắng order menu McDonald's với sự kiên trì.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-074",
+    "type": "DARE",
+    "text": "Tỏ tình nồng cháy với một cây xanh.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-075",
+    "type": "DARE",
+    "text": "Ngửi nách của người bên phải và mô tả mùi.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-076",
+    "type": "DARE",
+    "text": "Cho mọi người xem thời gian sử dụng màn hình của bạn.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-077",
+    "type": "DARE",
+    "text": "Like 5 bức ảnh đầu tiên trên tài khoản Instagram của ex.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-078",
+    "type": "DARE",
+    "text": "Cho xem bức ảnh gần nhất trong thư viện, không có ngoại lệ.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-079",
+    "type": "DARE",
+    "text": "Mở khóa điện thoại và đưa cho nhóm trong 2 phút.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-080",
+    "type": "DARE",
+    "text": "Cho xem 3 lần tìm kiếm cuối cùng trên Instagram.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-081",
+    "type": "DARE",
+    "text": "Làm ai đó tin rằng bạn trúng xổ số qua tin nhắn.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-082",
+    "type": "DARE",
+    "text": "Gửi \"Tôi đã giấu xác rồi\" cho anh/chị em.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "family"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-083",
+    "type": "DARE",
+    "text": "Nhắn tin cho bố mẹ hỏi \"Con có phải con nuôi không?\".",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "family",
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-084",
+    "type": "DARE",
+    "text": "Để nhóm trả lời tin nhắn tiếp theo bạn nhận (không kiểm duyệt).",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-hard-085",
+    "type": "DARE",
+    "text": "Đăng status \"Tôi sẽ kết hôn ngày mai\" và không trả lời ai trong 30 phút.",
+    "difficulty": "HARD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-057",
+    "type": "DARE",
+    "text": "Mát-xa vai cho em/anh trong 2 phút.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "acting",
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-bold-031",
+    "type": "DARE",
+    "text": "Thì thầm ba điều anh/em thích ở em/anh vào tai.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-058",
+    "type": "DARE",
+    "text": "Tái hiện lại nụ hôn đầu tiên của chúng ta.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-bold-032",
+    "type": "DARE",
+    "text": "Khiêu vũ một điệu chậm với em/anh.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-059",
+    "type": "DARE",
+    "text": "Chuẩn bị cho em/anh một món ăn nhẹ bất ngờ.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-033",
+    "type": "DARE",
+    "text": "Viết một mẩu giấy ngọt ngào và giấu ở đâu đó để em/anh tìm thấy vào ngày mai.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-060",
+    "type": "DARE",
+    "text": "Hôn em/anh ở một nơi bất ngờ.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-bold-034",
+    "type": "DARE",
+    "text": "Chọn một bài hát và hát nhép tặng em/anh.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-061",
+    "type": "DARE",
+    "text": "Nhìn vào mắt em/anh trong một phút mà không cười.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-035",
+    "type": "DARE",
+    "text": "Dành cho em/anh 5 lời khen chân thành.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-062",
+    "type": "DARE",
+    "text": "Vẽ một trái tim lên tay em/anh.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "drawing",
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-036",
+    "type": "DARE",
+    "text": "Gửi cho em/anh một tin nhắn SMS hoặc tin nhắn thoại dễ thương.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-063",
+    "type": "DARE",
+    "text": "Chọn một trong những bộ quần áo của em/anh và mặc nó một cách khác người.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-037",
+    "type": "DARE",
+    "text": "Giới thiệu cho em/anh một bài hát mà chắc chắn em/anh sẽ thích.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-064",
+    "type": "DARE",
+    "text": "Kể cho em/anh nghe một câu chuyện cười.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay",
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-038",
+    "type": "DARE",
+    "text": "Ôm em/anh ít nhất 30 giây.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-065",
+    "type": "DARE",
+    "text": "Đề xuất một ý tưởng cho buổi hẹn hò tiếp theo.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-039",
+    "type": "DARE",
+    "text": "Tìm ba điểm chung mà chúng ta có và anh/em yêu thích.",
+    "difficulty": "BOLD",
+    "minimumAge": 13,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-066",
+    "type": "DARE",
+    "text": "Để em/anh chọn bộ phim hoặc series tiếp theo chúng ta xem.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "entertainment",
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-bold-040",
+    "type": "DARE",
+    "text": "Trao cho em/anh một nụ hôn nồng cháy.",
+    "difficulty": "BOLD",
+    "minimumAge": 16,
+    "categories": [
+      "friendship"
+    ],
+    "audiences": [
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-easy-048",
+    "type": "DARE",
+    "text": "Quay một video TikTok (hoặc Reel) ngớ ngẩn và cho cả nhóm xem.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": true,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-067",
+    "type": "DARE",
+    "text": "Nhại lại giáo viên chủ nhiệm của bạn.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "acting",
+      "school"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-049",
+    "type": "DARE",
+    "text": "Cố gắng đứng thăng bằng trên một chân càng lâu càng tốt.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-068",
+    "type": "DARE",
+    "text": "Nói bằng giọng siêu cao hoặc siêu trầm cho đến lượt tiếp theo của bạn.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-050",
+    "type": "DARE",
+    "text": "Dành một lời khen cho mỗi người trong nhóm.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-069",
+    "type": "DARE",
+    "text": "Sáng tác một bài rap về buổi học cuối cùng của bạn.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "school"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-051",
+    "type": "DARE",
+    "text": "Để ai đó vẽ một thứ gì đó vui nhộn lên tay bạn.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "drawing"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-070",
+    "type": "DARE",
+    "text": "Mặc áo thun ngược cho đến khi trò chơi kết thúc.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "entertainment"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-052",
+    "type": "DARE",
+    "text": "Giả vờ đi chậm như phim quay chậm để đi lấy một ly nước.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "movement",
+      "acting",
+      "entertainment"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-071",
+    "type": "DARE",
+    "text": "Gửi một emoji ngẫu nhiên cho người thứ 5 trong danh bạ gần đây của bạn.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-053",
+    "type": "DARE",
+    "text": "Nhảy jumping jack 10 lần.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-072",
+    "type": "DARE",
+    "text": "Cố gắng chạm lưỡi vào mũi.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": true,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-easy-054",
+    "type": "DARE",
+    "text": "Kể lại một ngày của bạn chỉ bằng âm thanh.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "music",
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-073",
+    "type": "DARE",
+    "text": "Xây một tòa tháp nhỏ bằng các vật dụng bạn tìm thấy xung quanh.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-055",
+    "type": "DARE",
+    "text": "Trồng cây chuối dựa vào tường trong 10 giây.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": true,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": true
+  },
+  {
+    "id": "dare-medium-074",
+    "type": "DARE",
+    "text": "Hát điệp khúc của một bài hát do cả nhóm chọn.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "music"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-056",
+    "type": "DARE",
+    "text": "Nhảy lò cò một vòng quanh phòng.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "movement"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": true,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-075",
+    "type": "DARE",
+    "text": "Nhại lại cảnh một phụ huynh đang la mắng bạn.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "acting"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-easy-057",
+    "type": "DARE",
+    "text": "Đề xuất một kiểu tóc mới cho người ngồi bên phải bằng cách dùng ngón tay của bạn.",
+    "difficulty": "EASY",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": false,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": false,
+    "isSensitive": false
+  },
+  {
+    "id": "dare-medium-076",
+    "type": "DARE",
+    "text": "Chụp một bức ảnh nhóm vui nhộn bằng điện thoại của bạn.",
+    "difficulty": "MEDIUM",
+    "minimumAge": 13,
+    "categories": [
+      "performance"
+    ],
+    "audiences": [
+      "friends",
+      "family"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": true,
+    "isPrivate": true,
+    "isSensitive": false
+  }
 ]

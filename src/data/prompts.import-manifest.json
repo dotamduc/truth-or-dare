@@ -1,0 +1,114 @@
+{
+  "sourceFile": "question.txt",
+  "sourceSha256": "689629cfd150fbed8638dd42018c998693461108d6cab5d7930596d4b2bc49fc",
+  "contentSha256": "ffa48bea7d47e34d57580fd862e8ce752e27de9d6df6c426be57836dc2a3aa0f",
+  "total": 595,
+  "truthTotal": 337,
+  "dareTotal": 258,
+  "exactDuplicateGroups": 2,
+  "exactDuplicateItems": 4,
+  "truthDifficulty": {
+    "EASY": 10,
+    "MEDIUM": 20,
+    "BOLD": 196,
+    "HARD": 111
+  },
+  "dareDifficulty": {
+    "EASY": 57,
+    "MEDIUM": 76,
+    "BOLD": 40,
+    "HARD": 85
+  },
+  "sections": [
+    {
+      "type": "TRUTH",
+      "section": "1. Dành cho bạn bè (Good/Deep Truth Questions)",
+      "count": 110
+    },
+    {
+      "type": "TRUTH",
+      "section": "2. Sâu sắc cho bạn thân (Deep Truth Questions)",
+      "count": 73
+    },
+    {
+      "type": "TRUTH",
+      "section": "3. Mặn mà (Spicy Truth Questions)",
+      "count": 34
+    },
+    {
+      "type": "TRUTH",
+      "section": "🏝️ Phiên bản 'Mặn mà' (Spicy - TOZ)",
+      "count": 40
+    },
+    {
+      "type": "TRUTH",
+      "section": "🔥 Phiên bản Cực độ (Extreme - TOZ)",
+      "count": 20
+    },
+    {
+      "type": "TRUTH",
+      "section": "🤯 Phiên bản Khó chịu (Annoying - TOZ)",
+      "count": 20
+    },
+    {
+      "type": "TRUTH",
+      "section": "💕 Dành cho các cặp đôi (Couples - TOZ)",
+      "count": 20
+    },
+    {
+      "type": "TRUTH",
+      "section": "🧑‍🎤 Dành cho tuổi teen (Teens - TOZ)",
+      "count": 20
+    },
+    {
+      "type": "DARE",
+      "section": "1. Dễ đến Trung bình (Easy-to-Medium Dares)",
+      "count": 73
+    },
+    {
+      "type": "DARE",
+      "section": "2. Thử thách khó (Hard Dares)",
+      "count": 25
+    },
+    {
+      "type": "DARE",
+      "section": "😂 20 thử thách để khuấy động không khí (Funny - TOZ)",
+      "count": 20
+    },
+    {
+      "type": "DARE",
+      "section": "📸 20 thử thách để tạo ra những 'file' nhớ đời (Memorable - TOZ)",
+      "count": 20
+    },
+    {
+      "type": "DARE",
+      "section": "🌶️ 20 thử thách mặn mòi (Spicy - TOZ)",
+      "count": 20
+    },
+    {
+      "type": "DARE",
+      "section": "🥵 20 thử thách nóng (Hot - TOZ)",
+      "count": 20
+    },
+    {
+      "type": "DARE",
+      "section": "💀 20 thử thách cực độ (Extreme - TOZ)",
+      "count": 20
+    },
+    {
+      "type": "DARE",
+      "section": "😈 20 thử thách khó chịu (Annoying - TOZ)",
+      "count": 20
+    },
+    {
+      "type": "DARE",
+      "section": "💏 20 thử thách cho các cặp đôi (Couples - TOZ)",
+      "count": 20
+    },
+    {
+      "type": "DARE",
+      "section": "🧑‍🎤 20 thử thách cho tuổi teen (Teens - TOZ)",
+      "count": 20
+    }
+  ]
+}

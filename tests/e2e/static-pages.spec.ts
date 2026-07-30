@@ -1,7 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 
-const GAME_KEY = "truth-or-dare:game:v1";
-const HIDDEN_KEY = "truth-or-dare:hidden-prompts:v1";
+const GAME_KEY = "truth-or-dare:game:v2";
+const HIDDEN_KEY = "truth-or-dare:hidden-prompts:v2";
 
 async function beginTwoPlayerGame(page: Page) {
   await page.goto("./play/");
@@ -37,7 +37,8 @@ test("landing and gameplay work without APIs or missing assets", async ({ page }
 
   await page.goto("./");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Một thiết bị");
-  await expect(page.getByText("70", { exact: true })).toHaveCount(2);
+  await expect(page.getByText("337", { exact: true })).toBeVisible();
+  await expect(page.getByText("258", { exact: true })).toBeVisible();
   await expectNoHorizontalOverflow(page);
   await page.getByRole("link", { name: "Bắt đầu chơi" }).click();
   await expect(page.getByRole("heading", { name: "Thiết lập ván chơi" })).toBeVisible();

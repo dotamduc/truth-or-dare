@@ -2,8 +2,10 @@ import { z } from "zod";
 import { AudienceSchema, CategorySchema, DifficultySchema, MinimumAgeSchema, StaticPromptSchema } from "@/features/prompts/schemas/promptSchema";
 import { GAME_SCHEMA_VERSION, type GameState } from "@/features/game/domain/types";
 
-export const GAME_STORAGE_KEY = "truth-or-dare:game:v1";
-export const HIDDEN_PROMPTS_STORAGE_KEY = "truth-or-dare:hidden-prompts:v1";
+export const GAME_STORAGE_KEY = "truth-or-dare:game:v2";
+export const HIDDEN_PROMPTS_STORAGE_KEY = "truth-or-dare:hidden-prompts:v2";
+const LEGACY_GAME_STORAGE_KEYS = ["truth-or-dare:game:v1"] as const;
+const LEGACY_HIDDEN_PROMPTS_STORAGE_KEYS = ["truth-or-dare:hidden-prompts:v1"] as const;
 
 export interface StorageLike {
   getItem(key: string): string | null;
@@ -43,7 +45,7 @@ export const GameStateSchema = z.object({
   totalRounds: z.number().int().min(1).max(20),
   selectionMode: z.enum(["ROUND_ROBIN", "BALANCED_RANDOM"]),
   filters: FiltersSchema,
-  usedPromptIds: z.array(z.string().min(1).max(64)).max(140),
+  usedPromptIds: z.array(z.string().min(1).max(64)).max(1000),
   currentPrompt: StaticPromptSchema.nullable(),
   gameStatus: z.enum(["ACTIVE", "COMPLETED"]),
   completedTurns: z.number().int().min(0).max(200),
@@ -51,7 +53,11 @@ export const GameStateSchema = z.object({
   updatedAt: z.string().datetime(),
 }).strict().refine((state) => state.currentPlayerIndex < state.players.length, "Chỉ số người chơi không hợp lệ.");
 
-const HiddenPromptIdsSchema = z.array(z.string().regex(/^(truth|dare)-(easy|medium|bold|hard)-\d{3}$/)).max(140);
+const HiddenPromptIdsSchema = z.array(z.string().regex(/^(truth|dare)-(easy|medium|bold|hard)-\d{3}$/)).max(1000);
+
+function removeKeys(storage: StorageLike, keys: readonly string[]): void {
+  for (const key of keys) storage.removeItem(key);
+}
 
 function browserStorage(): StorageLike | null {
   return typeof window === "undefined" ? null : window.localStorage;
@@ -84,6 +90,7 @@ export function saveGameState(state: GameState, storage: StorageLike | null = br
 export function loadGameState(storage: StorageLike | null = browserStorage()): GameState | null {
   if (!storage) return null;
   try {
+    removeKeys(storage, LEGACY_GAME_STORAGE_KEYS);
     const raw = storage.getItem(GAME_STORAGE_KEY);
     if (!raw) return null;
     const state = deserializeGameState(raw);
@@ -95,12 +102,15 @@ export function loadGameState(storage: StorageLike | null = browserStorage()): G
 }
 
 export function clearGameState(storage: StorageLike | null = browserStorage()): void {
-  try { storage?.removeItem(GAME_STORAGE_KEY); } catch { /* Storage can be unavailable in privacy mode. */ }
+  try {
+    if (storage) removeKeys(storage, [GAME_STORAGE_KEY, ...LEGACY_GAME_STORAGE_KEYS]);
+  } catch { /* Storage can be unavailable in privacy mode. */ }
 }
 
 export function loadHiddenPromptIds(storage: StorageLike | null = browserStorage()): Set<string> {
   if (!storage) return new Set();
   try {
+    removeKeys(storage, LEGACY_HIDDEN_PROMPTS_STORAGE_KEYS);
     const raw = storage.getItem(HIDDEN_PROMPTS_STORAGE_KEY);
     if (!raw) return new Set();
     const parsed: unknown = JSON.parse(raw);
@@ -127,5 +137,7 @@ export function saveHiddenPromptIds(ids: ReadonlySet<string>, storage: StorageLi
 }
 
 export function clearHiddenPromptIds(storage: StorageLike | null = browserStorage()): void {
-  try { storage?.removeItem(HIDDEN_PROMPTS_STORAGE_KEY); } catch { /* Storage can be unavailable in privacy mode. */ }
+  try {
+    if (storage) removeKeys(storage, [HIDDEN_PROMPTS_STORAGE_KEY, ...LEGACY_HIDDEN_PROMPTS_STORAGE_KEYS]);
+  } catch { /* Storage can be unavailable in privacy mode. */ }
 }

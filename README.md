@@ -6,7 +6,7 @@ Website: <https://dotamduc.github.io/truth-or-dare/>
 
 ## Tính năng
 
-- Chính xác 70 câu Thật và 70 câu Thách đã qua content audit.
+- 595 mục từ `question.txt`: 337 câu Thật và 258 câu Thách đã qua content audit.
 - Bốn mức độ cân bằng: EASY, MEDIUM, BOLD và HARD.
 - Chọn tuổi tối thiểu, độ khó, chủ đề, nhóm người chơi và quyền an toàn.
 - Chơi lần lượt hoặc ngẫu nhiên cân bằng.
@@ -48,7 +48,7 @@ pnpm test
 pnpm audit --prod
 ```
 
-Content audit kiểm tra số lượng, phân bố difficulty, schema, ID, Unicode NFC, placeholder, exact duplicate, near duplicate, safety flag và nội dung cấm. Kết quả được ghi vào `reports/prompt-audit.md` và `reports/prompt-audit.json`.
+Content audit khóa độc lập SHA-256 nội dung, số lượng 595/337/258 và phân bố difficulty của đợt nhập hiện tại; đồng thời kiểm tra manifest, schema, ID, Unicode NFC, placeholder, duplicate và safety flag. Duplicate có sẵn trong file nguồn được giữ nguyên và báo ở mức warning. Kết quả được ghi vào `reports/prompt-audit.md` và `reports/prompt-audit.json`.
 
 ## Build tĩnh và E2E
 
@@ -75,13 +75,24 @@ Chạy toàn bộ quality gate:
 pnpm verify
 ```
 
+## Nhập lại bộ câu hỏi
+
+Để tạo lại toàn bộ database từ đúng bản nguồn `question.txt` đã khóa bằng SHA-256:
+
+```bash
+pnpm content:import -- /duong-dan/toi/question.txt
+pnpm content:audit
+```
+
+Lệnh nhập tạo hai tệp JSON và `src/data/prompts.import-manifest.json`, đồng thời giữ nguyên mọi mục trong nguồn, kể cả các mục trùng lặp. Importer từ chối file bị thiếu hoặc thay đổi nội dung so với nguồn đã duyệt.
+
 ## Thêm hoặc sửa câu hỏi
 
-1. Sửa `src/data/prompts.truth.vi.json` hoặc `src/data/prompts.dare.vi.json`.
-2. Giữ ID theo mẫu `truth-easy-001` hoặc `dare-hard-018` và không tái sử dụng ID.
-3. Điền đúng category, audience, minimum age và toàn bộ safety flag.
-4. Không thêm hậu tố giả để né duplicate.
-5. Chạy `pnpm content:audit` và unit test trước khi commit.
+1. Không vá trực tiếp hai tệp JSON đã sinh. Hãy sửa nguồn được duyệt hoặc logic metadata trong `scripts/import-question-file.ts`, rồi chạy lại importer.
+2. Nếu chủ động thay bộ nguồn, cập nhật contract SHA-256, số lượng và phân bố trong importer, audit và unit test trong cùng một review nội dung.
+3. Giữ ID theo mẫu `truth-easy-001` hoặc `dare-hard-018`; không thêm hậu tố giả để né duplicate.
+4. Điền đúng category, audience, minimum age và toàn bộ safety flag.
+5. Chạy `pnpm verify` trước khi commit.
 
 Quy tắc chi tiết nằm trong [Content guidelines](docs/CONTENT_GUIDELINES.md). Cơ chế lưu state nằm trong [Local storage](docs/LOCAL_STORAGE.md).
 

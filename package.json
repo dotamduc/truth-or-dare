@@ -14,6 +14,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e:pages": "playwright test -c playwright.pages.config.ts",
+    "content:import": "tsx scripts/import-question-file.ts",
     "content:audit": "tsx scripts/audit-prompts.ts",
     "verify": "pnpm content:audit && pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm build:pages && pnpm test:e2e:pages"
   },

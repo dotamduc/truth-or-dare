@@ -1,12 +1,16 @@
 import Link from "next/link";
+import { prompts } from "@/data/prompts";
 import { LandingResume } from "@/features/game/components/LandingResume";
 
 export default function HomePage() {
+  const truthPrompts = prompts.filter((prompt) => prompt.type === "TRUTH");
+  const darePrompts = prompts.filter((prompt) => prompt.type === "DARE");
+
   return (
     <>
       <section className="shell hero-grid">
         <div className="hero-copy">
-          <p className="eyebrow">140 câu đã được kiểm tra</p>
+          <p className="eyebrow">{prompts.length} câu đã được kiểm tra</p>
           <h1>Một thiết bị. Cả nhóm cùng chơi.</h1>
           <p className="hero-lede">Chọn Thật hoặc Thách, chuyền máy và giữ mọi niềm vui ngay trong trình duyệt.</p>
           <div className="hero-actions">
@@ -18,18 +22,18 @@ export default function HomePage() {
         <div className="prompt-preview" aria-label="Xem trước câu hỏi trong trò chơi">
           <article className="preview-card preview-truth">
             <span>THẬT</span>
-            <p>Thói quen nhỏ nào khiến bạn cảm thấy vui hơn mỗi ngày?</p>
+            <p>{truthPrompts[0]?.text}</p>
           </article>
           <article className="preview-card preview-dare">
             <span>THÁCH</span>
-            <p>Tạo một khẩu hiệu vui dành riêng cho nhóm trong 30 giây.</p>
+            <p>{darePrompts[0]?.text}</p>
           </article>
         </div>
       </section>
 
       <section className="shell proof-strip" aria-label="Thông tin chính">
-        <div><strong>70</strong><span>câu Thật</span></div>
-        <div><strong>70</strong><span>câu Thách</span></div>
+        <div><strong>{truthPrompts.length}</strong><span>câu Thật</span></div>
+        <div><strong>{darePrompts.length}</strong><span>câu Thách</span></div>
         <div><strong>2-10</strong><span>người chơi</span></div>
         <div><strong>0</strong><span>tài khoản cần tạo</span></div>
       </section>

@@ -54,13 +54,26 @@ describe("prompt filtering", () => {
 
   it("denies every elevated safety capability until explicitly enabled", () => {
     const restricted: GameFilters = { ...filters, allowProps: false, allowPhone: false, allowInternet: false, allowMovement: false, allowPhysicalContact: false, allowPrivate: false, allowSensitive: false };
+    const safeTruth = prompts.find((prompt) =>
+      prompt.type === "TRUTH"
+      && prompt.minimumAge <= 16
+      && prompt.audiences.includes("friends")
+      && !prompt.requiresProps
+      && !prompt.requiresPhone
+      && !prompt.requiresInternet
+      && !prompt.requiresMovement
+      && !prompt.requiresPhysicalContact
+      && !prompt.isPrivate
+      && !prompt.isSensitive
+    );
+    expect(safeTruth, "expected at least one unrestricted Truth prompt").toBeDefined();
     const flagCases: Array<[keyof StaticPrompt, keyof GameFilters]> = [
       ["requiresProps", "allowProps"], ["requiresPhone", "allowPhone"], ["requiresInternet", "allowInternet"],
       ["requiresMovement", "allowMovement"], ["requiresPhysicalContact", "allowPhysicalContact"],
       ["isPrivate", "allowPrivate"], ["isSensitive", "allowSensitive"],
     ];
     for (const [promptFlag, permission] of flagCases) {
-      const sample = { ...prompts[0], id: `truth-easy-099`, [promptFlag]: true } as StaticPrompt;
+      const sample = { ...safeTruth!, id: `truth-easy-099`, [promptFlag]: true } as StaticPrompt;
       expect(filterEligiblePrompts([sample], { ...restricted, playerCount: 2 }, new Set(), new Set(), "TRUTH")).toHaveLength(0);
       expect(filterEligiblePrompts([sample], { ...restricted, [permission]: true, playerCount: 2 }, new Set(), new Set(), "TRUTH")).toHaveLength(1);
     }

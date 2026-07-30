@@ -46,6 +46,16 @@ describe("local game storage", () => {
     expect(deserializeGameState(JSON.stringify({ schemaVersion: 999 }))).toBeNull();
   });
 
+  it("clears version 1 data after the prompt database replacement", () => {
+    const storage = new MemoryStorage();
+    storage.setItem("truth-or-dare:game:v1", JSON.stringify({ schemaVersion: 1 }));
+    storage.setItem("truth-or-dare:hidden-prompts:v1", JSON.stringify(["truth-easy-001"]));
+    expect(loadGameState(storage)).toBeNull();
+    expect(loadHiddenPromptIds(storage)).toEqual(new Set());
+    expect(storage.getItem("truth-or-dare:game:v1")).toBeNull();
+    expect(storage.getItem("truth-or-dare:hidden-prompts:v1")).toBeNull();
+  });
+
   it("stores, restores and validates hidden prompt IDs", () => {
     const storage = new MemoryStorage();
     expect(saveHiddenPromptIds(new Set(["truth-easy-001", "dare-hard-018"]), storage)).toBe(true);

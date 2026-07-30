@@ -1,69 +1,160 @@
 {
-  "generatedAt": "2026-07-29T20:00:14.832Z",
+  "generatedAt": "2026-07-30T04:02:29.576Z",
+  "source": {
+    "file": "question.txt",
+    "sha256": "689629cfd150fbed8638dd42018c998693461108d6cab5d7930596d4b2bc49fc",
+    "sections": 18
+  },
   "nearDuplicateThreshold": 0.82,
   "summary": {
-    "total": 140,
-    "truthTotal": 70,
-    "dareTotal": 70,
-    "exactDuplicateGroups": 0,
-    "nearDuplicatePairs": 0,
+    "total": 595,
+    "truthTotal": 337,
+    "dareTotal": 258,
+    "exactDuplicateGroups": 2,
+    "nearDuplicatePairs": 1,
     "invalidMetadata": 0,
     "invalidSafetyFlags": 0,
     "blockerCount": 0,
-    "warningCount": 0
+    "warningCount": 15
   },
   "distributions": {
     "truthDifficulty": {
-      "EASY": 18,
-      "MEDIUM": 18,
-      "BOLD": 17,
-      "HARD": 17
+      "BOLD": 196,
+      "HARD": 111,
+      "MEDIUM": 20,
+      "EASY": 10
     },
     "dareDifficulty": {
-      "EASY": 17,
-      "MEDIUM": 17,
-      "BOLD": 18,
-      "HARD": 18
+      "EASY": 57,
+      "MEDIUM": 76,
+      "HARD": 85,
+      "BOLD": 40
     },
     "totalDifficulty": {
-      "EASY": 35,
-      "MEDIUM": 35,
-      "BOLD": 35,
-      "HARD": 35
+      "BOLD": 236,
+      "HARD": 196,
+      "MEDIUM": 96,
+      "EASY": 67
     },
     "categories": {
-      "entertainment": 3,
-      "preferences": 6,
-      "everyday": 7,
-      "self-awareness": 37,
-      "memories": 15,
-      "humor": 18,
-      "friendship": 15,
-      "family": 3,
-      "school": 4,
+      "friendship": 275,
+      "hypothetical": 63,
+      "self-awareness": 313,
+      "family": 19,
+      "music": 39,
+      "entertainment": 35,
+      "movement": 47,
+      "wordplay": 62,
+      "travel": 8,
       "work": 3,
-      "hypothetical": 7,
-      "travel": 2,
-      "perspective": 18,
-      "goals": 11,
-      "creativity": 17,
-      "teamwork": 21,
-      "acting": 20,
-      "movement": 9,
-      "coordination": 12,
-      "memory": 9,
-      "performance": 15,
-      "music": 10,
-      "wordplay": 12,
-      "drawing": 3
+      "goals": 4,
+      "school": 13,
+      "memories": 27,
+      "acting": 35,
+      "performance": 81,
+      "drawing": 5
     },
     "audiences": {
-      "friends": 140,
-      "family": 124,
-      "coworkers": 120,
-      "couples": 137
+      "friends": 555,
+      "couples": 555,
+      "family": 123,
+      "coworkers": 83
     }
   },
-  "nearDuplicates": [],
-  "issues": []
+  "nearDuplicates": [
+    {
+      "leftId": "dare-hard-046",
+      "rightId": "dare-hard-067",
+      "score": 0.9091
+    }
+  ],
+  "issues": [
+    {
+      "severity": "WARNING",
+      "code": "TRUTH_SOURCE_FORMAT",
+      "promptId": "truth-hard-003",
+      "message": "Truth trong file nguồn không kết thúc bằng dấu hỏi."
+    },
+    {
+      "severity": "WARNING",
+      "code": "TRUTH_SOURCE_FORMAT",
+      "promptId": "truth-bold-032",
+      "message": "Truth trong file nguồn không kết thúc bằng dấu hỏi."
+    },
+    {
+      "severity": "WARNING",
+      "code": "TRUTH_SOURCE_FORMAT",
+      "promptId": "truth-bold-038",
+      "message": "Truth trong file nguồn không kết thúc bằng dấu hỏi."
+    },
+    {
+      "severity": "WARNING",
+      "code": "TRUTH_SOURCE_FORMAT",
+      "promptId": "truth-bold-062",
+      "message": "Truth trong file nguồn không kết thúc bằng dấu hỏi."
+    },
+    {
+      "severity": "WARNING",
+      "code": "SENSITIVE_SOURCE_CONTENT",
+      "promptId": "truth-bold-098",
+      "message": "Nội dung nhạy cảm từ file nguồn đã được giữ lại và gắn cờ."
+    },
+    {
+      "severity": "WARNING",
+      "code": "TRUTH_SOURCE_FORMAT",
+      "promptId": "truth-bold-102",
+      "message": "Truth trong file nguồn không kết thúc bằng dấu hỏi."
+    },
+    {
+      "severity": "WARNING",
+      "code": "TRUTH_SOURCE_FORMAT",
+      "promptId": "truth-bold-115",
+      "message": "Truth trong file nguồn không kết thúc bằng dấu hỏi."
+    },
+    {
+      "severity": "WARNING",
+      "code": "TRUTH_SOURCE_FORMAT",
+      "promptId": "truth-bold-130",
+      "message": "Truth trong file nguồn không kết thúc bằng dấu hỏi."
+    },
+    {
+      "severity": "WARNING",
+      "code": "TRUTH_SOURCE_FORMAT",
+      "promptId": "truth-hard-046",
+      "message": "Truth trong file nguồn không kết thúc bằng dấu hỏi."
+    },
+    {
+      "severity": "WARNING",
+      "code": "TRUTH_SOURCE_FORMAT",
+      "promptId": "truth-hard-060",
+      "message": "Truth trong file nguồn không kết thúc bằng dấu hỏi."
+    },
+    {
+      "severity": "WARNING",
+      "code": "TRUTH_SOURCE_FORMAT",
+      "promptId": "truth-hard-076",
+      "message": "Truth trong file nguồn không kết thúc bằng dấu hỏi."
+    },
+    {
+      "severity": "WARNING",
+      "code": "TRUTH_SOURCE_FORMAT",
+      "promptId": "truth-hard-083",
+      "message": "Truth trong file nguồn không kết thúc bằng dấu hỏi."
+    },
+    {
+      "severity": "WARNING",
+      "code": "SOURCE_EXACT_DUPLICATE",
+      "message": "Giữ nguyên các mục lặp từ file nguồn: truth-bold-038, truth-bold-102."
+    },
+    {
+      "severity": "WARNING",
+      "code": "SOURCE_EXACT_DUPLICATE",
+      "message": "Giữ nguyên các mục lặp từ file nguồn: truth-bold-145, truth-bold-177."
+    },
+    {
+      "severity": "WARNING",
+      "code": "SOURCE_NEAR_DUPLICATE",
+      "message": "dare-hard-046 gần trùng dare-hard-067 (0.9091), được giữ lại theo file nguồn."
+    }
+  ]
 }

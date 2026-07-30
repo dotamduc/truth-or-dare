@@ -1,6 +1,6 @@
 import type { Audience, Category, Difficulty, MinimumAge, PromptType, StaticPrompt } from "@/features/prompts/schemas/promptSchema";
 
-export const GAME_SCHEMA_VERSION = 1 as const;
+export const GAME_SCHEMA_VERSION = 2 as const;
 
 export type SelectionMode = "ROUND_ROBIN" | "BALANCED_RANDOM";
 export type GameStatus = "ACTIVE" | "COMPLETED";

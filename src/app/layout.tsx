@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   icons: { icon: `${basePath}/icon.svg` },
   openGraph: {
     title: "Thật Hay Thách",
-    description: "140 câu hỏi tiếng Việt chạy hoàn toàn trong trình duyệt.",
+    description: "595 câu hỏi và thử thách tiếng Việt chạy hoàn toàn trong trình duyệt.",
     type: "website",
     locale: "vi_VN",
     url: publicUrl,
@@ -29,8 +29,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f2ed" },
-    { media: "(prefers-color-scheme: dark)", color: "#111210" },
+    { media: "(prefers-color-scheme: light)", color: "#f7f8fc" },
+    { media: "(prefers-color-scheme: dark)", color: "#181c22" },
   ],
 };
 

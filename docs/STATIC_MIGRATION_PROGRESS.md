@@ -55,9 +55,9 @@ Không có lệnh chưa chạy nào được ghi là PASS.
 | Milestone | Status | Evidence |
 |---|---|---|
 | Baseline và repository audit | Completed | Kết quả ở trên; đã đọc routes, data, game engine, tests, workflows và tài liệu vận hành. |
-| Static content 70/70 | Completed | 70 Truth + 70 Dare; difficulty đúng 35 mỗi mức; exact/near duplicate, invalid metadata/flags, blocker/warning đều bằng 0. |
+| Static content | Completed | Database hiện tại có 337 Truth + 258 Dare từ `question.txt`; manifest khóa số lượng/phân bố; duplicate của nguồn được giữ và báo warning. |
 | Pure client game engine | Completed | Pure TypeScript, không import Prisma; validation, round robin, balanced random, filters, score, replace, pool reset và result đã có unit test. |
-| localStorage và hidden prompts | Completed | State schema v1 được Zod validate; dữ liệu hỏng/version sai được reset; resume, delete và hidden prompt dùng hai key riêng. |
+| localStorage và hidden prompts | Completed | State schema v2 được Zod validate; dữ liệu hỏng/version sai và key v1 được reset; resume, delete và hidden prompt dùng hai key riêng. |
 | Static UI + accessibility | Completed | Landing/setup/game/result chạy trong `/play`; giao diện mobile-first, auto light/dark, focus-visible, semantic control và reduced motion. |
 | Remove backend/runtime | Completed | Đã bỏ Prisma/PostgreSQL, API/admin/auth, Docker, server middleware, migrations, staging backend và dependency tương ứng; static build chỉ còn sáu route tĩnh. |
 | Static tests/CI/Pages | Completed | CI và Pages workflow không còn service backend; Playwright trên `/truth-or-dare/` đạt 5 pass + 1 skip có chủ đích, không API/404/console error và không overflow ở năm viewport. |
