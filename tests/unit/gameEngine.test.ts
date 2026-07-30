@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { prompts } from "@/data/prompts";
-import { calculateTurnPoints, choosePrompt, createGameState, finishTurn, getNextPlayerIndex, replaceCurrentPrompt, validatePlayerNames } from "@/features/game/domain/gameEngine";
+import { calculateTurnPoints, choosePrompt, createGameState, finishTurn, getNextPlayerIndex, replaceCurrentPrompt, shufflePlayerOrder, validatePlayerNames } from "@/features/game/domain/gameEngine";
 import { filterEligiblePrompts, selectPromptWithFallback } from "@/features/game/domain/promptSelector";
 import type { GameFilters, StaticPrompt } from "@/features/game/domain/types";
 
@@ -34,6 +34,14 @@ describe("player validation and selection", () => {
     expect(getNextPlayerIndex(2, 3, "ROUND_ROBIN", [1, 1, 1])).toBe(0);
     expect(getNextPlayerIndex(0, 3, "BALANCED_RANDOM", [2, 0, 1], () => 0)).toBe(1);
     expect(getNextPlayerIndex(1, 3, "BALANCED_RANDOM", [0, 1, 0], () => 0.99)).toBe(2);
+  });
+
+  it("shuffles player order without changing the player list", () => {
+    const original = ["An", "Bình", "Chi"];
+    const shuffled = shufflePlayerOrder(original, () => 0.99);
+    expect(shuffled).not.toEqual(original);
+    expect([...shuffled].sort()).toEqual([...original].sort());
+    expect(original).toEqual(["An", "Bình", "Chi"]);
   });
 });
 

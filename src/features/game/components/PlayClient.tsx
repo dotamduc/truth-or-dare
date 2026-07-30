@@ -3,7 +3,7 @@
 import confetti from "canvas-confetti";
 import { useEffect, useState } from "react";
 import { audienceLabels, categoryLabels } from "@/data/prompts";
-import { choosePrompt, createGameState, endGame, finishTurn, replayGame, replaceCurrentPrompt, validatePlayerNames } from "@/features/game/domain/gameEngine";
+import { choosePrompt, createGameState, endGame, finishTurn, replayGame, replaceCurrentPrompt, shufflePlayerOrder, validatePlayerNames } from "@/features/game/domain/gameEngine";
 import type { Audience, Category, Difficulty, GameFilters, GameState, PromptType, SelectionMode } from "@/features/game/domain/types";
 import { clearGameState, clearHiddenPromptIds, loadGameState, loadHiddenPromptIds, saveGameState, saveHiddenPromptIds } from "@/features/game/persistence/localGameStorage";
 
@@ -66,6 +66,7 @@ export function PlayClient() {
   const [filters, setFilters] = useState<GameFilters>(DEFAULT_FILTERS);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const canShufflePlayers = validatePlayerNames(players).valid;
 
   useEffect(() => {
     setSavedGame(loadGameState());
@@ -122,6 +123,12 @@ export function PlayClient() {
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Không thể bắt đầu ván chơi.");
     }
+  };
+
+  const shuffleSetupPlayers = () => {
+    setPlayers((current) => shufflePlayerOrder(current));
+    setError(null);
+    setNotice("Đã xáo trộn thứ tự người chơi.");
   };
 
   const selectType = (type: PromptType) => {
@@ -217,7 +224,11 @@ export function PlayClient() {
                 </div>
               ))}
             </div>
-            <button type="button" className="button button-secondary button-small" disabled={players.length >= 10} onClick={() => setPlayers((current) => [...current, ""])}>Thêm người chơi</button>
+            <div className="player-list-actions">
+              <button type="button" className="button button-secondary button-small" disabled={players.length >= 10} onClick={() => setPlayers((current) => [...current, ""])}>Thêm người chơi</button>
+              <button type="button" className="button button-secondary button-small" disabled={!canShufflePlayers} aria-describedby="shuffle-player-help" onClick={shuffleSetupPlayers}>Xáo trộn thứ tự</button>
+            </div>
+            <p className="fine-print" id="shuffle-player-help">Nhập đủ tên hợp lệ để đổi ngẫu nhiên thứ tự lượt đầu tiên.</p>
           </section>
 
           <section className="panel stack">

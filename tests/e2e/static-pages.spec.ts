@@ -92,6 +92,24 @@ test("setup rejects duplicate normalized player names and can delete a saved gam
   await expect.poll(() => page.evaluate((key) => window.localStorage.getItem(key), GAME_KEY)).toBeNull();
 });
 
+test("setup can shuffle the player order before starting", async ({ page }) => {
+  await page.goto("./play/");
+  const shuffleButton = page.getByRole("button", { name: "Xáo trộn thứ tự" });
+  await expect(shuffleButton).toBeDisabled();
+
+  await page.getByLabel("Tên người chơi 1").fill("An");
+  await page.getByLabel("Tên người chơi 2").fill("Bình");
+  await expect(shuffleButton).toBeEnabled();
+  await shuffleButton.click();
+
+  await expect(page.getByLabel("Tên người chơi 1")).toHaveValue("Bình");
+  await expect(page.getByLabel("Tên người chơi 2")).toHaveValue("An");
+  await expect(page.getByText("Đã xáo trộn thứ tự người chơi.")).toBeVisible();
+
+  await page.getByRole("button", { name: "Bắt đầu chơi" }).click();
+  await expect(page.getByRole("heading", { name: "Bình" })).toBeVisible();
+});
+
 test("responsive layouts avoid horizontal overflow", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-chromium", "One browser pass covers the viewport matrix.");
   const viewports = [

@@ -32,6 +32,18 @@ export function shuffleArray<T>(items: T[], random: () => number = Math.random):
   return result;
 }
 
+export function shufflePlayerOrder(names: readonly string[], random: () => number = Math.random): string[] {
+  const shuffled = shuffleArray([...names], random);
+  const unchanged = shuffled.every((name, index) => name === names[index]);
+  if (!unchanged || shuffled.length < 2) return shuffled;
+
+  const differentIndex = shuffled.findIndex((name, index) => index > 0 && name !== shuffled[0]);
+  if (differentIndex > 0) {
+    [shuffled[0], shuffled[differentIndex]] = [shuffled[differentIndex]!, shuffled[0]!];
+  }
+  return shuffled;
+}
+
 export function getNextPlayerIndex(
   currentIndex: number,
   totalPlayers: number,
