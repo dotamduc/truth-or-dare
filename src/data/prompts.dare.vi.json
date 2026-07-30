@@ -4086,6 +4086,28 @@
     "isSensitive": true
   },
   {
+    "id": "dare-hard-043",
+    "type": "DARE",
+    "text": "Đọc tin nhắn sexting cuối cùng bạn đã gửi.",
+    "difficulty": "HARD",
+    "minimumAge": 18,
+    "categories": [
+      "wordplay"
+    ],
+    "audiences": [
+      "friends",
+      "couples"
+    ],
+    "requiresProps": false,
+    "requiresPhone": true,
+    "requiresInternet": false,
+    "requiresMovement": false,
+    "requiresPhysicalContact": false,
+    "requiresAnotherPlayer": false,
+    "isPrivate": true,
+    "isSensitive": true
+  },
+  {
     "id": "dare-hard-044",
     "type": "DARE",
     "text": "Ăn một thứ gì đó theo cách gợi tình nhất có thể.",
