@@ -1,11 +1,12 @@
 "use client";
 
 import confetti from "canvas-confetti";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { audienceLabels, categoryLabels } from "@/data/prompts";
-import { choosePrompt, createGameState, endGame, finishTurn, replayGame, replaceCurrentPrompt, shufflePlayerOrder, validatePlayerNames } from "@/features/game/domain/gameEngine";
-import type { Audience, Category, Difficulty, GameFilters, GameState, PromptType, SelectionMode } from "@/features/game/domain/types";
+import { choosePrompt, chooseSpecificPrompt, createGameState, endGame, finishTurn, preparePromptPool, replayGame, replaceCurrentPrompt, shufflePlayerOrder, validatePlayerNames } from "@/features/game/domain/gameEngine";
+import type { Audience, Category, Difficulty, GameFilters, GameState, PromptType, SelectionMode, StaticPrompt } from "@/features/game/domain/types";
 import { clearGameState, clearHiddenPromptIds, loadGameState, loadHiddenPromptIds, saveGameState, saveHiddenPromptIds } from "@/features/game/persistence/localGameStorage";
+import { WheelModal, type WheelItem } from "./WheelModal";
 
 const DIFFICULTIES: Array<{ value: Difficulty; label: string }> = [
   { value: "EASY", label: "Nhẹ nhàng" },
@@ -13,6 +14,7 @@ const DIFFICULTIES: Array<{ value: Difficulty; label: string }> = [
   { value: "BOLD", label: "Táo bạo" },
   { value: "HARD", label: "Khó" },
 ];
+const PROMPT_TYPE_LABELS: Record<PromptType, string> = { TRUTH: "THẬT", DARE: "THÁCH" };
 const AUDIENCES = Object.keys(audienceLabels) as Audience[];
 const CATEGORIES = Object.keys(categoryLabels) as Category[];
 type SafetyKey = "allowProps" | "allowPhone" | "allowInternet" | "allowMovement" | "allowPhysicalContact" | "allowPrivate" | "allowSensitive";
@@ -38,11 +40,17 @@ const DEFAULT_FILTERS: GameFilters = {
   allowPrivate: false,
   allowSensitive: false,
 };
+const TYPE_WHEEL_ITEMS: WheelItem[] = [
+  { id: "TRUTH", label: "THẬT", tone: "truth" },
+  { id: "DARE", label: "THÁCH", tone: "dare" },
+];
 
-function PromptFlags({ state }: { state: GameState }) {
-  const prompt = state.currentPrompt;
-  if (!prompt) return null;
-  const labels = [
+function difficultyLabel(difficulty: Difficulty): string {
+  return DIFFICULTIES.find((item) => item.value === difficulty)?.label ?? difficulty;
+}
+
+function getPromptFlagLabels(prompt: StaticPrompt): string[] {
+  return [
     prompt.requiresProps && "Cần đạo cụ",
     prompt.requiresPhone && "Cần điện thoại",
     prompt.requiresInternet && "Cần Internet",
@@ -52,7 +60,26 @@ function PromptFlags({ state }: { state: GameState }) {
     prompt.isPrivate && "Riêng tư",
     prompt.isSensitive && "Nhạy cảm",
   ].filter((label): label is string => Boolean(label));
+}
+
+function PromptFlags({ prompt }: { prompt: StaticPrompt }) {
+  const labels = getPromptFlagLabels(prompt);
   return <p className="prompt-flags">{labels.length > 0 ? labels.join(" / ") : "Không cần đạo cụ hoặc quyền bổ sung"}</p>;
+}
+
+function PromptResultDetails({ prompt }: { prompt: StaticPrompt }) {
+  const labels = getPromptFlagLabels(prompt);
+  return (
+    <div className="wheel-result-prompt">
+      <p className={`wheel-result-badge ${prompt.type === "TRUTH" ? "truth" : "dare"}`}>{PROMPT_TYPE_LABELS[prompt.type]}</p>
+      <p className="wheel-result-text">{prompt.text}</p>
+      <dl className="wheel-result-meta">
+        <div><dt>Mức độ</dt><dd>{difficultyLabel(prompt.difficulty)}</dd></div>
+        <div><dt>Tuổi tối thiểu</dt><dd>{prompt.minimumAge}+</dd></div>
+      </dl>
+      <p className="prompt-flags">{labels.length > 0 ? labels.join(" / ") : "Không cần đạo cụ hoặc quyền bổ sung"}</p>
+    </div>
+  );
 }
 
 export function PlayClient() {
@@ -64,9 +91,22 @@ export function PlayClient() {
   const [totalRounds, setTotalRounds] = useState(3);
   const [selectionMode, setSelectionMode] = useState<SelectionMode>("ROUND_ROBIN");
   const [filters, setFilters] = useState<GameFilters>(DEFAULT_FILTERS);
+  const [pendingPromptType, setPendingPromptType] = useState<PromptType | null>(null);
+  const [typeWheelOpen, setTypeWheelOpen] = useState(false);
+  const [questionWheelOpen, setQuestionWheelOpen] = useState(false);
+  const [questionWheelType, setQuestionWheelType] = useState<PromptType | null>(null);
+  const [questionWheelPool, setQuestionWheelPool] = useState<StaticPrompt[]>([]);
+  const [questionWheelPoolReset, setQuestionWheelPoolReset] = useState(false);
+  const [questionWheelExcludedIds, setQuestionWheelExcludedIds] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const canShufflePlayers = validatePlayerNames(players).valid;
+
+  const questionWheelItems = useMemo<WheelItem[]>(() => questionWheelPool.map((prompt, index) => ({
+    id: prompt.id,
+    label: questionWheelPool.length <= 24 ? `${PROMPT_TYPE_LABELS[prompt.type]} ${index + 1}` : String(index + 1),
+    tone: prompt.type === "TRUTH" ? "truth" : "dare",
+  })), [questionWheelPool]);
 
   useEffect(() => {
     setSavedGame(loadGameState());
@@ -78,6 +118,14 @@ export function PlayClient() {
     setGame(next);
     setSavedGame(next);
     saveGameState(next);
+  };
+
+  const closeQuestionWheel = () => {
+    setQuestionWheelOpen(false);
+    setQuestionWheelType(null);
+    setQuestionWheelPool([]);
+    setQuestionWheelPoolReset(false);
+    setQuestionWheelExcludedIds([]);
   };
 
   const toggleDifficulty = (difficulty: Difficulty) => {
@@ -119,6 +167,7 @@ export function PlayClient() {
       const next = createGameState(validation.normalizedNames, totalRounds, selectionMode, filters);
       setError(null);
       setNotice(null);
+      setPendingPromptType(null);
       commitGame(next);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Không thể bắt đầu ván chơi.");
@@ -132,11 +181,51 @@ export function PlayClient() {
   };
 
   const selectType = (type: PromptType) => {
-    if (!game) return;
-    const result = choosePrompt(game, type, hiddenPromptIds);
+    setPendingPromptType(type);
+    setError(null);
+    setNotice(null);
+  };
+
+  const drawPromptNow = () => {
+    if (!game || !pendingPromptType) return;
+    const result = choosePrompt(game, pendingPromptType, hiddenPromptIds);
     setNotice(result.message ?? null);
-    if (result.prompt) commitGame(result.state);
-    else setError(result.message ?? "Không còn câu phù hợp.");
+    if (result.prompt) {
+      setPendingPromptType(null);
+      commitGame(result.state);
+    } else {
+      setError(result.message ?? "Không còn câu phù hợp.");
+    }
+  };
+
+  const openQuestionWheel = (type: PromptType, excludedPromptIds: ReadonlySet<string> = new Set()) => {
+    if (!game) return;
+    const prepared = preparePromptPool(game, type, hiddenPromptIds, excludedPromptIds);
+    if (prepared.prompts.length === 0) {
+      setError(prepared.message ?? "Không còn câu phù hợp với bộ lọc hiện tại. Hãy điều chỉnh bộ lọc hoặc khôi phục câu đã ẩn.");
+      setNotice(null);
+      return;
+    }
+    setError(null);
+    setNotice(prepared.message ?? null);
+    setQuestionWheelType(type);
+    setQuestionWheelPool(prepared.prompts);
+    setQuestionWheelPoolReset(prepared.poolReset);
+    setQuestionWheelExcludedIds([...excludedPromptIds]);
+    setQuestionWheelOpen(true);
+  };
+
+  const confirmWheelPrompt = (promptId: string) => {
+    if (!game || !questionWheelType) return;
+    const result = chooseSpecificPrompt(game, questionWheelType, promptId, hiddenPromptIds, questionWheelPoolReset, new Set(questionWheelExcludedIds));
+    setNotice(result.message ?? null);
+    if (result.prompt) {
+      setPendingPromptType(null);
+      closeQuestionWheel();
+      commitGame(result.state);
+    } else {
+      setError(result.message ?? "Không thể chọn câu này.");
+    }
   };
 
   const replacePrompt = () => {
@@ -148,12 +237,14 @@ export function PlayClient() {
   };
 
   const completeTurn = (outcome: "COMPLETED" | "SKIPPED") => {
-    if (!game) return;
+    if (!game || typeWheelOpen || questionWheelOpen) return;
     if (outcome === "COMPLETED" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       void confetti({ particleCount: 45, spread: 60, origin: { y: 0.72 }, disableForReducedMotion: true });
     }
     setError(null);
     setNotice(null);
+    setPendingPromptType(null);
+    closeQuestionWheel();
     commitGame(finishTurn(game, outcome));
   };
 
@@ -179,11 +270,24 @@ export function PlayClient() {
     setNotice("Đã khôi phục toàn bộ câu từng ẩn trên thiết bị này.");
   };
 
+  const finishGame = () => {
+    if (!game || typeWheelOpen || questionWheelOpen) return;
+    if (window.confirm("Kết thúc ván chơi và xem kết quả hiện tại?")) commitGame(endGame(game));
+  };
+
   const deleteSavedGame = () => {
     clearGameState();
     setSavedGame(null);
     setGame(null);
+    setPendingPromptType(null);
+    setTypeWheelOpen(false);
+    closeQuestionWheel();
     setNotice("Đã xóa ván chơi lưu trên thiết bị.");
+  };
+
+  const renderQuestionResult = (item: WheelItem) => {
+    const prompt = questionWheelPool.find((candidate) => candidate.id === item.id);
+    return prompt ? <PromptResultDetails prompt={prompt} /> : <p>Không tìm thấy câu đã chọn.</p>;
   };
 
   if (!hydrated) {
@@ -309,27 +413,46 @@ export function PlayClient() {
     <div className="game-shell">
       <header className="game-header">
         <span className="round-label">Vòng {game.currentRound}/{game.totalRounds}</span>
-        <button type="button" className="button button-danger button-small" onClick={() => { if (window.confirm("Kết thúc ván chơi và xem kết quả hiện tại?")) commitGame(endGame(game)); }}>Kết thúc</button>
+        <button type="button" className="button button-danger button-small" onClick={finishGame} disabled={typeWheelOpen || questionWheelOpen}>Kết thúc</button>
       </header>
       <div className="current-player"><p>Lượt của</p><h1>{currentPlayer?.name}</h1></div>
       {error && <p className="error-message" role="alert">{error}</p>}
       {notice && <p className="notice" aria-live="polite">{notice}</p>}
 
-      {!game.currentPrompt ? (
-        <div className="type-grid">
-          <button type="button" className="type-button type-truth" onClick={() => selectType("TRUTH")}><strong>THẬT</strong><span>Trả lời thành thật, hoàn thành được 1 điểm</span></button>
-          <button type="button" className="type-button type-dare" onClick={() => selectType("DARE")}><strong>THÁCH</strong><span>Thực hiện thử thách, hoàn thành được 2 điểm</span></button>
+      {!game.currentPrompt && !pendingPromptType && (
+        <div className="type-stage">
+          <div className="type-grid">
+            <button type="button" className="type-button type-truth" onClick={() => selectType("TRUTH")}><strong>THẬT</strong><span>Trả lời thành thật, hoàn thành được 1 điểm</span></button>
+            <button type="button" className="type-button type-dare" onClick={() => selectType("DARE")}><strong>THÁCH</strong><span>Thực hiện thử thách, hoàn thành được 2 điểm</span></button>
+          </div>
+          <button type="button" className="button button-secondary wheel-open-button" onClick={() => setTypeWheelOpen(true)}>XOAY CHỌN THẬT / THÁCH 🎲</button>
         </div>
-      ) : (
+      )}
+
+      {!game.currentPrompt && pendingPromptType && (
+        <section className={`selected-type-stage ${pendingPromptType === "TRUTH" ? "truth" : "dare"}`} aria-label="Chọn cách rút câu">
+          <p className="eyebrow">Bạn đã chọn</p>
+          <h2>{PROMPT_TYPE_LABELS[pendingPromptType]}</h2>
+          <p>{pendingPromptType === "TRUTH" ? "Sẵn sàng trả lời thật lòng chưa?" : "Đến lúc khuấy động căn phòng rồi đó!"}</p>
+          <div className="selected-type-actions">
+            <button type="button" className="button button-primary" onClick={drawPromptNow}>RÚT CÂU NGAY</button>
+            <button type="button" className="button button-secondary" onClick={() => openQuestionWheel(pendingPromptType)}>XOAY ĐỂ THÊM THÚ VỊ 🔥</button>
+            <button type="button" className="button button-secondary" onClick={() => setPendingPromptType(null)}>Chọn lại</button>
+          </div>
+        </section>
+      )}
+
+      {game.currentPrompt && (
         <div className="prompt-stage">
           <article className={`prompt-card ${game.currentPrompt.type === "TRUTH" ? "truth" : "dare"}`}>
-            <div className="prompt-meta"><span>{game.currentPrompt.type === "TRUTH" ? "THẬT" : "THÁCH"}</span><span>{DIFFICULTIES.find((item) => item.value === game.currentPrompt?.difficulty)?.label}</span><span>{game.currentPrompt.minimumAge}+</span></div>
+            <div className="prompt-meta"><span>{PROMPT_TYPE_LABELS[game.currentPrompt.type]}</span><span>{difficultyLabel(game.currentPrompt.difficulty)}</span><span>{game.currentPrompt.minimumAge}+</span></div>
             <p className="prompt-text">{game.currentPrompt.text}</p>
-            <PromptFlags state={game} />
+            <PromptFlags prompt={game.currentPrompt} />
           </article>
           <div className="prompt-actions">
             <button type="button" className="button button-primary complete" onClick={() => completeTurn("COMPLETED")}>Đã hoàn thành +{game.currentPrompt.type === "TRUTH" ? 1 : 2} điểm</button>
             <button type="button" className="button button-secondary" onClick={replacePrompt}>Đổi câu khác</button>
+            <button type="button" className="button button-secondary" onClick={() => openQuestionWheel(game.currentPrompt!.type, new Set([game.currentPrompt!.id]))}>XOAY LẠI 🔥</button>
             <button type="button" className="button button-secondary" onClick={() => completeTurn("SKIPPED")}>Bỏ lượt</button>
           </div>
           <div className="local-hide">
@@ -338,6 +461,29 @@ export function PlayClient() {
           </div>
         </div>
       )}
+
+      <WheelModal
+        isOpen={typeWheelOpen}
+        title="Vòng quay chọn THẬT / THÁCH"
+        description="Vòng quay gồm hai lựa chọn: THẬT và THÁCH."
+        countLabel="Có 2 lựa chọn đang tham gia vòng quay."
+        items={TYPE_WHEEL_ITEMS}
+        onClose={() => setTypeWheelOpen(false)}
+        onResult={(id) => { setPendingPromptType(id === "DARE" ? "DARE" : "TRUTH"); setTypeWheelOpen(false); }}
+        autoResolveResult
+      />
+
+      <WheelModal
+        isOpen={questionWheelOpen}
+        title={questionWheelType ? `Vòng quay câu ${PROMPT_TYPE_LABELS[questionWheelType]}` : "Vòng quay câu hỏi"}
+        description={`Vòng quay gồm ${questionWheelPool.length} câu ${questionWheelType ? PROMPT_TYPE_LABELS[questionWheelType] : "hợp lệ"}.`}
+        countLabel={`Có ${questionWheelPool.length} câu đang tham gia vòng quay.`}
+        items={questionWheelItems}
+        onClose={closeQuestionWheel}
+        onConfirmResult={confirmWheelPrompt}
+        renderResult={renderQuestionResult}
+        confirmLabel="CHƠI CÂU NÀY"
+      />
     </div>
   );
 }

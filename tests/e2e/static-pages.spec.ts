@@ -12,6 +12,12 @@ async function beginTwoPlayerGame(page: Page) {
   await expect(page.getByRole("heading", { name: "An" })).toBeVisible();
 }
 
+async function drawPromptNow(page: Page, type: "THẬT" | "THÁCH") {
+  await page.getByRole("button", { name: new RegExp(`^${type}`) }).click();
+  await page.getByRole("button", { name: "RÚT CÂU NGAY" }).click();
+  await expect(page.locator(".prompt-text")).toBeVisible();
+}
+
 test.beforeEach(async ({ page }) => {
   await page.goto("./");
   await page.evaluate(() => window.localStorage.clear());
@@ -51,7 +57,7 @@ test("landing and gameplay work without APIs or missing assets", async ({ page }
   await expect(page.getByRole("heading", { name: "Thiết lập ván chơi" })).toBeVisible();
 
   await beginTwoPlayerGame(page);
-  await page.getByRole("button", { name: /^THẬT/ }).click();
+  await drawPromptNow(page, "THẬT");
   const prompt = page.locator(".prompt-text");
   const firstPrompt = await prompt.textContent();
   await page.getByRole("button", { name: "Đổi câu khác" }).click();
@@ -59,7 +65,7 @@ test("landing and gameplay work without APIs or missing assets", async ({ page }
 
   await page.getByRole("button", { name: /Đã hoàn thành \+1 điểm/ }).click();
   await expect(page.getByRole("heading", { name: "Bình" })).toBeVisible();
-  await page.getByRole("button", { name: /^THÁCH/ }).click();
+  await drawPromptNow(page, "THÁCH");
   await page.getByRole("button", { name: "Bỏ lượt" }).click();
   await expect(page.getByRole("heading", { name: "An" })).toBeVisible();
 
@@ -68,7 +74,7 @@ test("landing and gameplay work without APIs or missing assets", async ({ page }
   await page.getByRole("button", { name: "Tiếp tục ván chơi" }).click();
   await expect(page.getByRole("heading", { name: "An" })).toBeVisible();
 
-  await page.getByRole("button", { name: /^THẬT/ }).click();
+  await drawPromptNow(page, "THẬT");
   const hiddenPrompt = await prompt.textContent();
   await page.getByRole("button", { name: "Ẩn câu này trên thiết bị" }).click();
   await expect(prompt).not.toHaveText(hiddenPrompt ?? "");
@@ -83,6 +89,86 @@ test("landing and gameplay work without APIs or missing assets", async ({ page }
   expect(apiRequests).toEqual([]);
   expect(failedResponses).toEqual([]);
   expect(consoleErrors).toEqual([]);
+});
+
+test("question wheel commits only after confirmation and scores the turn", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await beginTwoPlayerGame(page);
+
+  await page.getByRole("button", { name: /^THẬT/ }).click();
+  await expect(page.getByText("Bạn đã chọn", { exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "XOAY ĐỂ THÊM THÚ VỊ 🔥" })).toBeVisible();
+  const beforeSpin = await page.evaluate((key) => window.localStorage.getItem(key), GAME_KEY);
+
+  await page.getByRole("button", { name: "XOAY ĐỂ THÊM THÚ VỊ 🔥" }).click();
+  const wheelDialog = page.getByRole("dialog", { name: "Vòng quay câu THẬT" });
+  await expect(wheelDialog).toBeVisible();
+  await expect(wheelDialog.locator(".wheel-pointer")).toBeVisible();
+  const spinButton = wheelDialog.getByRole("button", { name: "QUAY", exact: true });
+  await spinButton.dblclick();
+  await expect(wheelDialog.getByRole("button", { name: "ĐANG QUAY" })).toBeDisabled();
+  await expect(wheelDialog.getByRole("heading", { name: "KẾT QUẢ VÒNG QUAY" })).toBeVisible();
+  await expect.poll(() => page.evaluate((key) => window.localStorage.getItem(key), GAME_KEY)).toBe(beforeSpin);
+
+  await wheelDialog.getByRole("button", { name: "CHƠI CÂU NÀY" }).click();
+  await expect(page.locator(".prompt-card.truth")).toBeVisible();
+  const committed = await page.evaluate((key) => JSON.parse(window.localStorage.getItem(key) ?? "null") as { currentPrompt: { id: string; type: string } | null; usedPromptIds: string[] }, GAME_KEY);
+  expect(committed.currentPrompt?.type).toBe("TRUTH");
+  expect(committed.usedPromptIds.filter((id) => id === committed.currentPrompt?.id)).toHaveLength(1);
+
+  await page.getByRole("button", { name: /Đã hoàn thành \+1 điểm/ }).click();
+  await expect(page.getByRole("heading", { name: "Bình" })).toBeVisible();
+  const scored = await page.evaluate((key) => JSON.parse(window.localStorage.getItem(key) ?? "null") as { players: Array<{ name: string; score: number }> }, GAME_KEY);
+  expect(scored.players.find((player) => player.name === "An")?.score).toBe(1);
+});
+
+test("type and question wheels can be cancelled without changing the saved game", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await beginTwoPlayerGame(page);
+  const initial = await page.evaluate((key) => window.localStorage.getItem(key), GAME_KEY);
+
+  await page.getByRole("button", { name: "XOAY CHỌN THẬT / THÁCH 🎲" }).click();
+  const typeDialog = page.getByRole("dialog", { name: "Vòng quay chọn THẬT / THÁCH" });
+  await expect(typeDialog).toBeVisible();
+  await typeDialog.getByRole("button", { name: "Đóng vòng quay" }).click();
+  await expect(typeDialog).toBeHidden();
+  await expect.poll(() => page.evaluate((key) => window.localStorage.getItem(key), GAME_KEY)).toBe(initial);
+
+  await page.getByRole("button", { name: /^THÁCH/ }).click();
+  await expect(page.locator(".selected-type-stage")).toContainText("THÁCH");
+  await page.getByRole("button", { name: "XOAY ĐỂ THÊM THÚ VỊ 🔥" }).click();
+  const questionDialog = page.getByRole("dialog", { name: "Vòng quay câu THÁCH" });
+  await questionDialog.getByRole("button", { name: "QUAY", exact: true }).click();
+  await expect(questionDialog.getByRole("heading", { name: "KẾT QUẢ VÒNG QUAY" })).toBeVisible();
+  await questionDialog.getByRole("button", { name: "Đóng", exact: true }).click();
+  await expect(questionDialog).toBeHidden();
+  await expect(page.locator(".prompt-card")).toHaveCount(0);
+  await expect(page.locator(".selected-type-stage")).toContainText("THÁCH");
+  await expect.poll(() => page.evaluate((key) => window.localStorage.getItem(key), GAME_KEY)).toBe(initial);
+
+  await page.reload();
+  await page.getByRole("button", { name: "Tiếp tục ván chơi" }).click();
+  await expect(page.getByRole("button", { name: /^THẬT/ })).toBeVisible();
+  await expect(page.locator(".prompt-card")).toHaveCount(0);
+});
+
+test("mobile question wheel has no overflow or console errors", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const errors: string[] = [];
+  page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
+  page.on("pageerror", (error) => errors.push(error.message));
+
+  await beginTwoPlayerGame(page);
+  await page.getByRole("button", { name: /^THẬT/ }).click();
+  await page.getByRole("button", { name: "XOAY ĐỂ THÊM THÚ VỊ 🔥" }).click();
+  const dialog = page.getByRole("dialog", { name: "Vòng quay câu THẬT" });
+  await expect(dialog).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+  await dialog.getByRole("button", { name: "QUAY", exact: true }).click();
+  await expect(dialog.getByRole("heading", { name: "KẾT QUẢ VÒNG QUAY" })).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+  expect(errors).toEqual([]);
 });
 
 test("theme follows the system when no preference is saved", async ({ page }) => {

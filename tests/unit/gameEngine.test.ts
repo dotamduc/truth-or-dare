@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { prompts } from "@/data/prompts";
-import { calculateTurnPoints, choosePrompt, createGameState, finishTurn, getNextPlayerIndex, replaceCurrentPrompt, shufflePlayerOrder, validatePlayerNames } from "@/features/game/domain/gameEngine";
+import { calculateTurnPoints, choosePrompt, chooseSpecificPrompt, createGameState, finishTurn, getNextPlayerIndex, preparePromptPool, replaceCurrentPrompt, shufflePlayerOrder, validatePlayerNames } from "@/features/game/domain/gameEngine";
 import { filterEligiblePrompts, selectPromptWithFallback } from "@/features/game/domain/promptSelector";
 import type { GameFilters, StaticPrompt } from "@/features/game/domain/types";
 
@@ -116,5 +116,89 @@ describe("client game state", () => {
     const replacement = replaceCurrentPrompt(state, new Set(), () => 0);
     expect(replacement.prompt).not.toBeNull();
     expect(replacement.prompt?.id).not.toBe(currentId);
+  });
+
+  it("prepares a fully filtered prompt pool without mutating state", () => {
+    const state = createGameState(["An", "Bình"], 2, "ROUND_ROBIN", { ...filters, minimumAge: 13, allowedDifficulties: ["EASY"], audiences: ["family"], categories: ["music"], allowProps: false, allowPhone: false, allowInternet: false, allowMovement: false, allowPhysicalContact: false, allowPrivate: false, allowSensitive: false });
+    const before = structuredClone(state);
+    const pool = preparePromptPool(state, "DARE", new Set());
+    expect(pool.prompts.length).toBeGreaterThan(0);
+    expect(pool.prompts.every((prompt) => prompt.type === "DARE" && prompt.minimumAge <= 13 && prompt.difficulty === "EASY" && prompt.audiences.includes("family") && prompt.categories.includes("music") && !prompt.requiresProps && !prompt.requiresPhone && !prompt.requiresInternet && !prompt.requiresMovement && !prompt.requiresPhysicalContact && !prompt.isPrivate && !prompt.isSensitive)).toBe(true);
+    expect(state).toEqual(before);
+  });
+
+  it("excludes every used prompt while unused eligible prompts remain", () => {
+    const state = createGameState(["An", "Bình"], 2, "ROUND_ROBIN", filters);
+    const initial = preparePromptPool(state, "DARE", new Set());
+    const usedId = initial.prompts[0]!.id;
+    const next = preparePromptPool({ ...state, usedPromptIds: [usedId] }, "DARE", new Set());
+    expect(next.poolReset).toBe(false);
+    expect(next.prompts.some((prompt) => prompt.id === usedId)).toBe(false);
+    expect(next.prompts.every((prompt) => prompt.type === "DARE")).toBe(true);
+  });
+
+  it("keeps elevated safety filters disabled after a pool reset", () => {
+    const restrictedFilters: GameFilters = { ...filters, allowProps: false, allowPhone: false, allowInternet: false, allowMovement: false, allowPhysicalContact: false, allowPrivate: false, allowSensitive: false };
+    const state = createGameState(["An", "Bình"], 2, "ROUND_ROBIN", restrictedFilters);
+    const initial = preparePromptPool(state, "TRUTH", new Set());
+    const reset = preparePromptPool({ ...state, usedPromptIds: initial.prompts.map((prompt) => prompt.id) }, "TRUTH", new Set());
+    expect(reset.poolReset).toBe(true);
+    expect(reset.prompts.every((prompt) => !prompt.requiresProps && !prompt.requiresPhone && !prompt.requiresInternet && !prompt.requiresMovement && !prompt.requiresPhysicalContact && !prompt.isPrivate && !prompt.isSensitive)).toBe(true);
+  });
+
+  it("excludes hidden and used prompts then resets only the exhausted eligible pool", () => {
+    const state = createGameState(["An", "Bình"], 2, "ROUND_ROBIN", filters);
+    const initial = preparePromptPool(state, "TRUTH", new Set());
+    expect(initial.prompts.length).toBeGreaterThan(1);
+    const hiddenId = initial.prompts[0]!.id;
+    const usedIds = initial.prompts.slice(1).map((prompt) => prompt.id);
+    const exhausted = { ...state, usedPromptIds: [...usedIds, "dare-easy-001"] };
+    const reset = preparePromptPool(exhausted, "TRUTH", new Set([hiddenId]));
+    expect(reset.poolReset).toBe(true);
+    expect(reset.prompts.some((prompt) => prompt.id === hiddenId)).toBe(false);
+    expect(reset.prompts.every((prompt) => prompt.type === "TRUTH" && prompt.minimumAge <= filters.minimumAge)).toBe(true);
+
+    const selected = reset.prompts[0]!;
+    const committed = chooseSpecificPrompt(exhausted, "TRUTH", selected.id, new Set([hiddenId]), true);
+    expect(committed.state.usedPromptIds).toContain("dare-easy-001");
+    expect(committed.state.usedPromptIds).toContain(selected.id);
+    expect(committed.state.usedPromptIds).not.toContain(usedIds.find((id) => id !== selected.id));
+  });
+
+  it("commits only a prompt in the prepared pool and adds its ID once", () => {
+    const state = createGameState(["An", "Bình"], 2, "ROUND_ROBIN", filters);
+    const prepared = preparePromptPool(state, "TRUTH", new Set());
+    const prompt = prepared.prompts[0]!;
+    const committed = chooseSpecificPrompt(state, "TRUTH", prompt.id, new Set(), prepared.poolReset, new Set(), new Date("2026-01-01T00:01:00.000Z"));
+    expect(committed.prompt?.id).toBe(prompt.id);
+    expect(committed.state.currentPrompt?.id).toBe(prompt.id);
+    expect(committed.state.usedPromptIds.filter((id) => id === prompt.id)).toHaveLength(1);
+    expect(committed.state.updatedAt).toBe("2026-01-01T00:01:00.000Z");
+
+    const alreadyUsed = { ...state, usedPromptIds: [prompt.id] };
+    const resetPool = preparePromptPool(alreadyUsed, "TRUTH", new Set(), new Set(prepared.prompts.slice(1).map((candidate) => candidate.id)));
+    expect(resetPool.prompts).toEqual([prompt]);
+    const repeated = chooseSpecificPrompt(alreadyUsed, "TRUTH", prompt.id, new Set(), resetPool.poolReset, new Set(prepared.prompts.slice(1).map((candidate) => candidate.id)));
+    expect(repeated.state.usedPromptIds.filter((id) => id === prompt.id)).toHaveLength(1);
+
+    const rejected = chooseSpecificPrompt(state, "TRUTH", "dare-easy-001", new Set(), prepared.poolReset);
+    expect(rejected.prompt).toBeNull();
+    expect(rejected.state).toBe(state);
+  });
+
+  it("does not mutate game state when a prepared wheel pool is abandoned", () => {
+    const state = createGameState(["An", "Bình"], 2, "ROUND_ROBIN", filters);
+    const before = structuredClone(state);
+    const prepared = preparePromptPool(state, "TRUTH", new Set());
+    expect(prepared.prompts.length).toBeGreaterThan(0);
+    expect(state).toEqual(before);
+    expect(state.currentPrompt).toBeNull();
+    expect(state.usedPromptIds).toEqual([]);
+  });
+
+  it("supports a one-prompt pool", () => {
+    const onlyPrompt = prompts.find((prompt) => prompt.type === "TRUTH")!;
+    const restricted = filterEligiblePrompts([onlyPrompt], { ...filters, playerCount: 2 }, new Set(), new Set(), "TRUTH");
+    expect(restricted).toEqual([onlyPrompt]);
   });
 });

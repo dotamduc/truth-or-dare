@@ -1,7 +1,7 @@
 import { prompts } from "@/data/prompts";
 import { normalizeVietnamesePrompt } from "@/features/prompts/services/normalize";
-import { selectPromptWithFallback } from "./promptSelector";
-import { GAME_SCHEMA_VERSION, type GameFilters, type GameState, type Player, type PromptSelectionResult, type PromptType, type SelectionMode, type TurnOutcome } from "./types";
+import { filterEligiblePrompts, selectRandomPrompt } from "./promptSelector";
+import { GAME_SCHEMA_VERSION, type GameFilters, type GameState, type Player, type PromptSelectionResult, type PromptType, type SelectionMode, type StaticPrompt, type TurnOutcome } from "./types";
 
 export interface PlayerValidationResult {
   valid: boolean;
@@ -96,9 +96,56 @@ export function createGameState(
   };
 }
 
-function resetUsedIdsForType(state: GameState, type: PromptType): string[] {
-  const idsOfType = new Set(prompts.filter((prompt) => prompt.type === type).map((prompt) => prompt.id));
-  return state.usedPromptIds.filter((id) => !idsOfType.has(id));
+function resetUsedIdsForPrompts(state: GameState, reusablePrompts: readonly StaticPrompt[]): string[] {
+  const reusableIds = new Set(reusablePrompts.map((prompt) => prompt.id));
+  return state.usedPromptIds.filter((id) => !reusableIds.has(id));
+}
+
+export interface PreparedPromptPool {
+  prompts: StaticPrompt[];
+  poolReset: boolean;
+  message?: string;
+}
+
+export function preparePromptPool(
+  state: GameState,
+  type: PromptType,
+  hiddenPromptIds: ReadonlySet<string>,
+  excludedPromptIds: ReadonlySet<string> = new Set(),
+): PreparedPromptPool {
+  if (state.gameStatus !== "ACTIVE") return { prompts: [], poolReset: false, message: "Ván chơi đã kết thúc." };
+  const options = { ...state.filters, playerCount: state.players.length };
+  const unused = filterEligiblePrompts(prompts, options, new Set(state.usedPromptIds), hiddenPromptIds, type, excludedPromptIds);
+  if (unused.length > 0) return { prompts: unused, poolReset: false };
+
+  const reusable = filterEligiblePrompts(prompts, options, new Set(), hiddenPromptIds, type, excludedPromptIds);
+  if (reusable.length === 0) return { prompts: [], poolReset: true, message: "Không còn câu phù hợp với bộ lọc hiện tại. Hãy điều chỉnh bộ lọc hoặc khôi phục câu đã ẩn." };
+  return {
+    prompts: reusable,
+    poolReset: true,
+    message: "Nhóm câu phù hợp đã dùng hết nên hệ thống bắt đầu lại nhóm này, không nới bộ lọc an toàn.",
+  };
+}
+
+export function chooseSpecificPrompt(
+  state: GameState,
+  type: PromptType,
+  promptId: string,
+  hiddenPromptIds: ReadonlySet<string>,
+  poolReset: boolean,
+  excludedPromptIds: ReadonlySet<string> = new Set(),
+  now: Date = new Date(),
+): PromptSelectionResult {
+  const prepared = preparePromptPool(state, type, hiddenPromptIds, excludedPromptIds);
+  if (prepared.prompts.length === 0) return { state, prompt: null, poolReset: prepared.poolReset, message: prepared.message };
+  if (prepared.poolReset !== poolReset) return { state, prompt: null, poolReset: prepared.poolReset, message: "Nhóm câu hợp lệ đã thay đổi. Hãy mở lại vòng quay." };
+  const selected = prepared.prompts.find((prompt) => prompt.id === promptId);
+  if (!selected) return { state, prompt: null, poolReset: prepared.poolReset, message: "Câu được chọn không còn thuộc nhóm hợp lệ." };
+
+  const usedPromptIds = prepared.poolReset ? resetUsedIdsForPrompts(state, prepared.prompts) : [...state.usedPromptIds];
+  usedPromptIds.push(selected.id);
+  const nextState = { ...state, usedPromptIds: [...new Set(usedPromptIds)], currentPrompt: selected, updatedAt: now.toISOString() };
+  return { state: nextState, prompt: selected, poolReset: prepared.poolReset, message: prepared.message };
 }
 
 export function choosePrompt(
@@ -107,22 +154,13 @@ export function choosePrompt(
   hiddenPromptIds: ReadonlySet<string>,
   random: () => number = Math.random,
   excludedPromptIds: ReadonlySet<string> = new Set(),
+  now: Date = new Date(),
 ): PromptSelectionResult {
-  if (state.gameStatus !== "ACTIVE") return { state, prompt: null, poolReset: false, message: "Ván chơi đã kết thúc." };
-  const selected = selectPromptWithFallback(
-    prompts,
-    { ...state.filters, playerCount: state.players.length },
-    new Set(state.usedPromptIds),
-    hiddenPromptIds,
-    type,
-    excludedPromptIds,
-    random,
-  );
-  if (!selected.prompt) return { state, prompt: null, poolReset: selected.poolReset, message: "Không còn câu phù hợp với bộ lọc hiện tại. Hãy điều chỉnh bộ lọc hoặc khôi phục câu đã ẩn." };
-  const usedPromptIds = selected.poolReset ? resetUsedIdsForType(state, type) : [...state.usedPromptIds];
-  usedPromptIds.push(selected.prompt.id);
-  const nextState = { ...state, usedPromptIds: [...new Set(usedPromptIds)], currentPrompt: selected.prompt, updatedAt: new Date().toISOString() };
-  return { state: nextState, prompt: selected.prompt, poolReset: selected.poolReset, message: selected.poolReset ? "Nhóm câu phù hợp đã dùng hết nên hệ thống bắt đầu lại nhóm này, không nới bộ lọc an toàn." : undefined };
+  const prepared = preparePromptPool(state, type, hiddenPromptIds, excludedPromptIds);
+  if (prepared.prompts.length === 0) return { state, prompt: null, poolReset: prepared.poolReset, message: prepared.message };
+  const selected = selectRandomPrompt(prepared.prompts, random);
+  if (!selected) return { state, prompt: null, poolReset: prepared.poolReset, message: prepared.message };
+  return chooseSpecificPrompt(state, type, selected.id, hiddenPromptIds, prepared.poolReset, excludedPromptIds, now);
 }
 
 export function replaceCurrentPrompt(state: GameState, hiddenPromptIds: ReadonlySet<string>, random: () => number = Math.random): PromptSelectionResult {
