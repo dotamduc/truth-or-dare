@@ -70,14 +70,16 @@ function makePlayer(name: string, index: number): Player {
 
 export function createGameState(
   names: string[],
-  totalRounds: number,
+  totalRounds: number | null,
   selectionMode: SelectionMode,
   filters: GameFilters,
   now: Date = new Date(),
 ): GameState {
   const validation = validatePlayerNames(names);
   if (!validation.valid) throw new Error(validation.error);
-  if (!Number.isInteger(totalRounds) || totalRounds < 1 || totalRounds > 20) throw new Error("Số vòng phải từ 1 đến 20.");
+  if (totalRounds !== null && (!Number.isInteger(totalRounds) || totalRounds < 1 || totalRounds > 999)) {
+    throw new Error("Số vòng phải từ 1 đến 999, hoặc chọn vô hạn vòng.");
+  }
   const timestamp = now.toISOString();
   return {
     schemaVersion: GAME_SCHEMA_VERSION,
@@ -181,14 +183,14 @@ export function finishTurn(state: GameState, outcome: TurnOutcome, random: () =>
     skipped: player.skipped + (outcome === "SKIPPED" ? 1 : 0),
   } : player);
   const completedTurns = state.completedTurns + 1;
-  const complete = completedTurns >= state.totalRounds * players.length;
+  const complete = state.totalRounds !== null && completedTurns >= state.totalRounds * players.length;
   const nextIndex = complete ? state.currentPlayerIndex : getNextPlayerIndex(state.currentPlayerIndex, players.length, state.selectionMode, players.map((player) => player.totalTurns), random);
   return {
     ...state,
     players,
     completedTurns,
     currentPlayerIndex: nextIndex,
-    currentRound: complete ? state.totalRounds : Math.floor(completedTurns / players.length) + 1,
+    currentRound: complete && state.totalRounds !== null ? state.totalRounds : Math.floor(completedTurns / players.length) + 1,
     currentPrompt: null,
     gameStatus: complete ? "COMPLETED" : "ACTIVE",
     updatedAt: now.toISOString(),

@@ -1,7 +1,7 @@
 "use client";
 
 import confetti from "canvas-confetti";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { audienceLabels, categoryLabels } from "@/data/prompts";
 import { choosePrompt, chooseSpecificPrompt, createGameState, endGame, finishTurn, preparePromptPool, replayGame, replaceCurrentPrompt, shufflePlayerOrder, validatePlayerNames } from "@/features/game/domain/gameEngine";
 import type { Audience, Category, Difficulty, GameFilters, GameState, PromptType, SelectionMode, StaticPrompt } from "@/features/game/domain/types";
@@ -44,6 +44,8 @@ const TYPE_WHEEL_ITEMS: WheelItem[] = [
   { id: "TRUTH", label: "THẬT", tone: "truth" },
   { id: "DARE", label: "THÁCH", tone: "dare" },
 ];
+const PRESET_ROUND_OPTIONS = [1, 3, 5, 10, 20] as const;
+type RoundOption = `${(typeof PRESET_ROUND_OPTIONS)[number]}` | "INFINITE" | "CUSTOM";
 
 function difficultyLabel(difficulty: Difficulty): string {
   return DIFFICULTIES.find((item) => item.value === difficulty)?.label ?? difficulty;
@@ -88,7 +90,8 @@ export function PlayClient() {
   const [game, setGame] = useState<GameState | null>(null);
   const [hiddenPromptIds, setHiddenPromptIds] = useState<Set<string>>(new Set());
   const [players, setPlayers] = useState(["", ""]);
-  const [totalRounds, setTotalRounds] = useState(3);
+  const [roundOption, setRoundOption] = useState<RoundOption>("3");
+  const [customRounds, setCustomRounds] = useState(25);
   const [selectionMode, setSelectionMode] = useState<SelectionMode>("ROUND_ROBIN");
   const [filters, setFilters] = useState<GameFilters>(DEFAULT_FILTERS);
   const [pendingPromptType, setPendingPromptType] = useState<PromptType | null>(null);
@@ -98,8 +101,13 @@ export function PlayClient() {
   const [questionWheelPool, setQuestionWheelPool] = useState<StaticPrompt[]>([]);
   const [questionWheelPoolReset, setQuestionWheelPoolReset] = useState(false);
   const [questionWheelExcludedIds, setQuestionWheelExcludedIds] = useState<string[]>([]);
+  const [isReplacingPrompt, setIsReplacingPrompt] = useState(false);
+  const [shuffledPrompt, setShuffledPrompt] = useState<StaticPrompt | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const promptCardRef = useRef<HTMLElement>(null);
+  const replaceIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const replaceTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const canShufflePlayers = validatePlayerNames(players).valid;
 
   const questionWheelItems = useMemo<WheelItem[]>(() => questionWheelPool.map((prompt, index) => ({
@@ -112,6 +120,11 @@ export function PlayClient() {
     setSavedGame(loadGameState());
     setHiddenPromptIds(loadHiddenPromptIds());
     setHydrated(true);
+  }, []);
+
+  useEffect(() => () => {
+    if (replaceIntervalRef.current) clearInterval(replaceIntervalRef.current);
+    if (replaceTimeoutRef.current) clearTimeout(replaceTimeoutRef.current);
   }, []);
 
   const commitGame = (next: GameState) => {
@@ -164,6 +177,7 @@ export function PlayClient() {
       return;
     }
     try {
+      const totalRounds = roundOption === "INFINITE" ? null : roundOption === "CUSTOM" ? customRounds : Number(roundOption);
       const next = createGameState(validation.normalizedNames, totalRounds, selectionMode, filters);
       setError(null);
       setNotice(null);
@@ -228,16 +242,61 @@ export function PlayClient() {
     }
   };
 
+  const firePromptConfetti = () => {
+    const card = promptCardRef.current;
+    if (!card || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const bounds = card.getBoundingClientRect();
+    const y = Math.min(0.9, Math.max(0.1, (bounds.top + bounds.height * 0.55) / window.innerHeight));
+    const leftX = Math.min(0.95, Math.max(0.05, bounds.left / window.innerWidth));
+    const rightX = Math.min(0.95, Math.max(0.05, bounds.right / window.innerWidth));
+    const common = { particleCount: 75, spread: 58, startVelocity: 48, gravity: 0.9, scalar: 1.05, disableForReducedMotion: true } as const;
+    void confetti({ ...common, angle: 58, origin: { x: leftX, y } });
+    void confetti({ ...common, angle: 122, origin: { x: rightX, y } });
+  };
+
   const replacePrompt = () => {
-    if (!game) return;
+    if (!game?.currentPrompt || isReplacingPrompt) return;
     const result = replaceCurrentPrompt(game, hiddenPromptIds);
     setNotice(result.message ?? null);
-    if (result.prompt) commitGame(result.state);
-    else setError(result.message ?? "Không còn câu khác phù hợp.");
+    if (!result.prompt) {
+      setError(result.message ?? "Không còn câu khác phù hợp.");
+      return;
+    }
+
+    setError(null);
+    const prepared = preparePromptPool(game, game.currentPrompt.type, hiddenPromptIds, new Set([game.currentPrompt.id]));
+    const shufflePool = prepared.prompts.length > 0 ? prepared.prompts : [result.prompt];
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const duration = reduceMotion ? 0 : 3000 + Math.floor(Math.random() * 1001);
+    let cursor = Math.floor(Math.random() * shufflePool.length);
+
+    setIsReplacingPrompt(true);
+    setShuffledPrompt(shufflePool[cursor] ?? result.prompt);
+
+    const finishReplacement = () => {
+      if (replaceIntervalRef.current) clearInterval(replaceIntervalRef.current);
+      replaceIntervalRef.current = null;
+      replaceTimeoutRef.current = null;
+      commitGame(result.state);
+      setShuffledPrompt(null);
+      setIsReplacingPrompt(false);
+      requestAnimationFrame(firePromptConfetti);
+    };
+
+    if (duration === 0) {
+      finishReplacement();
+      return;
+    }
+
+    replaceIntervalRef.current = setInterval(() => {
+      cursor = (cursor + 1 + Math.floor(Math.random() * Math.max(1, shufflePool.length - 1))) % shufflePool.length;
+      setShuffledPrompt(shufflePool[cursor] ?? result.prompt);
+    }, 110);
+    replaceTimeoutRef.current = setTimeout(finishReplacement, duration);
   };
 
   const completeTurn = (outcome: "COMPLETED" | "SKIPPED") => {
-    if (!game || typeWheelOpen || questionWheelOpen) return;
+    if (!game || typeWheelOpen || questionWheelOpen || isReplacingPrompt) return;
     if (outcome === "COMPLETED" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       void confetti({ particleCount: 45, spread: 60, origin: { y: 0.72 }, disableForReducedMotion: true });
     }
@@ -249,7 +308,7 @@ export function PlayClient() {
   };
 
   const hideCurrentPrompt = () => {
-    if (!game?.currentPrompt) return;
+    if (!game?.currentPrompt || isReplacingPrompt) return;
     const nextHidden = new Set(hiddenPromptIds).add(game.currentPrompt.id);
     setHiddenPromptIds(nextHidden);
     saveHiddenPromptIds(nextHidden);
@@ -271,7 +330,7 @@ export function PlayClient() {
   };
 
   const finishGame = () => {
-    if (!game || typeWheelOpen || questionWheelOpen) return;
+    if (!game || typeWheelOpen || questionWheelOpen || isReplacingPrompt) return;
     if (window.confirm("Kết thúc ván chơi và xem kết quả hiện tại?")) commitGame(endGame(game));
   };
 
@@ -302,7 +361,7 @@ export function PlayClient() {
         <div className="stack">
           {savedGame && (
             <section className="panel stack" aria-label="Ván chơi đã lưu">
-              <div><h2 className="section-title">Có một ván chơi trên thiết bị này</h2><p className="muted">{savedGame.players.length} người, vòng {savedGame.currentRound}/{savedGame.totalRounds}.</p></div>
+              <div><h2 className="section-title">Có một ván chơi trên thiết bị này</h2><p className="muted">{savedGame.players.length} người, vòng {savedGame.currentRound}{savedGame.totalRounds === null ? " (vô hạn)" : `/${savedGame.totalRounds}`}.</p></div>
               <div className="setup-actions">
                 <button type="button" className="button button-primary" onClick={() => setGame(savedGame)}>Tiếp tục ván chơi</button>
                 <button type="button" className="button button-danger" onClick={deleteSavedGame}>Xóa ván đã lưu</button>
@@ -340,10 +399,28 @@ export function PlayClient() {
             <div className="form-grid">
               <div className="field">
                 <label htmlFor="rounds">Số vòng mỗi người</label>
-                <select id="rounds" value={totalRounds} onChange={(event) => setTotalRounds(Number(event.target.value))}>
-                  {[1, 3, 5, 10, 20].map((rounds) => <option key={rounds} value={rounds}>{rounds} vòng</option>)}
+                <select id="rounds" value={roundOption} onChange={(event) => setRoundOption(event.target.value as RoundOption)}>
+                  {PRESET_ROUND_OPTIONS.map((rounds) => <option key={rounds} value={rounds}>{rounds} vòng</option>)}
+                  <option value="INFINITE">Vô hạn vòng</option>
+                  <option value="CUSTOM">Tuỳ chọn số vòng</option>
                 </select>
               </div>
+              {roundOption === "CUSTOM" && (
+                <div className="field custom-rounds-field">
+                  <label htmlFor="custom-rounds">Số vòng tuỳ chọn</label>
+                  <input
+                    id="custom-rounds"
+                    type="number"
+                    min={1}
+                    max={999}
+                    inputMode="numeric"
+                    value={customRounds}
+                    onChange={(event) => setCustomRounds(Number(event.target.value))}
+                    aria-describedby="custom-rounds-help"
+                  />
+                  <small className="field-help" id="custom-rounds-help">Nhập từ 1 đến 999 vòng mỗi người.</small>
+                </div>
+              )}
               <div className="field">
                 <label htmlFor="selection-mode">Cách chọn lượt</label>
                 <select id="selection-mode" value={selectionMode} onChange={(event) => setSelectionMode(event.target.value as SelectionMode)}>
@@ -412,8 +489,8 @@ export function PlayClient() {
   return (
     <div className="game-shell">
       <header className="game-header">
-        <span className="round-label">Vòng {game.currentRound}/{game.totalRounds}</span>
-        <button type="button" className="button button-danger button-small" onClick={finishGame} disabled={typeWheelOpen || questionWheelOpen}>Kết thúc</button>
+        <span className="round-label">Vòng {game.currentRound}{game.totalRounds === null ? " · Vô hạn" : `/${game.totalRounds}`}</span>
+        <button type="button" className="button button-danger button-small" onClick={finishGame} disabled={typeWheelOpen || questionWheelOpen || isReplacingPrompt}>Kết thúc</button>
       </header>
       <div className="current-player"><p>Lượt của</p><h1>{currentPlayer?.name}</h1></div>
       {error && <p className="error-message" role="alert">{error}</p>}
@@ -444,19 +521,23 @@ export function PlayClient() {
 
       {game.currentPrompt && (
         <div className="prompt-stage">
-          <article className={`prompt-card ${game.currentPrompt.type === "TRUTH" ? "truth" : "dare"}`}>
-            <div className="prompt-meta"><span>{PROMPT_TYPE_LABELS[game.currentPrompt.type]}</span><span>{difficultyLabel(game.currentPrompt.difficulty)}</span><span>{game.currentPrompt.minimumAge}+</span></div>
-            <p className="prompt-text">{game.currentPrompt.text}</p>
-            <PromptFlags prompt={game.currentPrompt} />
+          <article
+            ref={promptCardRef}
+            className={`prompt-card ${(shuffledPrompt ?? game.currentPrompt).type === "TRUTH" ? "truth" : "dare"}${isReplacingPrompt ? " is-shuffling" : ""}`}
+            aria-busy={isReplacingPrompt}
+          >
+            {isReplacingPrompt && <span className="shuffle-status" aria-live="polite">ĐANG XÁO CÂU…</span>}
+            <div className="prompt-meta"><span>{PROMPT_TYPE_LABELS[(shuffledPrompt ?? game.currentPrompt).type]}</span><span>{difficultyLabel((shuffledPrompt ?? game.currentPrompt).difficulty)}</span><span>{(shuffledPrompt ?? game.currentPrompt).minimumAge}+</span></div>
+            <p className="prompt-text">{(shuffledPrompt ?? game.currentPrompt).text}</p>
+            <PromptFlags prompt={shuffledPrompt ?? game.currentPrompt} />
           </article>
           <div className="prompt-actions">
-            <button type="button" className="button button-primary complete" onClick={() => completeTurn("COMPLETED")}>Đã hoàn thành +{game.currentPrompt.type === "TRUTH" ? 1 : 2} điểm</button>
-            <button type="button" className="button button-secondary" onClick={replacePrompt}>Đổi câu khác</button>
-            <button type="button" className="button button-secondary" onClick={() => openQuestionWheel(game.currentPrompt!.type, new Set([game.currentPrompt!.id]))}>XOAY LẠI 🔥</button>
-            <button type="button" className="button button-secondary" onClick={() => completeTurn("SKIPPED")}>Bỏ lượt</button>
+            <button type="button" className="button button-primary complete" disabled={isReplacingPrompt} onClick={() => completeTurn("COMPLETED")}>Đã hoàn thành +{game.currentPrompt.type === "TRUTH" ? 1 : 2} điểm</button>
+            <button type="button" className="button button-secondary" disabled={isReplacingPrompt} onClick={replacePrompt}>{isReplacingPrompt ? "Đang đổi câu…" : "Đổi câu khác"}</button>
+            <button type="button" className="button button-secondary" disabled={isReplacingPrompt} onClick={() => completeTurn("SKIPPED")}>Bỏ lượt</button>
           </div>
           <div className="local-hide">
-            <button type="button" onClick={hideCurrentPrompt}>Ẩn câu này trên thiết bị</button>
+            <button type="button" disabled={isReplacingPrompt} onClick={hideCurrentPrompt}>Ẩn câu này trên thiết bị</button>
             <span className="fine-print">Câu hỏi sẽ chỉ được ẩn trên trình duyệt này.</span>
           </div>
         </div>

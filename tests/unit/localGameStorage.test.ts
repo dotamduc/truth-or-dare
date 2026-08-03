@@ -32,6 +32,13 @@ describe("local game storage", () => {
     expect(loadGameState(storage)).toEqual(game);
   });
 
+  it("stores and restores an infinite game", () => {
+    const storage = new MemoryStorage();
+    const game = createGameState(["An", "Bình"], null, "ROUND_ROBIN", filters, new Date("2026-01-01T00:00:00.000Z"));
+    expect(saveGameState(game, storage)).toBe(true);
+    expect(loadGameState(storage)?.totalRounds).toBeNull();
+  });
+
   it("recovers from corrupted JSON without crashing", () => {
     const storage = new MemoryStorage();
     storage.setItem(GAME_STORAGE_KEY, "{broken");

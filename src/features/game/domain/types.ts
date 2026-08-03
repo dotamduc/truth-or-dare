@@ -35,7 +35,7 @@ export interface GameState {
   players: Player[];
   currentPlayerIndex: number;
   currentRound: number;
-  totalRounds: number;
+  totalRounds: number | null;
   selectionMode: SelectionMode;
   filters: GameFilters;
   usedPromptIds: string[];

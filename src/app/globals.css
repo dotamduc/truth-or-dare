@@ -207,7 +207,7 @@ button:disabled { cursor: not-allowed; opacity: 0.55; }
 .notice { border-left: 4px solid var(--accent); padding: 12px 14px; background: color-mix(in srgb, var(--accent) 10%, var(--surface)); }
 .field { display: grid; gap: 7px; }
 .field label, .field legend { font-weight: 700; font-size: 0.92rem; }
-.field input[type="text"], .field select { width: 100%; min-height: 46px; border: 1px solid var(--line); border-radius: 12px; background: var(--page); color: var(--ink); padding: 10px 12px; }
+.field input[type="text"], .field input[type="number"], .field select { width: 100%; min-height: 46px; border: 1px solid var(--line); border-radius: 12px; background: var(--page); color: var(--ink); padding: 10px 12px; }
 .field-help { color: var(--muted); font-size: 0.8rem; }
 .players-list { display: grid; gap: 10px; }
 .player-row { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; align-items: end; gap: 10px; }
@@ -240,9 +240,15 @@ button:disabled { cursor: not-allowed; opacity: 0.55; }
 .type-truth { background: var(--truth-soft); color: var(--truth); }
 .type-dare { background: var(--dare-soft); color: var(--dare); }
 .prompt-stage { display: grid; gap: 16px; margin-block: auto; padding-block: 24px; }
-.prompt-card { min-height: 300px; border: 1px solid var(--line); border-radius: 16px; padding: clamp(24px, 6vw, 44px); display: flex; flex-direction: column; justify-content: space-between; }
+.prompt-card { position: relative; min-height: 300px; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; padding: clamp(24px, 6vw, 44px); display: flex; flex-direction: column; justify-content: space-between; }
 .prompt-card.truth { background: var(--truth-soft); color: var(--truth); }
 .prompt-card.dare { background: var(--dare-soft); color: var(--dare); }
+.prompt-card.is-shuffling { border-color: currentColor; animation: prompt-card-shuffle 440ms ease-in-out infinite; }
+.prompt-card.is-shuffling::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 25%, rgb(255 255 255 / 0.34) 46%, transparent 67%); transform: translateX(-120%); animation: prompt-card-sheen 720ms ease-in-out infinite; pointer-events: none; }
+.prompt-card.is-shuffling .prompt-meta,
+.prompt-card.is-shuffling .prompt-text,
+.prompt-card.is-shuffling .prompt-flags { animation: prompt-content-swap 220ms ease-in-out infinite alternate; }
+.shuffle-status { position: absolute; z-index: 2; top: 14px; right: 14px; border: 1px solid color-mix(in srgb, currentColor 32%, transparent); border-radius: 999px; padding: 5px 9px; background: color-mix(in srgb, var(--surface) 82%, transparent); color: currentColor; font-size: 0.68rem; font-weight: 900; letter-spacing: 0.08em; box-shadow: var(--shadow-soft); }
 .prompt-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.78rem; font-weight: 780; letter-spacing: 0.06em; }
 .prompt-text { margin: 32px 0; font-size: clamp(1.45rem, 5vw, 2.4rem); line-height: 1.2; letter-spacing: -0.035em; font-weight: 760; }
 .prompt-flags { color: color-mix(in srgb, currentColor 72%, transparent); font-size: 0.82rem; }
@@ -250,6 +256,21 @@ button:disabled { cursor: not-allowed; opacity: 0.55; }
 .prompt-actions .complete { grid-column: 1 / -1; min-height: 52px; }
 .local-hide { padding: 14px; border: 1px solid var(--line); border-radius: 12px; display: grid; gap: 8px; }
 .local-hide button { justify-self: start; border: 0; padding: 0; background: none; color: var(--danger); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; font-weight: 700; }
+
+@keyframes prompt-card-shuffle {
+  0%, 100% { transform: translateX(0) rotate(0deg); box-shadow: var(--shadow-soft); }
+  35% { transform: translateX(-5px) rotate(-0.25deg); box-shadow: -10px 12px 28px color-mix(in srgb, currentColor 14%, transparent); }
+  70% { transform: translateX(5px) rotate(0.25deg); box-shadow: 10px 12px 28px color-mix(in srgb, currentColor 14%, transparent); }
+}
+
+@keyframes prompt-card-sheen {
+  to { transform: translateX(120%); }
+}
+
+@keyframes prompt-content-swap {
+  from { opacity: 0.58; filter: blur(1.5px); transform: translateY(4px); }
+  to { opacity: 1; filter: blur(0); transform: translateY(-2px); }
+}
 
 .type-stage { display: grid; gap: 10px; margin-block: auto; }
 .wheel-open-button { justify-self: center; min-width: min(100%, 300px); }

@@ -109,6 +109,20 @@ describe("client game state", () => {
     expect(state.players[1].skipped).toBe(1);
   });
 
+  it("supports custom and infinite round counts", () => {
+    const custom = createGameState(["An", "Bình"], 37, "ROUND_ROBIN", filters);
+    expect(custom.totalRounds).toBe(37);
+
+    let infinite = createGameState(["An", "Bình"], null, "ROUND_ROBIN", filters);
+    for (let turn = 0; turn < 4; turn += 1) {
+      infinite = choosePrompt(infinite, "TRUTH", new Set(), () => turn / 10).state;
+      infinite = finishTurn(infinite, "COMPLETED", () => 0);
+    }
+    expect(infinite.gameStatus).toBe("ACTIVE");
+    expect(infinite.currentRound).toBe(3);
+    expect(() => createGameState(["An", "Bình"], 1000, "ROUND_ROBIN", filters)).toThrow("1 đến 999");
+  });
+
   it("replace never returns the current prompt", () => {
     let state = createGameState(["An", "Bình"], 2, "ROUND_ROBIN", filters);
     state = choosePrompt(state, "TRUTH", new Set(), () => 0).state;

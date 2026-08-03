@@ -61,6 +61,10 @@ test("landing and gameplay work without APIs or missing assets", async ({ page }
   const prompt = page.locator(".prompt-text");
   const firstPrompt = await prompt.textContent();
   await page.getByRole("button", { name: "Đổi câu khác" }).click();
+  await expect(page.locator(".prompt-card")).toHaveAttribute("aria-busy", "true");
+  await expect(page.getByRole("button", { name: "Đang đổi câu…" })).toBeDisabled();
+  await expect(page.getByRole("button", { name: "XOAY LẠI 🔥" })).toHaveCount(0);
+  await expect(page.locator(".prompt-card")).toHaveAttribute("aria-busy", "false", { timeout: 5_500 });
   await expect(prompt).not.toHaveText(firstPrompt ?? "");
 
   await page.getByRole("button", { name: /Đã hoàn thành \+1 điểm/ }).click();
@@ -231,6 +235,31 @@ test("setup can shuffle the player order before starting", async ({ page }) => {
 
   await page.getByRole("button", { name: "Bắt đầu chơi" }).click();
   await expect(page.getByRole("heading", { name: "Bình" })).toBeVisible();
+});
+
+test("setup supports infinite and custom round counts", async ({ page }) => {
+  await page.goto("./play/");
+  const rounds = page.getByLabel("Số vòng mỗi người");
+  await expect(rounds.getByRole("option", { name: "Vô hạn vòng" })).toHaveCount(1);
+  await expect(rounds.getByRole("option", { name: "Tuỳ chọn số vòng" })).toHaveCount(1);
+
+  await page.getByLabel("Tên người chơi 1").fill("An");
+  await page.getByLabel("Tên người chơi 2").fill("Bình");
+  await rounds.selectOption("INFINITE");
+  await page.getByRole("button", { name: "Bắt đầu chơi" }).click();
+  await expect(page.getByText("Vòng 1 · Vô hạn", { exact: true })).toBeVisible();
+  const infinite = await page.evaluate((key) => JSON.parse(window.localStorage.getItem(key) ?? "null") as { totalRounds: number | null }, GAME_KEY);
+  expect(infinite.totalRounds).toBeNull();
+
+  page.once("dialog", (dialog) => dialog.accept());
+  await page.getByRole("button", { name: "Kết thúc" }).click();
+  await page.getByRole("button", { name: "Tạo ván mới" }).click();
+  await page.getByLabel("Tên người chơi 1").fill("An");
+  await page.getByLabel("Tên người chơi 2").fill("Bình");
+  await page.getByLabel("Số vòng mỗi người").selectOption("CUSTOM");
+  await page.getByLabel("Số vòng tuỳ chọn").fill("37");
+  await page.getByRole("button", { name: "Bắt đầu chơi" }).click();
+  await expect(page.getByText("Vòng 1/37", { exact: true })).toBeVisible();
 });
 
 test("responsive layouts avoid horizontal overflow", async ({ page }, testInfo) => {
