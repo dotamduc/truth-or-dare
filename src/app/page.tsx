@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import truthOrDareBanner from "@/assets/truth-or-dare-banner.webp";
 import { prompts } from "@/data/prompts";
 import { LandingResume } from "@/features/game/components/LandingResume";
 
@@ -30,8 +32,19 @@ export default function HomePage() {
           <span className="floating-emoji emoji-fire" aria-hidden="true">🔥</span>
 
           <div className="hero-copy">
-            <p className="eyebrow">TRUTH OR DARE — BẮT NHỊP CUỘC VUI</p>
-            <h1>Một thiết bị. Cả nhóm cùng chơi.</h1>
+            <p className="eyebrow">TRUTH OR DARE - BẮT NHỊP CUỘC VUI</p>
+            <h1 className="hero-banner-heading">
+              <Image
+                className="hero-banner-image"
+                src={truthOrDareBanner}
+                alt=""
+                width={1536}
+                height={512}
+                priority
+                sizes="(max-width: 767px) calc(100vw - 32px), 650px"
+              />
+              <span className="sr-only">Truth or Dare</span>
+            </h1>
             <p className="hero-lede">Chọn Thật để chia sẻ một điều bất ngờ, hoặc chọn Thách để khuấy động cả căn phòng. Một trò chơi đơn giản để mọi người gần nhau hơn.</p>
             <div className="hero-actions">
               <Link href="/play" prefetch={false} className="button button-primary button-party">Bắt đầu chơi <span aria-hidden="true">🎉</span></Link>

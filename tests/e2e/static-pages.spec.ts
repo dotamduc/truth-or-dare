@@ -43,7 +43,7 @@ test("landing and gameplay work without APIs or missing assets", async ({ page }
   page.on("pageerror", (error) => consoleErrors.push(error.message));
 
   await page.goto("./");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Một thiết bị");
+  await expect(page.getByRole("heading", { level: 1, name: "Truth or Dare" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Truth or Dare chơi như thế nào?" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Phá băng cực nhanh" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Chọn Thật" })).toBeVisible();
