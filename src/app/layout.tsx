@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { I18nProvider } from "@/features/i18n/I18nProvider";
 import { SiteFooter, SiteHeader } from "@/features/i18n/SiteChrome";
 import "./globals.css";
@@ -7,6 +8,7 @@ import "./globals.css";
 const geist = Geist({ subsets: ["latin", "latin-ext"], variable: "--font-geist", display: "swap" });
 const publicUrl = "https://dotamduc.github.io/truth-or-dare/";
 const basePath = process.env.GITHUB_PAGES === "true" ? "/truth-or-dare" : "";
+const isVercelDeployment = process.env.VERCEL === "1";
 const themeInitializationScript = `
 (() => {
   try {
@@ -73,6 +75,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <main>{children}</main>
           <SiteFooter />
         </I18nProvider>
+        {isVercelDeployment ? <Analytics /> : null}
       </body>
     </html>
   );
