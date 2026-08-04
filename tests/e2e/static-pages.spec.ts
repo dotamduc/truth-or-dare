@@ -55,6 +55,9 @@ test("language chooser appears on first visit and switches the whole site", asyn
 test("community review UI is anonymous and does not show a login gate", async ({ page }) => {
   await page.goto("./");
   await expect(page.getByRole("heading", { name: "Bạn thấy trò chơi này thế nào?" })).toBeVisible();
+  await expect(page.getByText("Tên ẨnDanh_xxxxxxxx sẽ được tạo tự động khi bạn gửi.")).toHaveCount(0);
+  await expect(page.getByText("Biệt danh và quyền sửa đánh giá được giữ trên trình duyệt này.", { exact: false })).toHaveCount(0);
+  await expect(page.getByText("Chấm sao và để lại cảm nhận mà không cần đăng ký tài khoản.", { exact: false })).toHaveCount(0);
 
   const setupNotice = page.getByText("Góc đánh giá đang được thiết lập. Vui lòng quay lại sau.");
   if (await setupNotice.isVisible()) {

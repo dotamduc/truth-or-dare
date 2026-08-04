@@ -303,7 +303,7 @@ export function PlayClient() {
     const result = replaceCurrentPrompt(game, nextHidden);
     if (result.prompt) {
       commitGame(result.state);
-      setNotice("Câu vừa rồi đã được ẩn trên trình duyệt này.");
+      setNotice("Câu vừa rồi sẽ không xuất hiện lại.");
     } else {
       const withoutPrompt = { ...game, currentPrompt: null, updatedAt: new Date().toISOString() };
       commitGame(withoutPrompt);
@@ -314,7 +314,7 @@ export function PlayClient() {
   const resetHidden = () => {
     clearHiddenPromptIds();
     setHiddenPromptIds(new Set());
-    setNotice("Đã khôi phục toàn bộ câu từng ẩn trên thiết bị này.");
+    setNotice("Đã khôi phục toàn bộ câu từng ẩn.");
   };
 
   const finishGame = () => {
@@ -329,7 +329,7 @@ export function PlayClient() {
     setPendingPromptType(null);
     setTypeWheelOpen(false);
     closeQuestionWheel();
-    setNotice("Đã xóa ván chơi lưu trên thiết bị.");
+    setNotice("Đã xóa ván chơi đã lưu.");
   };
 
   const renderQuestionResult = (item: WheelItem) => {

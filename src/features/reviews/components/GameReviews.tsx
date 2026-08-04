@@ -208,7 +208,6 @@ export function GameReviews() {
           <div className="section-heading reviews-heading-copy">
             <p className="section-kicker">{reviewCopy.kicker}</p>
             <h2 id="reviews-heading">{reviewCopy.heading}</h2>
-            <p>{reviewCopy.lede}</p>
           </div>
 
           <article className="review-summary-card" aria-label={reviewCopy.summaryLabel}>
@@ -285,15 +284,6 @@ export function GameReviews() {
                 </span>
               </label>
 
-              <div className="anonymous-identity-note">
-                <span aria-hidden="true">🕶️</span>
-                <p>
-                  {identity
-                    ? `${reviewCopy.postingAs} ${identity.displayName}`
-                    : reviewCopy.anonymousNameNote}
-                </p>
-              </div>
-
               {feedbackText ? (
                 <p className={feedbackIsError ? "error-message" : "notice"} role="status">
                   {feedbackText}
@@ -310,7 +300,6 @@ export function GameReviews() {
                   </button>
                 ) : null}
               </div>
-              <p className="fine-print">{reviewCopy.sessionNote}</p>
             </form>
 
             <div className="review-feed" aria-busy={loading}>
