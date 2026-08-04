@@ -6,6 +6,7 @@ import truthOrDareBanner from "@/assets/truth-or-dare-banner.webp";
 import { getPromptText, prompts } from "@/data/prompts";
 import { LandingResume } from "@/features/game/components/LandingResume";
 import { useI18n } from "@/features/i18n/I18nProvider";
+import { GameReviews } from "@/features/reviews/components/GameReviews";
 
 export default function HomePage() {
   const { language, copy } = useI18n();
@@ -99,6 +100,8 @@ export default function HomePage() {
           </ol>
         </div>
       </section>
+
+      <GameReviews />
     </>
   );
 }

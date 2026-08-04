@@ -52,6 +52,23 @@ test("language chooser appears on first visit and switches the whole site", asyn
   await expect(page.locator("html")).toHaveAttribute("lang", "vi");
 });
 
+test("community review UI is anonymous and does not show a login gate", async ({ page }) => {
+  await page.goto("./");
+  await expect(page.getByRole("heading", { name: "Bạn thấy trò chơi này thế nào?" })).toBeVisible();
+
+  const setupNotice = page.getByText("Góc đánh giá đang được thiết lập. Vui lòng quay lại sau.");
+  if (await setupNotice.isVisible()) {
+    await expect(setupNotice).toBeVisible();
+    return;
+  }
+
+  await expect(page.getByRole("heading", { name: /Kể một chút|Cập nhật cảm nhận/ })).toBeVisible();
+  await expect(page.getByRole("radio")).toHaveCount(5);
+  await expect(page.getByRole("textbox", { name: "Nhận xét (không bắt buộc)" })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Gửi đánh giá ẩn danh|Cập nhật đánh giá/ })).toBeVisible();
+  await expect(page.getByRole("button", { name: /đăng nhập/i })).toHaveCount(0);
+});
+
 test("landing and gameplay work without APIs or missing assets", async ({ page }) => {
   const apiRequests: string[] = [];
   const failedResponses: string[] = [];

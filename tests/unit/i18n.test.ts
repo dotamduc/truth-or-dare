@@ -18,5 +18,7 @@ describe("bilingual content", () => {
     expect(Object.keys(translations.en.game.audiences)).toEqual(Object.keys(translations.vi.game.audiences));
     expect(translations.en.home.features).toHaveLength(translations.vi.home.features.length);
     expect(translations.en.home.steps).toHaveLength(translations.vi.home.steps.length);
+    expect(Object.keys(translations.en.home.reviews)).toEqual(Object.keys(translations.vi.home.reviews));
+    expect(translations.en.privacy.sections).toHaveLength(translations.vi.privacy.sections.length);
   });
 });

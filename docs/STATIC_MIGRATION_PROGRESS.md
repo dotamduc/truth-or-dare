@@ -59,7 +59,7 @@ Không có lệnh chưa chạy nào được ghi là PASS.
 | Pure client game engine | Completed | Pure TypeScript, không import Prisma; validation, round robin, balanced random, filters, score, replace, pool reset và result đã có unit test. |
 | localStorage và hidden prompts | Completed | State schema v2 được Zod validate; dữ liệu hỏng/version sai và key v1 được reset; resume, delete và hidden prompt dùng hai key riêng. |
 | Static UI + accessibility | Completed | Landing/setup/game/result chạy trong `/play`; giao diện mobile-first, auto light/dark, focus-visible, semantic control và reduced motion. |
-| Remove backend/runtime | Completed | Đã bỏ Prisma/PostgreSQL, API/admin/auth, Docker, server middleware, migrations, staging backend và dependency tương ứng; static build chỉ còn sáu route tĩnh. |
+| Remove backend/runtime | Completed | Đã bỏ Next.js API/admin server, Prisma/PostgreSQL runtime, Docker và middleware. Static build vẫn không cần application server; tính năng đánh giá bổ sung sau này gọi Supabase trực tiếp bằng Anonymous Auth + RLS. |
 | Static tests/CI/Pages | Completed | CI và Pages workflow không còn service backend; Playwright trên `/truth-or-dare/` đạt 5 pass + 1 skip có chủ đích, không API/404/console error và không overflow ở năm viewport. |
 | Local verification | Completed | Frozen install, content audit, lint, typecheck, 19 unit tests, local build, Pages build, 5 static E2E pass + 1 skip, dependency audit và HTTP smoke cho mọi route/asset đều đạt. |
 | GitHub push/deploy | Completed | Commit `c10c9b86991adb48470dd68d8c0b2a50f874fdd4` đã push lên `main`; CI run `30487177248` và Pages run `30487177039` attempt 2 đều `success`; Pages dùng GitHub Actions workflow. |
