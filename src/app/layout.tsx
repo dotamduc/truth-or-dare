@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
-import Link from "next/link";
-import { ThemeToggle } from "@/features/theme/ThemeToggle";
+import { I18nProvider } from "@/features/i18n/I18nProvider";
+import { SiteFooter, SiteHeader } from "@/features/i18n/SiteChrome";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin", "latin-ext"], variable: "--font-geist", display: "swap" });
@@ -19,19 +19,32 @@ const themeInitializationScript = `
     document.documentElement.dataset.theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 })();`;
+const languageInitializationScript = `
+(() => {
+  try {
+    const savedLanguage = localStorage.getItem("truth-or-dare-language");
+    const language = savedLanguage === "en" ? "en" : "vi";
+    document.documentElement.lang = language;
+    document.documentElement.dataset.language = language;
+  } catch {
+    document.documentElement.lang = "vi";
+    document.documentElement.dataset.language = "vi";
+  }
+})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(publicUrl),
-  title: { default: "Thật Hay Thách", template: "%s | Thật Hay Thách" },
-  description: "Game Truth or Dare tiếng Việt dành cho bạn bè, gia đình và các buổi tụ họp.",
+  title: { default: "Truth or Dare | Thật Hay Thách", template: "%s | Truth or Dare" },
+  description: "A bilingual Vietnamese and English Truth or Dare game for friends, families, and parties.",
   alternates: { canonical: publicUrl },
   manifest: `${basePath}/site.webmanifest`,
   icons: { icon: `${basePath}/icon.svg` },
   openGraph: {
-    title: "Thật Hay Thách",
-    description: "Chọn Thật, nhận Thách và bắt nhịp cuộc vui cùng mọi người.",
+    title: "Truth or Dare | Thật Hay Thách",
+    description: "Choose Truth, take a Dare, and get the party started in Vietnamese or English.",
     type: "website",
     locale: "vi_VN",
+    alternateLocale: "en_US",
     url: publicUrl,
     siteName: "Thật Hay Thách",
   },
@@ -52,34 +65,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="vi" className={geist.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
+        <script dangerouslySetInnerHTML={{ __html: languageInitializationScript }} />
       </head>
       <body className="min-h-[100dvh] antialiased">
-        <header className="site-header">
-          <div className="shell header-inner">
-            <Link href="/" prefetch={false} className="wordmark" aria-label="Thật Hay Thách, trang chủ">
-              THẬT <span>HAY</span> THÁCH
-            </Link>
-            <div className="header-actions">
-              <nav aria-label="Điều hướng chính" className="main-nav">
-                <Link href="/guide" prefetch={false}>Luật chơi</Link>
-                <Link href="/safety" prefetch={false}>An toàn</Link>
-              </nav>
-              <ThemeToggle />
-              <Link href="/play" prefetch={false} className="nav-cta">Chơi ngay</Link>
-            </div>
-          </div>
-        </header>
-        <main>{children}</main>
-        <footer className="site-footer">
-          <div className="shell footer-inner">
-            <p>Thật Hay Thách. Chơi tại chỗ, dữ liệu ở lại trình duyệt.</p>
-            <nav aria-label="Điều hướng cuối trang">
-              <Link href="/privacy" prefetch={false}>Quyền riêng tư</Link>
-              <Link href="/safety" prefetch={false}>An toàn</Link>
-              <a href="https://github.com/dotamduc/truth-or-dare">Mã nguồn</a>
-            </nav>
-          </div>
-        </footer>
+        <I18nProvider>
+          <SiteHeader />
+          <main>{children}</main>
+          <SiteFooter />
+        </I18nProvider>
       </body>
     </html>
   );
