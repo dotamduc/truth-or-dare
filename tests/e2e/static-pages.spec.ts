@@ -3,6 +3,7 @@ import { expect, test, type Page } from "@playwright/test";
 const GAME_KEY = "truth-or-dare:game:v2";
 const HIDDEN_KEY = "truth-or-dare:hidden-prompts:v2";
 const THEME_KEY = "truth-or-dare-theme";
+const LANGUAGE_KEY = "truth-or-dare-language";
 
 async function beginTwoPlayerGame(page: Page) {
   await page.goto("./play/");
@@ -20,12 +21,36 @@ async function drawPromptNow(page: Page, type: "THẬT" | "THÁCH") {
 
 test.beforeEach(async ({ page }) => {
   await page.goto("./");
-  await page.evaluate(() => window.localStorage.clear());
+  await page.evaluate((languageKey) => {
+    window.localStorage.clear();
+    window.localStorage.setItem(languageKey, "vi");
+  }, LANGUAGE_KEY);
+  await page.reload();
 });
 
 async function expectNoHorizontalOverflow(page: Page) {
   await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 }
+
+test("language chooser appears on first visit and switches the whole site", async ({ page }) => {
+  await page.evaluate((languageKey) => window.localStorage.removeItem(languageKey), LANGUAGE_KEY);
+  await page.reload();
+
+  const chooser = page.getByRole("dialog", { name: "Chọn ngôn ngữ hiển thị" });
+  await expect(chooser).toBeVisible();
+  await expect(chooser.getByRole("heading", { name: "Chọn một ngôn ngữ / Choose a language" })).toBeVisible();
+  await chooser.getByRole("button", { name: /English/ }).click();
+
+  await expect(page.getByRole("heading", { name: "How do you play Truth or Dare?" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Play now" })).toBeVisible();
+  await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  await expect.poll(() => page.evaluate((languageKey) => window.localStorage.getItem(languageKey), LANGUAGE_KEY)).toBe("en");
+
+  await page.getByRole("button", { name: "Change language" }).click();
+  await page.getByRole("dialog", { name: "Choose display language" }).getByRole("button", { name: /Tiếng Việt/ }).click();
+  await expect(page.getByRole("heading", { name: "Truth or Dare chơi như thế nào?" })).toBeVisible();
+  await expect(page.locator("html")).toHaveAttribute("lang", "vi");
+});
 
 test("landing and gameplay work without APIs or missing assets", async ({ page }) => {
   const apiRequests: string[] = [];
