@@ -2,6 +2,7 @@
 
 import { type ReactNode, useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { WHEEL_POINTER_ANGLE, createSpinPlan, easeOutQuint, normalizeRotation } from "@/features/game/domain/wheelMath";
+import { useI18n } from "@/features/i18n/I18nProvider";
 
 export interface WheelItem {
   id: string;
@@ -133,7 +134,11 @@ function prefersReducedMotion(): boolean {
   return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-export function WheelModal({ isOpen, title, items, description, countLabel, onClose, onResult, onConfirmResult, renderResult, resultTitle = "KẾT QUẢ VÒNG QUAY", confirmLabel = "CHƠI CÂU NÀY", autoResolveResult = false }: WheelModalProps) {
+export function WheelModal({ isOpen, title, items, description, countLabel, onClose, onResult, onConfirmResult, renderResult, resultTitle, confirmLabel, autoResolveResult = false }: WheelModalProps) {
+  const { copy } = useI18n();
+  const wheelCopy = copy.wheel;
+  const localizedResultTitle = resultTitle ?? wheelCopy.resultTitle;
+  const localizedConfirmLabel = confirmLabel ?? wheelCopy.playThis;
   const dialogRef = useRef<HTMLDialogElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -172,13 +177,13 @@ export function WheelModal({ isOpen, title, items, description, countLabel, onCl
     redraw();
     isSpinningRef.current = false;
     setIsSpinning(false);
-    setLiveMessage(autoResolveResult ? "Vòng quay đã chọn kết quả." : "Vòng quay đã chọn một câu.");
+    setLiveMessage(autoResolveResult ? wheelCopy.resultSelected : wheelCopy.questionSelected);
     if (autoResolveResult) onResult?.(id);
     else {
       setSelectedId(id);
       onResult?.(id);
     }
-  }, [autoResolveResult, onResult, redraw]);
+  }, [autoResolveResult, onResult, redraw, wheelCopy.questionSelected, wheelCopy.resultSelected]);
 
   const startSpin = () => {
     if (isSpinningRef.current || items.length === 0) return;
@@ -188,7 +193,7 @@ export function WheelModal({ isOpen, title, items, description, countLabel, onCl
 
     cancelAnimation();
     setSelectedId(null);
-    setLiveMessage("Vòng quay đang chạy.");
+    setLiveMessage(wheelCopy.spinningLive);
     isSpinningRef.current = true;
     setIsSpinning(true);
 
@@ -277,25 +282,25 @@ export function WheelModal({ isOpen, title, items, description, countLabel, onCl
             <h2 id={titleId}>{title}</h2>
             <p id={descriptionId}>{description}</p>
           </div>
-          <button ref={closeButtonRef} type="button" className="wheel-close" onClick={closeSafely} disabled={isSpinning} aria-label="Đóng vòng quay">×</button>
+          <button ref={closeButtonRef} type="button" className="wheel-close" onClick={closeSafely} disabled={isSpinning} aria-label={wheelCopy.closeLabel}>×</button>
         </header>
 
         <div className="wheel-stage">
           <div className="wheel-pointer" aria-hidden="true">▼</div>
-          <canvas ref={canvasRef} className="wheel-canvas" role="img" aria-label={description}>Trình duyệt không hỗ trợ canvas. {description}</canvas>
-          <button type="button" className="wheel-spin-button" onClick={startSpin} disabled={isSpinning || items.length === 0}>{isSpinning ? "ĐANG QUAY" : "QUAY"}</button>
+          <canvas ref={canvasRef} className="wheel-canvas" role="img" aria-label={description}>{wheelCopy.noCanvas} {description}</canvas>
+          <button type="button" className="wheel-spin-button" onClick={startSpin} disabled={isSpinning || items.length === 0}>{isSpinning ? wheelCopy.spinning : wheelCopy.spin}</button>
         </div>
-        <p className="wheel-count">{countLabel ?? `Có ${items.length} mục đang tham gia vòng quay.`}</p>
+        <p className="wheel-count">{countLabel ?? `${wheelCopy.itemsPrefix} ${items.length} ${wheelCopy.itemsSuffix}`}</p>
         <p className="sr-only" aria-live="polite">{liveMessage}</p>
 
         {selectedItem && !autoResolveResult && (
           <section className="wheel-result" aria-labelledby={resultTitleId} aria-live="polite">
-            <h3 id={resultTitleId}>{resultTitle}</h3>
+            <h3 id={resultTitleId}>{localizedResultTitle}</h3>
             {renderResult ? renderResult(selectedItem) : <p>{selectedItem.label}</p>}
             <div className="wheel-actions">
-              {onConfirmResult && <button type="button" className="button button-primary" onClick={() => onConfirmResult(selectedItem.id)}>{confirmLabel}</button>}
-              <button type="button" className="button button-secondary" onClick={startSpin}>QUAY LẠI</button>
-              <button type="button" className="button button-secondary" onClick={closeSafely}>Đóng</button>
+              {onConfirmResult && <button type="button" className="button button-primary" onClick={() => onConfirmResult(selectedItem.id)}>{localizedConfirmLabel}</button>}
+              <button type="button" className="button button-secondary" onClick={startSpin}>{wheelCopy.spinAgain}</button>
+              <button type="button" className="button button-secondary" onClick={closeSafely}>{wheelCopy.close}</button>
             </div>
           </section>
         )}

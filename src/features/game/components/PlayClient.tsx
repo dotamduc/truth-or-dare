@@ -2,31 +2,15 @@
 
 import confetti from "canvas-confetti";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { audienceLabels, categoryLabels } from "@/data/prompts";
+import { getPromptText } from "@/data/prompts";
 import { choosePrompt, chooseSpecificPrompt, createGameState, endGame, finishTurn, preparePromptPool, replayGame, replaceCurrentPrompt, shufflePlayerOrder, validatePlayerNames } from "@/features/game/domain/gameEngine";
 import type { Audience, Category, Difficulty, GameFilters, GameState, PromptType, SelectionMode, StaticPrompt } from "@/features/game/domain/types";
 import { clearGameState, clearHiddenPromptIds, loadGameState, loadHiddenPromptIds, saveGameState, saveHiddenPromptIds } from "@/features/game/persistence/localGameStorage";
+import { useI18n } from "@/features/i18n/I18nProvider";
+import { localizeGameMessage } from "@/features/i18n/translations";
 import { WheelModal, type WheelItem } from "./WheelModal";
 
-const DIFFICULTIES: Array<{ value: Difficulty; label: string }> = [
-  { value: "EASY", label: "Nhẹ nhàng" },
-  { value: "MEDIUM", label: "Vừa sức" },
-  { value: "BOLD", label: "Táo bạo" },
-  { value: "HARD", label: "Khó" },
-];
-const PROMPT_TYPE_LABELS: Record<PromptType, string> = { TRUTH: "THẬT", DARE: "THÁCH" };
-const AUDIENCES = Object.keys(audienceLabels) as Audience[];
-const CATEGORIES = Object.keys(categoryLabels) as Category[];
 type SafetyKey = "allowProps" | "allowPhone" | "allowInternet" | "allowMovement" | "allowPhysicalContact" | "allowPrivate" | "allowSensitive";
-const SAFETY_OPTIONS: Array<{ key: SafetyKey; label: string; help: string }> = [
-  { key: "allowProps", label: "Đạo cụ", help: "Giấy, bút, sách hoặc đồ vật an toàn." },
-  { key: "allowPhone", label: "Điện thoại", help: "Cho phép câu cần dùng điện thoại." },
-  { key: "allowInternet", label: "Internet", help: "Cho phép câu cần kết nối mạng." },
-  { key: "allowMovement", label: "Vận động nhẹ", help: "Động tác tại chỗ, luôn có quyền dừng." },
-  { key: "allowPhysicalContact", label: "Tiếp xúc cơ thể", help: "Chỉ khi từng người liên quan đồng ý." },
-  { key: "allowPrivate", label: "Nội dung riêng tư", help: "Câu hỏi cá nhân nhưng không yêu cầu dữ liệu nhạy cảm." },
-  { key: "allowSensitive", label: "Chủ đề nhạy cảm", help: "Câu hỏi cần cân nhắc cảm xúc của người chơi." },
-];
 const DEFAULT_FILTERS: GameFilters = {
   minimumAge: 13,
   allowedDifficulties: ["EASY", "MEDIUM"],
@@ -40,51 +24,55 @@ const DEFAULT_FILTERS: GameFilters = {
   allowPrivate: false,
   allowSensitive: false,
 };
-const TYPE_WHEEL_ITEMS: WheelItem[] = [
-  { id: "TRUTH", label: "THẬT", tone: "truth" },
-  { id: "DARE", label: "THÁCH", tone: "dare" },
-];
 const PRESET_ROUND_OPTIONS = [1, 3, 5, 10, 20] as const;
 type RoundOption = `${(typeof PRESET_ROUND_OPTIONS)[number]}` | "INFINITE" | "CUSTOM";
 
-function difficultyLabel(difficulty: Difficulty): string {
-  return DIFFICULTIES.find((item) => item.value === difficulty)?.label ?? difficulty;
-}
-
-function getPromptFlagLabels(prompt: StaticPrompt): string[] {
+function getPromptFlagLabels(prompt: StaticPrompt, flags: ReturnType<typeof useI18n>["copy"]["game"]["flags"]): string[] {
   return [
-    prompt.requiresProps && "Cần đạo cụ",
-    prompt.requiresPhone && "Cần điện thoại",
-    prompt.requiresInternet && "Cần Internet",
-    prompt.requiresMovement && "Có vận động",
-    prompt.requiresPhysicalContact && "Cần đồng thuận tiếp xúc",
-    prompt.requiresAnotherPlayer && "Cần người cùng chơi",
-    prompt.isPrivate && "Riêng tư",
-    prompt.isSensitive && "Nhạy cảm",
+    prompt.requiresProps && flags.props,
+    prompt.requiresPhone && flags.phone,
+    prompt.requiresInternet && flags.internet,
+    prompt.requiresMovement && flags.movement,
+    prompt.requiresPhysicalContact && flags.contact,
+    prompt.requiresAnotherPlayer && flags.another,
+    prompt.isPrivate && flags.private,
+    prompt.isSensitive && flags.sensitive,
   ].filter((label): label is string => Boolean(label));
 }
 
 function PromptFlags({ prompt }: { prompt: StaticPrompt }) {
-  const labels = getPromptFlagLabels(prompt);
-  return <p className="prompt-flags">{labels.length > 0 ? labels.join(" / ") : "Không cần đạo cụ hoặc quyền bổ sung"}</p>;
+  const { copy } = useI18n();
+  const labels = getPromptFlagLabels(prompt, copy.game.flags);
+  return <p className="prompt-flags">{labels.length > 0 ? labels.join(" / ") : copy.game.flags.none}</p>;
 }
 
 function PromptResultDetails({ prompt }: { prompt: StaticPrompt }) {
-  const labels = getPromptFlagLabels(prompt);
+  const { language, copy } = useI18n();
+  const labels = getPromptFlagLabels(prompt, copy.game.flags);
   return (
     <div className="wheel-result-prompt">
-      <p className={`wheel-result-badge ${prompt.type === "TRUTH" ? "truth" : "dare"}`}>{PROMPT_TYPE_LABELS[prompt.type]}</p>
-      <p className="wheel-result-text">{prompt.text}</p>
+      <p className={`wheel-result-badge ${prompt.type === "TRUTH" ? "truth" : "dare"}`}>{copy.game.promptTypes[prompt.type]}</p>
+      <p className="wheel-result-text">{getPromptText(prompt, language)}</p>
       <dl className="wheel-result-meta">
-        <div><dt>Mức độ</dt><dd>{difficultyLabel(prompt.difficulty)}</dd></div>
-        <div><dt>Tuổi tối thiểu</dt><dd>{prompt.minimumAge}+</dd></div>
+        <div><dt>{copy.game.metaDifficulty}</dt><dd>{copy.game.difficulties[prompt.difficulty]}</dd></div>
+        <div><dt>{copy.game.metaAge}</dt><dd>{prompt.minimumAge}+</dd></div>
       </dl>
-      <p className="prompt-flags">{labels.length > 0 ? labels.join(" / ") : "Không cần đạo cụ hoặc quyền bổ sung"}</p>
+      <p className="prompt-flags">{labels.length > 0 ? labels.join(" / ") : copy.game.flags.none}</p>
     </div>
   );
 }
 
 export function PlayClient() {
+  const { language, copy } = useI18n();
+  const gameCopy = copy.game;
+  const difficulties = Object.entries(gameCopy.difficulties).map(([value, label]) => ({ value: value as Difficulty, label }));
+  const audiences = Object.keys(gameCopy.audiences) as Audience[];
+  const categories = Object.keys(gameCopy.categories) as Category[];
+  const safetyOptions = gameCopy.safetyOptions as Array<{ key: SafetyKey; label: string; help: string }>;
+  const typeWheelItems: WheelItem[] = [
+    { id: "TRUTH", label: gameCopy.promptTypes.TRUTH, tone: "truth" },
+    { id: "DARE", label: gameCopy.promptTypes.DARE, tone: "dare" },
+  ];
   const [hydrated, setHydrated] = useState(false);
   const [savedGame, setSavedGame] = useState<GameState | null>(null);
   const [game, setGame] = useState<GameState | null>(null);
@@ -112,9 +100,9 @@ export function PlayClient() {
 
   const questionWheelItems = useMemo<WheelItem[]>(() => questionWheelPool.map((prompt, index) => ({
     id: prompt.id,
-    label: questionWheelPool.length <= 24 ? `${PROMPT_TYPE_LABELS[prompt.type]} ${index + 1}` : String(index + 1),
+    label: questionWheelPool.length <= 24 ? `${gameCopy.promptTypes[prompt.type]} ${index + 1}` : String(index + 1),
     tone: prompt.type === "TRUTH" ? "truth" : "dare",
-  })), [questionWheelPool]);
+  })), [gameCopy.promptTypes, questionWheelPool]);
 
   useEffect(() => {
     setSavedGame(loadGameState());
@@ -331,7 +319,7 @@ export function PlayClient() {
 
   const finishGame = () => {
     if (!game || typeWheelOpen || questionWheelOpen || isReplacingPrompt) return;
-    if (window.confirm("Kết thúc ván chơi và xem kết quả hiện tại?")) commitGame(endGame(game));
+    if (window.confirm(gameCopy.finishConfirm)) commitGame(endGame(game));
   };
 
   const deleteSavedGame = () => {
@@ -346,68 +334,68 @@ export function PlayClient() {
 
   const renderQuestionResult = (item: WheelItem) => {
     const prompt = questionWheelPool.find((candidate) => candidate.id === item.id);
-    return prompt ? <PromptResultDetails prompt={prompt} /> : <p>Không tìm thấy câu đã chọn.</p>;
+    return prompt ? <PromptResultDetails prompt={prompt} /> : <p>{gameCopy.missingQuestion}</p>;
   };
 
   if (!hydrated) {
-    return <div className="page-shell"><div className="panel" aria-live="polite">Đang đọc dữ liệu trên thiết bị...</div></div>;
+    return <div className="page-shell"><div className="panel" aria-live="polite">{gameCopy.loading}</div></div>;
   }
 
   if (!game) {
     return (
       <div className="page-shell">
-        <h1 className="page-title">Thiết lập ván chơi</h1>
-        <p className="page-lede">Nhập 2-10 người, chọn số vòng và giữ các quyền bổ sung ở trạng thái tắt nếu nhóm chưa đồng ý.</p>
+        <h1 className="page-title">{gameCopy.setupTitle}</h1>
+        <p className="page-lede">{gameCopy.setupLede}</p>
         <div className="stack">
           {savedGame && (
-            <section className="panel stack" aria-label="Ván chơi đã lưu">
-              <div><h2 className="section-title">Có một ván chơi trên thiết bị này</h2><p className="muted">{savedGame.players.length} người, vòng {savedGame.currentRound}{savedGame.totalRounds === null ? " (vô hạn)" : `/${savedGame.totalRounds}`}.</p></div>
+            <section className="panel stack" aria-label={gameCopy.savedAria}>
+              <div><h2 className="section-title">{gameCopy.savedTitle}</h2><p className="muted">{savedGame.players.length} {gameCopy.people}, {gameCopy.roundLower} {savedGame.currentRound}{savedGame.totalRounds === null ? ` (${gameCopy.infiniteLower})` : `/${savedGame.totalRounds}`}.</p></div>
               <div className="setup-actions">
-                <button type="button" className="button button-primary" onClick={() => setGame(savedGame)}>Tiếp tục ván chơi</button>
-                <button type="button" className="button button-danger" onClick={deleteSavedGame}>Xóa ván đã lưu</button>
+                <button type="button" className="button button-primary" onClick={() => setGame(savedGame)}>{gameCopy.continueGame}</button>
+                <button type="button" className="button button-danger" onClick={deleteSavedGame}>{gameCopy.deleteSaved}</button>
               </div>
             </section>
           )}
-          {error && <p className="error-message" role="alert">{error}</p>}
-          {notice && <p className="notice" aria-live="polite">{notice}</p>}
+          {error && <p className="error-message" role="alert">{localizeGameMessage(error, language)}</p>}
+          {notice && <p className="notice" aria-live="polite">{localizeGameMessage(notice, language)}</p>}
           <section className="panel stack">
             <div>
-              <h2 className="section-title">Người chơi</h2>
-              <p className="fine-print">Tên dài tối đa 24 ký tự và không trùng sau khi bỏ khoảng trắng, không phân biệt hoa thường.</p>
+              <h2 className="section-title">{gameCopy.playersTitle}</h2>
+              <p className="fine-print">{gameCopy.playerHelp}</p>
             </div>
             <div className="players-list">
               {players.map((name, index) => (
                 <div className="player-row" key={index}>
                   <span className="player-number" aria-hidden="true">{index + 1}</span>
                   <div className="field">
-                    <label htmlFor={`player-${index}`}>Tên người chơi {index + 1}</label>
+                    <label htmlFor={`player-${index}`}>{gameCopy.playerName} {index + 1}</label>
                     <input id={`player-${index}`} type="text" maxLength={24} autoComplete="off" value={name} onChange={(event) => setPlayers((current) => current.map((item, itemIndex) => itemIndex === index ? event.target.value : item))} />
                   </div>
-                  <button type="button" className="icon-button" aria-label={`Xóa người chơi ${index + 1}`} disabled={players.length <= 2} onClick={() => setPlayers((current) => current.filter((_, itemIndex) => itemIndex !== index))}>Xóa</button>
+                  <button type="button" className="icon-button" aria-label={`${gameCopy.removePlayer} ${index + 1}`} disabled={players.length <= 2} onClick={() => setPlayers((current) => current.filter((_, itemIndex) => itemIndex !== index))}>{gameCopy.remove}</button>
                 </div>
               ))}
             </div>
             <div className="player-list-actions">
-              <button type="button" className="button button-secondary button-small" disabled={players.length >= 10} onClick={() => setPlayers((current) => [...current, ""])}>Thêm người chơi</button>
-              <button type="button" className="button button-secondary button-small" disabled={!canShufflePlayers} aria-describedby="shuffle-player-help" onClick={shuffleSetupPlayers}>Xáo trộn thứ tự</button>
+              <button type="button" className="button button-secondary button-small" disabled={players.length >= 10} onClick={() => setPlayers((current) => [...current, ""])}>{gameCopy.addPlayer}</button>
+              <button type="button" className="button button-secondary button-small" disabled={!canShufflePlayers} aria-describedby="shuffle-player-help" onClick={shuffleSetupPlayers}>{gameCopy.shufflePlayers}</button>
             </div>
-            <p className="fine-print" id="shuffle-player-help">Nhập đủ tên hợp lệ để đổi ngẫu nhiên thứ tự lượt đầu tiên.</p>
+            <p className="fine-print" id="shuffle-player-help">{gameCopy.shuffleHelp}</p>
           </section>
 
           <section className="panel stack">
-            <h2 className="section-title">Nhịp chơi</h2>
+            <h2 className="section-title">{gameCopy.paceTitle}</h2>
             <div className="form-grid">
               <div className="field">
-                <label htmlFor="rounds">Số vòng mỗi người</label>
+                <label htmlFor="rounds">{gameCopy.roundsPerPlayer}</label>
                 <select id="rounds" value={roundOption} onChange={(event) => setRoundOption(event.target.value as RoundOption)}>
-                  {PRESET_ROUND_OPTIONS.map((rounds) => <option key={rounds} value={rounds}>{rounds} vòng</option>)}
-                  <option value="INFINITE">Vô hạn vòng</option>
-                  <option value="CUSTOM">Tuỳ chọn số vòng</option>
+                  {PRESET_ROUND_OPTIONS.map((rounds) => <option key={rounds} value={rounds}>{rounds} {gameCopy.roundsUnit}</option>)}
+                  <option value="INFINITE">{gameCopy.infiniteRounds}</option>
+                  <option value="CUSTOM">{gameCopy.customRounds}</option>
                 </select>
               </div>
               {roundOption === "CUSTOM" && (
                 <div className="field custom-rounds-field">
-                  <label htmlFor="custom-rounds">Số vòng tuỳ chọn</label>
+                  <label htmlFor="custom-rounds">{gameCopy.customRoundsLabel}</label>
                   <input
                     id="custom-rounds"
                     type="number"
@@ -418,50 +406,50 @@ export function PlayClient() {
                     onChange={(event) => setCustomRounds(Number(event.target.value))}
                     aria-describedby="custom-rounds-help"
                   />
-                  <small className="field-help" id="custom-rounds-help">Nhập từ 1 đến 999 vòng mỗi người.</small>
+                  <small className="field-help" id="custom-rounds-help">{gameCopy.customRoundsHelp}</small>
                 </div>
               )}
               <div className="field">
-                <label htmlFor="selection-mode">Cách chọn lượt</label>
+                <label htmlFor="selection-mode">{gameCopy.selectionMode}</label>
                 <select id="selection-mode" value={selectionMode} onChange={(event) => setSelectionMode(event.target.value as SelectionMode)}>
-                  <option value="ROUND_ROBIN">Lần lượt theo vòng</option>
-                  <option value="BALANCED_RANDOM">Ngẫu nhiên cân bằng</option>
+                  <option value="ROUND_ROBIN">{gameCopy.roundRobin}</option>
+                  <option value="BALANCED_RANDOM">{gameCopy.balancedRandom}</option>
                 </select>
               </div>
               <div className="field">
-                <label htmlFor="minimum-age">Độ tuổi nhỏ nhất</label>
+                <label htmlFor="minimum-age">{gameCopy.minimumAge}</label>
                 <select id="minimum-age" value={filters.minimumAge} onChange={(event) => setFilters((current) => ({ ...current, minimumAge: Number(event.target.value) as 13 | 16 | 18 }))}>
                   <option value={13}>13+</option><option value={16}>16+</option><option value={18}>18+</option>
                 </select>
               </div>
             </div>
             <fieldset className="field">
-              <legend>Mức độ</legend>
+              <legend>{gameCopy.difficulty}</legend>
               <div className="choice-grid">
-                {DIFFICULTIES.map((difficulty) => <label className="check-choice" key={difficulty.value}><input type="checkbox" checked={filters.allowedDifficulties.includes(difficulty.value)} onChange={() => toggleDifficulty(difficulty.value)} /><span>{difficulty.label}</span></label>)}
+                {difficulties.map((difficulty) => <label className="check-choice" key={difficulty.value}><input type="checkbox" checked={filters.allowedDifficulties.includes(difficulty.value)} onChange={() => toggleDifficulty(difficulty.value)} /><span>{difficulty.label}</span></label>)}
               </div>
             </fieldset>
 
             <details className="filter-details">
-              <summary>Bộ lọc nội dung và an toàn</summary>
+              <summary>{gameCopy.filtersSummary}</summary>
               <div className="filter-content">
                 <fieldset className="field">
-                  <legend>Nhóm người chơi</legend>
-                  <div className="choice-grid">{AUDIENCES.map((audience) => <label className="check-choice" key={audience}><input type="checkbox" checked={filters.audiences.includes(audience)} onChange={() => toggleAudience(audience)} /><span>{audienceLabels[audience]}</span></label>)}</div>
+                  <legend>{gameCopy.audienceLegend}</legend>
+                  <div className="choice-grid">{audiences.map((audience) => <label className="check-choice" key={audience}><input type="checkbox" checked={filters.audiences.includes(audience)} onChange={() => toggleAudience(audience)} /><span>{gameCopy.audiences[audience]}</span></label>)}</div>
                 </fieldset>
                 <fieldset className="field">
-                  <legend>Chủ đề, để trống nghĩa là chọn tất cả</legend>
-                  <div className="choice-grid">{CATEGORIES.map((category) => <label className="check-choice" key={category}><input type="checkbox" checked={filters.categories.includes(category)} onChange={() => toggleCategory(category)} /><span>{categoryLabels[category]}</span></label>)}</div>
+                  <legend>{gameCopy.categoryLegend}</legend>
+                  <div className="choice-grid">{categories.map((category) => <label className="check-choice" key={category}><input type="checkbox" checked={filters.categories.includes(category)} onChange={() => toggleCategory(category)} /><span>{gameCopy.categories[category]}</span></label>)}</div>
                 </fieldset>
                 <fieldset className="field">
-                  <legend>Quyền bổ sung, mặc định tắt</legend>
-                  <div className="choice-grid">{SAFETY_OPTIONS.map((option) => <label className="check-choice" key={option.key}><input type="checkbox" checked={filters[option.key]} onChange={(event) => setFilters((current) => ({ ...current, [option.key]: event.target.checked }))} /><span><strong>{option.label}</strong><small className="field-help">{option.help}</small></span></label>)}</div>
+                  <legend>{gameCopy.permissionsLegend}</legend>
+                  <div className="choice-grid">{safetyOptions.map((option) => <label className="check-choice" key={option.key}><input type="checkbox" checked={filters[option.key]} onChange={(event) => setFilters((current) => ({ ...current, [option.key]: event.target.checked }))} /><span><strong>{option.label}</strong><small className="field-help">{option.help}</small></span></label>)}</div>
                 </fieldset>
               </div>
             </details>
             <div className="setup-actions">
-              <button type="button" className="button button-primary" onClick={startGame}>Bắt đầu chơi</button>
-              {hiddenPromptIds.size > 0 && <button type="button" className="button button-secondary" onClick={resetHidden}>Khôi phục {hiddenPromptIds.size} câu đã ẩn</button>}
+              <button type="button" className="button button-primary" onClick={startGame}>{gameCopy.startGame}</button>
+              {hiddenPromptIds.size > 0 && <button type="button" className="button button-secondary" onClick={resetHidden}>{gameCopy.restoreHidden} {hiddenPromptIds.size} {gameCopy.hiddenQuestions}</button>}
             </div>
           </section>
         </div>
@@ -470,15 +458,15 @@ export function PlayClient() {
   }
 
   if (game.gameStatus === "COMPLETED") {
-    const ranked = [...game.players].sort((left, right) => right.score - left.score || left.name.localeCompare(right.name, "vi"));
+    const ranked = [...game.players].sort((left, right) => right.score - left.score || left.name.localeCompare(right.name, language));
     return (
       <div className="page-shell">
         <section className="panel">
-          <header className="result-header"><p className="eyebrow">Kết quả</p><h1>Ván chơi đã khép lại.</h1><p className="muted">{game.completedTurns} lượt đã được ghi nhận trên thiết bị này.</p></header>
-          <ol className="leaderboard">{ranked.map((player, index) => <li key={player.id}><span className="rank">{index + 1}</span><div><strong>{player.name}</strong><div className="fine-print">{player.completedTruths} Thật / {player.completedDares} Thách / {player.skipped} bỏ lượt</div></div><span className="score">{player.score} điểm</span></li>)}</ol>
+          <header className="result-header"><p className="eyebrow">{gameCopy.results}</p><h1>{gameCopy.gameClosed}</h1><p className="muted">{game.completedTurns} {gameCopy.turnsRecorded}</p></header>
+          <ol className="leaderboard">{ranked.map((player, index) => <li key={player.id}><span className="rank">{index + 1}</span><div><strong>{player.name}</strong><div className="fine-print">{player.completedTruths} {gameCopy.truthShort} / {player.completedDares} {gameCopy.dareShort} / {player.skipped} {gameCopy.skippedShort}</div></div><span className="score">{player.score} {gameCopy.points}</span></li>)}</ol>
           <div className="result-actions">
-            <button type="button" className="button button-primary" onClick={() => commitGame(replayGame(game))}>Chơi lại cùng nhóm</button>
-            <button type="button" className="button button-secondary" onClick={deleteSavedGame}>Tạo ván mới</button>
+            <button type="button" className="button button-primary" onClick={() => commitGame(replayGame(game))}>{gameCopy.replay}</button>
+            <button type="button" className="button button-secondary" onClick={deleteSavedGame}>{gameCopy.newGame}</button>
           </div>
         </section>
       </div>
@@ -489,32 +477,32 @@ export function PlayClient() {
   return (
     <div className="game-shell">
       <header className="game-header">
-        <span className="round-label">Vòng {game.currentRound}{game.totalRounds === null ? " · Vô hạn" : `/${game.totalRounds}`}</span>
-        <button type="button" className="button button-danger button-small" onClick={finishGame} disabled={typeWheelOpen || questionWheelOpen || isReplacingPrompt}>Kết thúc</button>
+        <span className="round-label">{gameCopy.round} {game.currentRound}{game.totalRounds === null ? ` · ${gameCopy.infinite}` : `/${game.totalRounds}`}</span>
+        <button type="button" className="button button-danger button-small" onClick={finishGame} disabled={typeWheelOpen || questionWheelOpen || isReplacingPrompt}>{gameCopy.finish}</button>
       </header>
-      <div className="current-player"><p>Lượt của</p><h1>{currentPlayer?.name}</h1></div>
-      {error && <p className="error-message" role="alert">{error}</p>}
-      {notice && <p className="notice" aria-live="polite">{notice}</p>}
+      <div className="current-player"><p>{gameCopy.playersTurn}</p><h1>{currentPlayer?.name}</h1></div>
+      {error && <p className="error-message" role="alert">{localizeGameMessage(error, language)}</p>}
+      {notice && <p className="notice" aria-live="polite">{localizeGameMessage(notice, language)}</p>}
 
       {!game.currentPrompt && !pendingPromptType && (
         <div className="type-stage">
           <div className="type-grid">
-            <button type="button" className="type-button type-truth" onClick={() => selectType("TRUTH")}><strong>THẬT</strong><span>Trả lời thành thật, hoàn thành được 1 điểm</span></button>
-            <button type="button" className="type-button type-dare" onClick={() => selectType("DARE")}><strong>THÁCH</strong><span>Thực hiện thử thách, hoàn thành được 2 điểm</span></button>
+            <button type="button" className="type-button type-truth" onClick={() => selectType("TRUTH")}><strong>{gameCopy.promptTypes.TRUTH}</strong><span>{gameCopy.truthDescription}</span></button>
+            <button type="button" className="type-button type-dare" onClick={() => selectType("DARE")}><strong>{gameCopy.promptTypes.DARE}</strong><span>{gameCopy.dareDescription}</span></button>
           </div>
-          <button type="button" className="button button-secondary wheel-open-button" onClick={() => setTypeWheelOpen(true)}>XOAY CHỌN THẬT / THÁCH 🎲</button>
+          <button type="button" className="button button-secondary wheel-open-button" onClick={() => setTypeWheelOpen(true)}>{gameCopy.spinType}</button>
         </div>
       )}
 
       {!game.currentPrompt && pendingPromptType && (
-        <section className={`selected-type-stage ${pendingPromptType === "TRUTH" ? "truth" : "dare"}`} aria-label="Chọn cách rút câu">
-          <p className="eyebrow">Bạn đã chọn</p>
-          <h2>{PROMPT_TYPE_LABELS[pendingPromptType]}</h2>
-          <p>{pendingPromptType === "TRUTH" ? "Sẵn sàng trả lời thật lòng chưa?" : "Đến lúc khuấy động căn phòng rồi đó!"}</p>
+        <section className={`selected-type-stage ${pendingPromptType === "TRUTH" ? "truth" : "dare"}`} aria-label={gameCopy.drawChoiceAria}>
+          <p className="eyebrow">{gameCopy.chosen}</p>
+          <h2>{gameCopy.promptTypes[pendingPromptType]}</h2>
+          <p>{pendingPromptType === "TRUTH" ? gameCopy.truthReady : gameCopy.dareReady}</p>
           <div className="selected-type-actions">
-            <button type="button" className="button button-primary" onClick={drawPromptNow}>RÚT CÂU NGAY</button>
-            <button type="button" className="button button-secondary" onClick={() => openQuestionWheel(pendingPromptType)}>XOAY ĐỂ THÊM THÚ VỊ 🔥</button>
-            <button type="button" className="button button-secondary" onClick={() => setPendingPromptType(null)}>Chọn lại</button>
+            <button type="button" className="button button-primary" onClick={drawPromptNow}>{gameCopy.drawNow}</button>
+            <button type="button" className="button button-secondary" onClick={() => openQuestionWheel(pendingPromptType)}>{gameCopy.spinForFun}</button>
+            <button type="button" className="button button-secondary" onClick={() => setPendingPromptType(null)}>{gameCopy.chooseAgain}</button>
           </div>
         </section>
       )}
@@ -526,29 +514,29 @@ export function PlayClient() {
             className={`prompt-card ${(shuffledPrompt ?? game.currentPrompt).type === "TRUTH" ? "truth" : "dare"}${isReplacingPrompt ? " is-shuffling" : ""}`}
             aria-busy={isReplacingPrompt}
           >
-            {isReplacingPrompt && <span className="shuffle-status" aria-live="polite">ĐANG XÁO CÂU…</span>}
-            <div className="prompt-meta"><span>{PROMPT_TYPE_LABELS[(shuffledPrompt ?? game.currentPrompt).type]}</span><span>{difficultyLabel((shuffledPrompt ?? game.currentPrompt).difficulty)}</span><span>{(shuffledPrompt ?? game.currentPrompt).minimumAge}+</span></div>
-            <p className="prompt-text">{(shuffledPrompt ?? game.currentPrompt).text}</p>
+            {isReplacingPrompt && <span className="shuffle-status" aria-live="polite">{gameCopy.shuffling}</span>}
+            <div className="prompt-meta"><span>{gameCopy.promptTypes[(shuffledPrompt ?? game.currentPrompt).type]}</span><span>{gameCopy.difficulties[(shuffledPrompt ?? game.currentPrompt).difficulty]}</span><span>{(shuffledPrompt ?? game.currentPrompt).minimumAge}+</span></div>
+            <p className="prompt-text">{getPromptText(shuffledPrompt ?? game.currentPrompt, language)}</p>
             <PromptFlags prompt={shuffledPrompt ?? game.currentPrompt} />
           </article>
           <div className="prompt-actions">
-            <button type="button" className="button button-primary complete" disabled={isReplacingPrompt} onClick={() => completeTurn("COMPLETED")}>Đã hoàn thành +{game.currentPrompt.type === "TRUTH" ? 1 : 2} điểm</button>
-            <button type="button" className="button button-secondary" disabled={isReplacingPrompt} onClick={replacePrompt}>{isReplacingPrompt ? "Đang đổi câu…" : "Đổi câu khác"}</button>
-            <button type="button" className="button button-secondary" disabled={isReplacingPrompt} onClick={() => completeTurn("SKIPPED")}>Bỏ lượt</button>
+            <button type="button" className="button button-primary complete" disabled={isReplacingPrompt} onClick={() => completeTurn("COMPLETED")}>{gameCopy.completed} +{game.currentPrompt.type === "TRUTH" ? 1 : 2} {gameCopy.points}</button>
+            <button type="button" className="button button-secondary" disabled={isReplacingPrompt} onClick={replacePrompt}>{isReplacingPrompt ? gameCopy.changing : gameCopy.changeQuestion}</button>
+            <button type="button" className="button button-secondary" disabled={isReplacingPrompt} onClick={() => completeTurn("SKIPPED")}>{gameCopy.skip}</button>
           </div>
           <div className="local-hide">
-            <button type="button" disabled={isReplacingPrompt} onClick={hideCurrentPrompt}>Ẩn câu này trên thiết bị</button>
-            <span className="fine-print">Câu hỏi sẽ chỉ được ẩn trên trình duyệt này.</span>
+            <button type="button" disabled={isReplacingPrompt} onClick={hideCurrentPrompt}>{gameCopy.hideQuestion}</button>
+            <span className="fine-print">{gameCopy.hideHelp}</span>
           </div>
         </div>
       )}
 
       <WheelModal
         isOpen={typeWheelOpen}
-        title="Vòng quay chọn THẬT / THÁCH"
-        description="Vòng quay gồm hai lựa chọn: THẬT và THÁCH."
-        countLabel="Có 2 lựa chọn đang tham gia vòng quay."
-        items={TYPE_WHEEL_ITEMS}
+        title={gameCopy.typeWheelTitle}
+        description={gameCopy.typeWheelDescription}
+        countLabel={gameCopy.typeWheelCount}
+        items={typeWheelItems}
         onClose={() => setTypeWheelOpen(false)}
         onResult={(id) => { setPendingPromptType(id === "DARE" ? "DARE" : "TRUTH"); setTypeWheelOpen(false); }}
         autoResolveResult
@@ -556,14 +544,16 @@ export function PlayClient() {
 
       <WheelModal
         isOpen={questionWheelOpen}
-        title={questionWheelType ? `Vòng quay câu ${PROMPT_TYPE_LABELS[questionWheelType]}` : "Vòng quay câu hỏi"}
-        description={`Vòng quay gồm ${questionWheelPool.length} câu ${questionWheelType ? PROMPT_TYPE_LABELS[questionWheelType] : "hợp lệ"}.`}
-        countLabel={`Có ${questionWheelPool.length} câu đang tham gia vòng quay.`}
+        title={questionWheelType ? `${gameCopy.questionWheelPrefix} ${gameCopy.promptTypes[questionWheelType]}` : gameCopy.questionWheel}
+        description={language === "vi"
+          ? `Vòng quay gồm ${questionWheelPool.length} câu ${questionWheelType ? gameCopy.promptTypes[questionWheelType] : "hợp lệ"}.`
+          : `The wheel includes ${questionWheelPool.length} eligible ${questionWheelType ? gameCopy.promptTypes[questionWheelType] : ""} prompts.`}
+        countLabel={language === "vi" ? `Có ${questionWheelPool.length} câu đang tham gia vòng quay.` : `${questionWheelPool.length} prompts are on the wheel.`}
         items={questionWheelItems}
         onClose={closeQuestionWheel}
         onConfirmResult={confirmWheelPrompt}
         renderResult={renderQuestionResult}
-        confirmLabel="CHƠI CÂU NÀY"
+        confirmLabel={gameCopy.playThis}
       />
     </div>
   );

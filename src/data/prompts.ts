@@ -1,8 +1,21 @@
 import dareRows from "./prompts.dare.vi.json";
 import truthRows from "./prompts.truth.vi.json";
+import dareEnglishRows from "./prompts.dare.en.json";
+import truthEnglishRows from "./prompts.truth.en.json";
 import { StaticPromptDatabaseSchema } from "@/features/prompts/schemas/promptSchema";
+import type { StaticPrompt } from "@/features/game/domain/types";
+import type { Language } from "@/features/i18n/types";
 
 export const prompts = StaticPromptDatabaseSchema.parse([...truthRows, ...dareRows]);
+const englishTextById = new Map([...Object.entries(truthEnglishRows), ...Object.entries(dareEnglishRows)]);
+
+if (englishTextById.size !== prompts.length || prompts.some((prompt) => !englishTextById.has(prompt.id))) {
+  throw new Error("The English prompt set must contain the same IDs as the Vietnamese prompt set.");
+}
+
+export function getPromptText(prompt: Pick<StaticPrompt, "id" | "text">, language: Language): string {
+  return language === "en" ? englishTextById.get(prompt.id) ?? prompt.text : prompt.text;
+}
 
 export const categoryLabels: Record<string, string> = {
   everyday: "Đời sống",

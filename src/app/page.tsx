@@ -1,24 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import truthOrDareBanner from "@/assets/truth-or-dare-banner.webp";
-import { prompts } from "@/data/prompts";
+import { getPromptText, prompts } from "@/data/prompts";
 import { LandingResume } from "@/features/game/components/LandingResume";
-
-const features = [
-  { emoji: "🧊", title: "Phá băng cực nhanh", description: "Một câu hỏi đúng lúc có thể khiến cả nhóm bắt chuyện và cười cùng nhau." },
-  { emoji: "🤫", title: "Chọn Thật", description: "Trả lời thành thật một câu hỏi và để mọi người hiểu bạn thêm một chút." },
-  { emoji: "😈", title: "Chọn Thách", description: "Thực hiện một thử thách vui nhộn và biến lượt chơi thành khoảnh khắc đáng nhớ." },
-  { emoji: "💛", title: "Tôn trọng giới hạn", description: "Ai cũng có quyền bỏ qua câu hỏi hoặc thử thách khiến mình không thoải mái." },
-];
-
-const steps = [
-  { title: "Tập hợp nhóm bạn", description: "Chơi cùng bạn bè, gia đình hoặc bất kỳ nhóm nào muốn có thêm tiếng cười." },
-  { title: "Chọn người chơi", description: "Trò chơi lần lượt gọi tên từng người để không ai bị bỏ quên." },
-  { title: "Thật hay Thách?", description: "Trả lời thành thật hoặc nhận một thử thách bất ngờ." },
-  { title: "Cười và chơi tiếp", description: "Hoàn thành lượt chơi, ghi điểm và chuyển sang người tiếp theo." },
-];
+import { useI18n } from "@/features/i18n/I18nProvider";
 
 export default function HomePage() {
+  const { language, copy } = useI18n();
   const truthPreview = prompts.find((prompt) => prompt.type === "TRUTH" && prompt.minimumAge === 13 && !prompt.isPrivate && !prompt.isSensitive);
   const darePreview = prompts.find((prompt) => prompt.type === "DARE" && prompt.minimumAge === 13 && !prompt.isPrivate && !prompt.isSensitive);
 
@@ -32,41 +22,40 @@ export default function HomePage() {
           <span className="floating-emoji emoji-fire" aria-hidden="true">🔥</span>
 
           <div className="hero-copy">
-            <p className="eyebrow">TRUTH OR DARE - BẮT NHỊP CUỘC VUI</p>
+            <p className="eyebrow">{copy.home.eyebrow}</p>
             <h1 className="hero-banner-heading">
               <Image
                 className="hero-banner-image"
                 src={truthOrDareBanner}
-                alt=""
+                alt={copy.home.bannerAlt}
                 width={1536}
                 height={512}
                 priority
                 sizes="(max-width: 767px) calc(100vw - 32px), 650px"
               />
-              <span className="sr-only">Truth or Dare</span>
             </h1>
-            <p className="hero-lede">Chọn Thật để chia sẻ một điều bất ngờ, hoặc chọn Thách để khuấy động cả căn phòng. Một trò chơi đơn giản để mọi người gần nhau hơn.</p>
+            <p className="hero-lede">{copy.home.lede}</p>
             <div className="hero-actions">
-              <Link href="/play" prefetch={false} className="button button-primary button-party">Bắt đầu chơi <span aria-hidden="true">🎉</span></Link>
-              <Link href="/guide" prefetch={false} className="button button-secondary">Xem luật chơi</Link>
+              <Link href="/play" prefetch={false} className="button button-primary button-party">{copy.home.start} <span aria-hidden="true">🎉</span></Link>
+              <Link href="/guide" prefetch={false} className="button button-secondary">{copy.home.viewGuide}</Link>
             </div>
             <LandingResume />
             <div className="hero-stickers" aria-hidden="true">
-              <span className="sticker sticker-yellow">KHÔNG PHÁN XÉT</span>
-              <span className="sticker sticker-pink">CHƠI LÀ VUI</span>
+              <span className="sticker sticker-yellow">{copy.home.stickerOne}</span>
+              <span className="sticker sticker-pink">{copy.home.stickerTwo}</span>
             </div>
           </div>
 
-          <div className="prompt-preview" aria-label="Xem trước câu hỏi trong trò chơi">
+          <div className="prompt-preview" aria-label={copy.home.previewLabel}>
             <article className="preview-card preview-truth">
-              <span className="preview-type">THẬT <span aria-hidden="true">🤫</span></span>
-              <p>{truthPreview?.text}</p>
-              <span className="preview-sticker" aria-hidden="true">YOUR TURN!</span>
+              <span className="preview-type">{copy.home.truth} <span aria-hidden="true">🤫</span></span>
+              <p>{truthPreview ? getPromptText(truthPreview, language) : null}</p>
+              <span className="preview-sticker" aria-hidden="true">{copy.home.yourTurn}</span>
             </article>
             <article className="preview-card preview-dare">
-              <span className="preview-type">THÁCH <span aria-hidden="true">😈</span></span>
-              <p>{darePreview?.text}</p>
-              <span className="preview-sticker" aria-hidden="true">DÁM THỬ KHÔNG?</span>
+              <span className="preview-type">{copy.home.dare} <span aria-hidden="true">😈</span></span>
+              <p>{darePreview ? getPromptText(darePreview, language) : null}</p>
+              <span className="preview-sticker" aria-hidden="true">{copy.home.dareSticker}</span>
             </article>
           </div>
         </div>
@@ -74,11 +63,11 @@ export default function HomePage() {
 
       <section className="shell feature-section" aria-labelledby="feature-heading">
         <div className="section-heading">
-          <p className="section-kicker">VÌ SAO CUỘC VUI BẮT ĐẦU Ở ĐÂY?</p>
-          <h2 id="feature-heading">Một lựa chọn nhỏ, cả nhóm có chuyện để nhớ.</h2>
+          <p className="section-kicker">{copy.home.featureKicker}</p>
+          <h2 id="feature-heading">{copy.home.featureHeading}</h2>
         </div>
         <div className="feature-grid">
-          {features.map((feature, index) => (
+          {copy.home.features.map((feature, index) => (
             <article className={`feature-card feature-card-${index + 1}`} key={feature.title}>
               <span className="feature-emoji" aria-hidden="true">{feature.emoji}</span>
               <h3>{feature.title}</h3>
@@ -93,12 +82,12 @@ export default function HomePage() {
         <span className="how-to-decoration how-to-sparkle" aria-hidden="true">✨</span>
         <div className="shell how-to-inner">
           <div className="how-to-copy">
-            <span className="sticker sticker-purple" aria-hidden="true">YOUR TURN!</span>
-            <h2 id="how-to-heading">Truth or Dare chơi như thế nào?</h2>
-            <p>Luật chơi rất đơn giản. Mỗi lượt, một người chọn Thật hoặc Thách, sau đó trả lời câu hỏi hoặc hoàn thành thử thách được đưa ra.</p>
+            <span className="sticker sticker-purple" aria-hidden="true">{copy.home.howSticker}</span>
+            <h2 id="how-to-heading">{copy.home.howHeading}</h2>
+            <p>{copy.home.howText}</p>
           </div>
           <ol className="step-grid">
-            {steps.map((step, index) => (
+            {copy.home.steps.map((step, index) => (
               <li className={`step-card step-card-${index + 1}`} key={step.title}>
                 <span className="step-number" aria-hidden="true">{index + 1}</span>
                 <div>
