@@ -125,7 +125,7 @@ test("landing and gameplay work without APIs or missing assets", async ({ page }
 
   await drawPromptNow(page, "THẬT");
   const hiddenPrompt = await prompt.textContent();
-  await page.getByRole("button", { name: "Ẩn câu này trên thiết bị" }).click();
+  await page.getByRole("button", { name: "Ẩn câu này", exact: true }).click();
   await expect(prompt).not.toHaveText(hiddenPrompt ?? "");
   await expect.poll(() => page.evaluate((key) => window.localStorage.getItem(key), HIDDEN_KEY)).toContain("truth-");
 
